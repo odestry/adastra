@@ -1,0 +1,89 @@
+{% comment %}
+  First, Thanks for choosing Fluide ✦ for your theme project.
+  Fluide is pretty straight forward, threre is no additional learning.
+
+  If you know Shopify themes, You know Fluide :)
+
+  This section has blocks and settings and one Javascript
+  component called hello-world.
+{% endcomment %}
+
+<div class="page-width">
+  {% if section.settings.heading != blank %}
+    <h1 class="text-xl font-heading">{{ section.settings.heading }}</h1>
+  {% endif %}
+
+  <div class="instructions">
+    <p>{{ section.settings.description }}</p>
+    <hello-world>
+      <button id="counter-{{ section.id }}" type="button">
+        count is <output for="counter-{{ section.id }}">0</output>
+      </button>
+    </hello-world>
+  </div>
+
+  <ul role="list" class="grid">
+    {% for block in section.blocks %}
+      <li class="list-none">
+        {%
+          render 'card'
+          heading: block.settings.heading,
+          description: block.settings.description,
+          link: block.settings.link,
+        %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Hello World",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Card",
+      "type": "card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "You are awesome"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Start building your next Shopify theme"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hello World"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["*"]
+  }
+}
+{% endschema %}

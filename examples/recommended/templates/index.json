@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "main": {
+      "type": "hello-world",
+      "blocks": {
+        "card-docs": {
+          "type": "card",
+          "settings": {
+            "heading": "Documentation",
+            "description": "Find in-depth information about Fluide features and how to use it.",
+            "link": "https://dosc.fluide.run"
+          }
+        },
+        "card-chat": {
+          "type": "card",
+          "settings": {
+            "heading": "Chat",
+            "description": "Come say hey to our amazing Discord community. 💚",
+            "link": "https://chat.fluide.run"
+          }
+        },
+        "card-sections": {
+          "type": "card",
+          "settings": {
+            "heading": "Sections",
+            "description": "Explore a galaxy of community-built Fluide sections.",
+            "link": "https://Fluide.run/sections"
+          }
+        },
+        "card-plus": {
+          "type": "card",
+          "settings": {
+            "heading": "Fluide Plus",
+            "description": "Instantly build a production ready Shopify store.",
+            "link": "https://Fluide.run/plus"
+          }
+        }
+      },
+      "block_order": ["card-docs", "card-chat", "card-sections", "card-plus"],
+      "settings": {
+        "heading": "Welcome to Fluide on Shopify",
+        "description": "<strong>Your first mission:</strong> tweak this message to try our hot module reloading. Check the sections/example directory!"
+      }
+    }
+  },
+  "order": ["main"]
+}

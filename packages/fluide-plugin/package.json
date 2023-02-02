@@ -1,0 +1,45 @@
+{
+  "name": "@fluide/plugin",
+  "version": "0.0.1",
+  "author": "Blanklob",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "watch": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:snap": "vitest -u",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "fast-glob": "^3.2.11"
+  },
+  "devDependencies": {
+    "@fluide/tsconfig": "workspace:*",
+    "eslint-config-fluide": "workspace:*"
+  },
+  "peerDependencies": {
+    "vite": "^4.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanklob/fluide.git",
+    "directory": "packages/fluide-plugin"
+  },
+  "keywords": [
+    "fluide",
+    "vite",
+    "shopify"
+  ]
+}

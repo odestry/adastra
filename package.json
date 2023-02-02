@@ -1,0 +1,49 @@
+{
+  "name": "fluide-monorepo",
+  "version": "0.1.0",
+  "description": "Fluide monorepo",
+  "author": "Blanklob",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "examples/*",
+    "docs"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --filter=*fluide* --parallel",
+    "dev:examples": "turbo run dev --filter=with-* --parallel",
+    "build": "turbo run build --filter=*fluide*",
+    "build:examples": "turbo run build --filter=with-*",
+    "lint": "turbo run lint",
+    "test": "turbo run test --filter=*fluide*",
+    "test:watch": "turbo run test:watch --filter=*fluide*",
+    "change:add": "changeset add",
+    "change:version": "changeset version",
+    "change:release": "turbo run build lint test && changeset version && changeset publish",
+    "clean": "turbo run clean"
+  },
+  "packageManager": "pnpm@7.26.1",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "@types/debug": "^4.1.7",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "@vitest/coverage-c8": "^0.28.3",
+    "eslint": "^7.32.0",
+    "eslint-config-fluide": "workspace:*",
+    "eslint-config-standard-with-typescript": "^21.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "tsup": "^6.5.0",
+    "turbo": "latest",
+    "typescript": "^4.9.5",
+    "vitest": "^0.28.3"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "@fluide/branding",
+  "version": "0.0.1",
+  "author": "Blanklob",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "watch": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@fluide/tsconfig": "workspace:*",
+    "eslint-config-fluide": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanklob/fluide.git",
+    "directory": "packages/fluide-branding"
+  },
+  "keywords": [
+    "fluide",
+    "branding"
+  ]
+}

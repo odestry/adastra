@@ -1,0 +1,84 @@
+{
+  "name": "@fluide/cli",
+  "version": "0.1.0",
+  "author": "Blanklob",
+  "type": "module",
+  "bin": {
+    "fluide": "./bin/run.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "shx rm -rf dist && tsc -b",
+    "watch": "shx rm -rf dist && tsc -b --watch",
+    "typecheck": "tsc --noEmit",
+    "prepack": "pnpm build && oclif manifest && oclif readme",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@fluide/cli-kit": "workspace:*",
+    "@oclif/core": "^2",
+    "@oclif/plugin-help": "^5",
+    "@shopify/cli-kit": "^3.38.0",
+    "chalk": "^5.0.1",
+    "moment": "^2.29.4",
+    "vite": "^4.0.4"
+  },
+  "devDependencies": {
+    "@fluide/tsconfig": "workspace:*",
+    "eslint-config-fluide": "workspace:*",
+    "oclif": "^3",
+    "shx": "^0.3.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanklob/fluide.git",
+    "directory": "packages/fluide-cli"
+  },
+  "keywords": [
+    "fluide",
+    "cli"
+  ],
+  "oclif": {
+    "bin": "fluide",
+    "dirname": "fluide",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "create": {
+        "description": "Scafold a new Astra project"
+      },
+      "dev": {
+        "description": "Launch theme dev server"
+      },
+      "build": {
+        "description": "Build files for production"
+      },
+      "check": {
+        "description": "Run theme check"
+      }
+    }
+  }
+}

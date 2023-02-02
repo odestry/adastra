@@ -1,0 +1,11 @@
+{
+  "name": "@fluide/tsconfig",
+  "version": "0.1.0",
+  "author": "Blanklob",
+  "license": "MIT",
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react.json"
+  ]
+}
