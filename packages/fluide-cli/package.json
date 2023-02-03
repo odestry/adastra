@@ -1,13 +1,14 @@
 {
   "name": "@fluide/cli",
   "version": "0.1.0",
-  "author": "Blanklob",
   "type": "module",
+  "license": "MIT",
+  "author": "Blanklob",
   "bin": {
     "fluide": "./bin/run.js"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "/bin",
     "/dist",
@@ -16,10 +17,8 @@
   ],
   "scripts": {
     "dev": "npm run build -- --watch",
-    "build": "shx rm -rf dist && tsc -b",
+    "build": "shx rm -rf dist && tsc -b && oclif manifest",
     "watch": "shx rm -rf dist && tsc -b --watch",
-    "typecheck": "tsc --noEmit",
-    "prepack": "pnpm build && oclif manifest && oclif readme",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "lint:types": "tsc --noEmit",

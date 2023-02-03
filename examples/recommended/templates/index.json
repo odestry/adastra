@@ -36,12 +36,19 @@
           }
         }
       },
-      "block_order": ["card-docs", "card-chat", "card-sections", "card-plus"],
+      "block_order": [
+        "card-docs",
+        "card-chat",
+        "card-sections",
+        "card-plus"
+      ],
       "settings": {
         "heading": "Welcome to Fluide on Shopify",
         "description": "<strong>Your first mission:</strong> tweak this message to try our hot module reloading. Check the sections/example directory!"
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

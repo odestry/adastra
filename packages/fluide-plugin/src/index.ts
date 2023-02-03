@@ -5,17 +5,12 @@ import { resolveOptions } from './options'
 import fluideConfig from './plugins/vite-plugin-fluide-config'
 import fluideLiquid from './plugins/vite-plugin-fluide-liquid'
 
-const PluginFluide = (options: PluginFluideOptions = {}): Plugin[] => {
+export default (options: PluginFluideOptions = {}): Plugin[] => {
   const resolvedOptions = resolveOptions(options)
-
-  const plugins = [
+  return [
     //  Apply plugin for configuring Vite settings
     fluideConfig(resolvedOptions),
     // Apply plugin for generating Liquid asset tags through fluide.liquid snippet
     fluideLiquid(resolvedOptions)
   ]
-
-  return plugins
 }
-
-export default PluginFluide

@@ -9,7 +9,6 @@ Shopify theme development framework created by Blanklob.
 - [fluide](./packages/fluide)
 - [create-fluide](./packages/create-fluide)
 - [@fluide/plugin](./packages/fluide-plugin)
-- [@fluide/plugin-settings](./packages/fluide-plugin-settings)
 - [@fluide/cli](./packages/fluide-cli)
 - [@fluide/cli-kit](./packages/fluide-cli-kit)
 - [@fluide/branding](./packages/fluide-branding)
