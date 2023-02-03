@@ -1,8 +1,8 @@
 {
   "name": "@fluide/branding",
-  "version": "0.0.1",
-  "license": "MIT",
+  "version": "0.1.0",
   "author": "Blanklob",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

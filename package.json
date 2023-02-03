@@ -7,8 +7,7 @@
   "license": "MIT",
   "workspaces": [
     "packages/*",
-    "examples/*",
-    "docs"
+    "examples/*"
   ],
   "scripts": {
     "dev": "turbo run dev --filter=*fluide* --parallel",

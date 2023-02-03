@@ -1,9 +1,9 @@
 {
   "name": "eslint-config-fluide",
   "version": "0.1.0",
-  "main": "index.js",
-  "license": "MIT",
   "author": "Blanklob",
+  "license": "MIT",
+  "main": "index.js",
   "dependencies": {
     "eslint": "^7.23.0",
     "eslint-config-next": "13.0.0",

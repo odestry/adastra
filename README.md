@@ -55,6 +55,7 @@ Shopify theme development framework created by Blanklob.
 - [with-web-components](./examples/with-web-components)
 - [with-react](./examples/with-react)
 - [with-vue](./examples/with-vue)
+- [with-alpine](./examples/with-alpine)
 - [with-svelte](./examples/with-svelte)
 - [with-preact](./examples/with-preact)
 - [with-solid](./examples/with-solid)
@@ -70,6 +71,12 @@ Shopify theme development framework created by Blanklob.
 
 - [with-vitest](./examples/with-vitest)
 - [with-playwright](./examples/with-playwright)
+
+### Platforms
+
+- [with-docker](./examples/with-docker)
+- [with-github-codespace](./examples/with-github-codespace)
+- [with-stackblitz](./examples/with-stackblitz)
 
 ### 3D and Animation
 

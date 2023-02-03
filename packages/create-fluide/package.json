@@ -1,9 +1,9 @@
 {
   "name": "create-fluide",
   "version": "0.1.0",
-  "type": "module",
-  "license": "MIT",
   "author": "Blanklob",
+  "license": "MIT",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
