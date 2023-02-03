@@ -1,6 +1,6 @@
-export { isBrowser } from './is-browser'
-export { isViteThree } from './vite'
-export { getErrorMarkup } from './error'
+export { isBrowser } from "./is-browser";
+export { isViteThree } from "./vite";
+export { getErrorMarkup } from "./error";
 export {
   disableThemeCheckTag,
   preloadScriptTag,
@@ -9,5 +9,5 @@ export {
   fluideEntryTag,
   fluideTagDisclaimer,
   fluideTagEntryPath,
-  fluideTagSnippetDev
-} from './liquid'
+  fluideTagSnippetDev,
+} from "./liquid";

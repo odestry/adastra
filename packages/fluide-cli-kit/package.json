@@ -28,6 +28,7 @@
     "sisteransi": "^1.0.5"
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
     "@fluide/tsconfig": "workspace:*",
     "@types/gradient-string": "^1.1.2",
     "eslint-config-fluide": "workspace:*"

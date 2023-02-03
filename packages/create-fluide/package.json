@@ -6,21 +6,17 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": "./create-fluide.mjs"
-  },
   "files": [
-    "dist",
-    "create-fluide.js"
+    "dist"
   ],
   "bin": {
-    "create-fluide": "./create-fluide.mjs"
+    "create-fluide": "./dist/create-fluide.js"
   },
   "scripts": {
-    "scafold": "./create-fluide.mjs",
+    "start": "./dist/create-fluide.js",
     "dev": "npm run build -- --watch",
-    "build": "tsup src/**/*.ts --dts --format cjs,esm --clean",
-    "watch": "tsup src/**/*.ts --dts --format cjs,esm --watch",
+    "build": "tsup src/*.ts --dts --format esm",
+    "watch": "tsup src/*.ts --dts --format esm --watch",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "lint:types": "tsc --noEmit",
@@ -44,6 +40,7 @@
   "devDependencies": {
     "@fluide/tsconfig": "workspace:*",
     "eslint-config-fluide": "workspace:*",
+    "eslint": "^7.32.0",
     "@types/degit": "^2.8.3",
     "@types/prompts": "^2.0.14",
     "@types/which-pm-runs": "^1.0.0",

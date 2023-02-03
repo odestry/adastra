@@ -1,13 +1,13 @@
 export const brand = {
-  fluide: 'Fluide',
-  blanklob: 'Blanklob',
-  tars: 'Tars',
+  fluide: "Fluide",
+  blanklob: "Blanklob",
+  tars: "Tars",
   colors: {
-    yellowgreen: '#C5FC81',
-    spaceblue: '#85E8FE',
-    nightdark: '#1C1E21',
-    lovelyviolet: '#6A567F',
-    warn: '#EED202',
-    error: '#FF5c57'
-  }
-}
+    yellowgreen: "#C5FC81",
+    spaceblue: "#85E8FE",
+    nightdark: "#1C1E21",
+    lovelyviolet: "#6A567F",
+    warn: "#EED202",
+    error: "#FF5c57",
+  },
+};

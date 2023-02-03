@@ -1,14 +1,17 @@
 import {
   ThemeCommand,
   theme_flags_default
-} from "../chunk-IS6CEASQ.js";
+} from "../chunk-JY6WLQYU.js";
 
 // src/commands/dev/index.ts
 import { Flags } from "@oclif/core";
 import { globalFlags } from "@shopify/cli-kit/node/cli";
 import { execCLI2 } from "@shopify/cli-kit/node/ruby";
 import { AbortController } from "@shopify/cli-kit/node/abort";
-import { ensureAuthenticatedStorefront, ensureAuthenticatedThemes } from "@shopify/cli-kit/node/session";
+import {
+  ensureAuthenticatedStorefront,
+  ensureAuthenticatedThemes
+} from "@shopify/cli-kit/node/session";
 import { sleep } from "@shopify/cli-kit/node/system";
 import { outputDebug } from "@shopify/cli-kit/node/output";
 import { createServer, createLogger } from "vite";
@@ -18,7 +21,9 @@ import { Conf } from "@shopify/cli-kit/node/conf";
 var _instance;
 function themeConf() {
   if (!_instance) {
-    _instance = new Conf({ projectName: "shopify-cli-theme-conf" });
+    _instance = new Conf({
+      projectName: "shopify-cli-theme-conf"
+    });
   }
   return _instance;
 }
@@ -31,7 +36,11 @@ function getThemeStore(flags) {
   if (!store) {
     throw new AbortError(
       "A store is required",
-      `Specify the store passing ${outputContent`${outputToken.genericShellCommand(`--${theme_flags_default.store.name}={your_store_url}`)}`.value} or set the ${outputContent`${outputToken.genericShellCommand(theme_flags_default.store.env)}`.value} environment variable.`
+      `Specify the store passing ${outputContent`${outputToken.genericShellCommand(
+        `--${theme_flags_default.store.name}={your_store_url}`
+      )}`.value} or set the ${outputContent`${outputToken.genericShellCommand(
+        theme_flags_default.store.env
+      )}`.value} environment variable.`
     );
   }
   themeConf().set("themeStore", store);
@@ -66,7 +75,9 @@ var printOtherUrls = (baseUrl, themeId, logger2 = console.log) => {
   const previewUrl = `https://${baseUrl}/preview_theme_id=${themeId}&pb=0`;
   const stopServerMessage = "(Use Ctrl-C to stop server)";
   logger2(
-    `${" ".repeat(2)}${color.white("Customize this theme in the Theme Editor, and use 'fluide sync'\n  to get the latest changes")}
+    `${" ".repeat(2)}${color.white(
+      "Customize this theme in the Theme Editor, and use 'fluide sync'\n  to get the latest changes"
+    )}
   ${color.hex(brand.colors.yellowgreen)(editingUrl)}
 
   ${color.white("Share this theme preview with other some cool")}
@@ -77,13 +88,24 @@ var printOtherUrls = (baseUrl, themeId, logger2 = console.log) => {
   );
 };
 var logInitiateSequence = (baseUrl, logger2 = console.log) => {
-  logger2(`${" ".repeat(3)}${label("Fluide")} ${color.hex(brand.colors.yellowgreen)(`Initiating launch sequence for ${baseUrl} 
-`)}`);
+  logger2(
+    `${" ".repeat(3)}${label("Fluide")} ${color.hex(brand.colors.yellowgreen)(
+      `Initiating launch sequence for ${baseUrl} 
+`
+    )}`
+  );
 };
 var startDevMessage = (baseUrl, logger2 = console.log, clearScreen = console.clear) => {
   clearScreen();
-  logger2(`${" ".repeat(2)}${label("Fluide")} ${color.hex(brand.colors.yellowgreen)(`Initiating launch sequence for ${baseUrl.replace(".myshopify.com", "")} store
-`)}`);
+  logger2(
+    `${" ".repeat(2)}${label("Fluide")} ${color.hex(brand.colors.yellowgreen)(
+      `Initiating launch sequence for ${baseUrl.replace(
+        ".myshopify.com",
+        ""
+      )} store
+`
+    )}`
+  );
 };
 
 // src/commands/dev/index.ts
@@ -96,8 +118,17 @@ var _Dev = class extends ThemeCommand {
   }
   async run() {
     const { flags } = await this.parse(_Dev);
-    const flagsToPass = this.passThroughFlags(flags, { allowedFlags: _Dev.cli2Flags });
-    const command = ["theme", "serve", flags.path, "--ignore", ..._Dev.ignoredFiles, ...flagsToPass];
+    const flagsToPass = this.passThroughFlags(flags, {
+      allowedFlags: _Dev.cli2Flags
+    });
+    const command = [
+      "theme",
+      "serve",
+      flags.path,
+      "--ignore",
+      ..._Dev.ignoredFiles,
+      ...flagsToPass
+    ];
     const store = getThemeStore(flags);
     let controller = new AbortController();
     const customLogger = {
@@ -120,10 +151,14 @@ var _Dev = class extends ThemeCommand {
       customLogger
     });
     setInterval(() => {
-      outputDebug("Refreshing theme session token and restarting theme server...");
+      outputDebug(
+        "Refreshing theme session token and restarting theme server..."
+      );
       controller.abort();
       controller = new AbortController();
-      this.execute(store, flags.password, command, controller).then(async () => await server.restart());
+      this.execute(store, flags.password, command, controller).then(
+        async () => await server.restart()
+      );
     }, this.ThemeRefreshTimeoutInMs);
     await server.listen();
     logInitiateSequence(store);
@@ -132,9 +167,18 @@ var _Dev = class extends ThemeCommand {
   }
   async execute(store, password, command, controller) {
     await sleep(2);
-    const adminSession = await ensureAuthenticatedThemes(store, password, [], true);
+    const adminSession = await ensureAuthenticatedThemes(
+      store,
+      password,
+      [],
+      true
+    );
     const storefrontToken = await ensureAuthenticatedStorefront([], password);
-    return execCLI2(command, { adminSession, storefrontToken, signal: controller.signal });
+    return execCLI2(command, {
+      adminSession,
+      storefrontToken,
+      signal: controller.signal
+    });
   }
 };
 var Dev = _Dev;

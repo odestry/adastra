@@ -22,6 +22,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "eslint": "^7.32.0",
     "@fluide/tsconfig": "workspace:*",
     "eslint-config-fluide": "workspace:*"
   },

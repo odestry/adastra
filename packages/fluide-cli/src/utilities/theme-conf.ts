@@ -1,16 +1,18 @@
 // @ts-expect-error
-import { Conf } from '@shopify/cli-kit/node/conf'
+import { Conf } from "@shopify/cli-kit/node/conf";
 
 export interface ThemeConfSchema {
-  themeStore: string
+  themeStore: string;
 }
 
-let _instance: Conf<ThemeConfSchema> | undefined
+let _instance: Conf<ThemeConfSchema> | undefined;
 
-export default function themeConf (): any {
+export default function themeConf(): any {
   // eslint-disable-next-line
   if (!_instance) {
-    _instance = new Conf<ThemeConfSchema>({ projectName: 'shopify-cli-theme-conf' })
+    _instance = new Conf<ThemeConfSchema>({
+      projectName: "shopify-cli-theme-conf",
+    });
   }
-  return _instance
+  return _instance;
 }

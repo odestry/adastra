@@ -39,13 +39,13 @@ npm create fluide@latest my-fluide-project -- --template cassidoo/shopify-react-
 
 May be provided in place of prompts
 
-| Name         | Description                                         |
-|:-------------|:----------------------------------------------------|
-| `--template` | Specify the template name ([list][examples])        |
-| `--commit`   | Specify a specific Git commit or branch to use from this repo (by default, `main` branch of this repo will be used) |
-| `--fancy`    | For Windows users, `--fancy` will enable full unicode support |
-| `--typescript` | Specify the [tsconfig][typescript] to use            |
-| `--yes`/`-y` | Skip prompts and use default values                 |
+| Name           | Description                                                                                                         |
+| :------------- | :------------------------------------------------------------------------------------------------------------------ |
+| `--template`   | Specify the template name ([list][examples])                                                                        |
+| `--commit`     | Specify a specific Git commit or branch to use from this repo (by default, `main` branch of this repo will be used) |
+| `--fancy`      | For Windows users, `--fancy` will enable full unicode support                                                       |
+| `--typescript` | Specify the [tsconfig][typescript] to use                                                                           |
+| `--yes`/`-y`   | Skip prompts and use default values                                                                                 |
 
 ### Debugging
 

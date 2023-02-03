@@ -1,7 +1,7 @@
 import {
   ThemeCommand,
   theme_flags_default
-} from "../chunk-IS6CEASQ.js";
+} from "../chunk-JY6WLQYU.js";
 
 // src/commands/check/index.ts
 import { Flags } from "@oclif/core";
@@ -10,9 +10,17 @@ import { globalFlags } from "@shopify/cli-kit/node/cli";
 var _Check = class extends ThemeCommand {
   async run() {
     const { flags } = await this.parse(_Check);
-    await execCLI2(["theme", "check", flags.path, ...this.passThroughFlags(flags, { allowedFlags: _Check.cli2Flags })], {
-      directory: flags.path
-    });
+    await execCLI2(
+      [
+        "theme",
+        "check",
+        flags.path,
+        ...this.passThroughFlags(flags, { allowedFlags: _Check.cli2Flags })
+      ],
+      {
+        directory: flags.path
+      }
+    );
   }
 };
 var Check = _Check;

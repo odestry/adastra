@@ -1,101 +1,109 @@
-import { Flags } from '@oclif/core'
+import { Flags } from "@oclif/core";
 
 // @ts-expect-error
-import { execCLI2 } from '@shopify/cli-kit/node/ruby'
+import { execCLI2 } from "@shopify/cli-kit/node/ruby";
 // @ts-expect-error
-import { globalFlags } from '@shopify/cli-kit/node/cli'
+import { globalFlags } from "@shopify/cli-kit/node/cli";
 
-import themeFlags from '../../utilities/theme-flags.js'
-import ThemeCommand from '../../utilities/theme-command.js'
+import themeFlags from "../../utilities/theme-flags.js";
+import ThemeCommand from "../../utilities/theme-command.js";
 
 export default class Check extends ThemeCommand {
-  static description = 'Validate the theme.'
+  static description = "Validate the theme.";
 
   static flags = {
     ...globalFlags,
     path: themeFlags.path,
-    'auto-correct': Flags.boolean({
-      char: 'a',
+    "auto-correct": Flags.boolean({
+      char: "a",
       required: false,
-      description: 'Automatically fix offenses',
-      env: 'SHOPIFY_FLAG_AUTO_CORRECT'
+      description: "Automatically fix offenses",
+      env: "SHOPIFY_FLAG_AUTO_CORRECT",
     }),
     category: Flags.string({
-      char: 'c',
+      char: "c",
       required: false,
       description: `Only run this category of checks
 Runs checks matching all categories when specified more than once`,
-      env: 'SHOPIFY_FLAG_CATEGORY'
+      env: "SHOPIFY_FLAG_CATEGORY",
     }),
     config: Flags.string({
-      char: 'C',
+      char: "C",
       required: false,
       description: `Use the config provided, overriding .theme-check.yml if present
 Use :theme_app_extension to use default checks for theme app extensions`,
-      env: 'SHOPIFY_FLAG_CONFIG'
+      env: "SHOPIFY_FLAG_CONFIG",
     }),
-    'exclude-category': Flags.string({
-      char: 'x',
+    "exclude-category": Flags.string({
+      char: "x",
       required: false,
       description: `Exclude this category of checks
 Excludes checks matching any category when specified more than once`,
-      env: 'SHOPIFY_FLAG_EXCLUDE_CATEGORY'
+      env: "SHOPIFY_FLAG_EXCLUDE_CATEGORY",
     }),
-    'fail-level': Flags.string({
+    "fail-level": Flags.string({
       required: false,
-      description: 'Minimum severity for exit with error code',
-      env: 'SHOPIFY_FLAG_FAIL_LEVEL',
-      options: ['error', 'suggestion', 'style']
+      description: "Minimum severity for exit with error code",
+      env: "SHOPIFY_FLAG_FAIL_LEVEL",
+      options: ["error", "suggestion", "style"],
     }),
     init: Flags.boolean({
       required: false,
-      description: 'Generate a .theme-check.yml file',
-      env: 'SHOPIFY_FLAG_INIT'
+      description: "Generate a .theme-check.yml file",
+      env: "SHOPIFY_FLAG_INIT",
     }),
     list: Flags.boolean({
       required: false,
-      description: 'List enabled checks',
-      env: 'SHOPIFY_FLAG_LIST'
+      description: "List enabled checks",
+      env: "SHOPIFY_FLAG_LIST",
     }),
     output: Flags.string({
-      char: 'o',
+      char: "o",
       required: false,
-      description: 'The output format to use',
-      env: 'SHOPIFY_FLAG_OUTPUT',
-      options: ['text', 'json'],
-      default: 'text'
+      description: "The output format to use",
+      env: "SHOPIFY_FLAG_OUTPUT",
+      options: ["text", "json"],
+      default: "text",
     }),
     print: Flags.boolean({
       required: false,
-      description: 'Output active config to STDOUT',
-      env: 'SHOPIFY_FLAG_PRINT'
+      description: "Output active config to STDOUT",
+      env: "SHOPIFY_FLAG_PRINT",
     }),
     version: Flags.boolean({
-      char: 'v',
+      char: "v",
       required: false,
-      description: 'Print Theme Check version',
-      env: 'SHOPIFY_FLAG_VERSION'
-    })
-  }
+      description: "Print Theme Check version",
+      env: "SHOPIFY_FLAG_VERSION",
+    }),
+  };
 
   static cli2Flags = [
-    'auto-correct',
-    'category',
-    'config',
-    'exclude-category',
-    'fail-level',
-    'init',
-    'list',
-    'output',
-    'print',
-    'version'
-  ]
+    "auto-correct",
+    "category",
+    "config",
+    "exclude-category",
+    "fail-level",
+    "init",
+    "list",
+    "output",
+    "print",
+    "version",
+  ];
 
-  async run (): Promise<void> {
+  async run(): Promise<void> {
     // @ts-expect-error
-    const { flags } = await this.parse(Check)
-    await execCLI2(['theme', 'check', flags.path, ...this.passThroughFlags(flags, { allowedFlags: Check.cli2Flags })], {
-      directory: flags.path
-    })
+    const { flags } = await this.parse(Check);
+    await execCLI2(
+      [
+        "theme",
+        "check",
+        flags.path,
+        ...this.passThroughFlags(flags, { allowedFlags: Check.cli2Flags }),
+      ],
+      {
+        directory: flags.path,
+      }
+    );
   }
 }

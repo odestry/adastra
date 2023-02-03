@@ -1,175 +1,214 @@
-import { Flags } from '@oclif/core'
+import { Flags } from "@oclif/core";
 // @ts-expect-error
-import { globalFlags } from '@shopify/cli-kit/node/cli'
+import { globalFlags } from "@shopify/cli-kit/node/cli";
 // @ts-expect-error
-import { execCLI2 } from '@shopify/cli-kit/node/ruby'
+import { execCLI2 } from "@shopify/cli-kit/node/ruby";
 // @ts-expect-error
-import { AbortController } from '@shopify/cli-kit/node/abort'
+import { AbortController } from "@shopify/cli-kit/node/abort";
 // @ts-expect-error
-import { ensureAuthenticatedStorefront, ensureAuthenticatedThemes } from '@shopify/cli-kit/node/session'
+import {
+  ensureAuthenticatedStorefront,
+  ensureAuthenticatedThemes,
+} from "@shopify/cli-kit/node/session";
 // @ts-expect-error
-import { sleep } from '@shopify/cli-kit/node/system'
+import { sleep } from "@shopify/cli-kit/node/system";
 // @ts-expect-error
-import { outputDebug } from '@shopify/cli-kit/node/output'
-import { createServer, createLogger, LogOptions } from 'vite'
-import themeFlags from '../../utilities/theme-flags.js'
-import getThemeStore from '../../utilities/theme-store.js'
-import ThemeCommand from '../../utilities/theme-command.js'
-import color from 'chalk'
-import { log, logInitiateSequence, printOtherUrls, startDevMessage } from '../../utilities/logger.js'
-import { brand } from '@fluide/cli-kit'
+import { outputDebug } from "@shopify/cli-kit/node/output";
+import { createServer, createLogger, LogOptions } from "vite";
+import themeFlags from "../../utilities/theme-flags.js";
+import getThemeStore from "../../utilities/theme-store.js";
+import ThemeCommand from "../../utilities/theme-command.js";
+import color from "chalk";
+import {
+  log,
+  logInitiateSequence,
+  printOtherUrls,
+  startDevMessage,
+} from "../../utilities/logger.js";
+import { brand } from "@fluide/cli-kit";
 
-const logger = createLogger()
+const logger = createLogger();
 
 export default class Dev extends ThemeCommand {
   static description = color.hex(brand.colors.yellowgreen)(
-    'Uploads the current theme as a development theme to the connected store, then prints theme editor and preview URLs to your terminal. While running, changes will push to the store in real time.')
+    "Uploads the current theme as a development theme to the connected store, then prints theme editor and preview URLs to your terminal. While running, changes will push to the store in real time."
+  );
 
   static flags = {
     ...globalFlags,
     path: themeFlags.path,
     host: Flags.string({
-      description: 'Set which network interface the web server listens on. The default value is 127.0.0.1.',
-      env: 'SHOPIFY_FLAG_HOST'
+      description:
+        "Set which network interface the web server listens on. The default value is 127.0.0.1.",
+      env: "SHOPIFY_FLAG_HOST",
     }),
-    'live-reload': Flags.string({
+    "live-reload": Flags.string({
       description: `The live reload mode switches the server behavior when a file is modified:
 - hot-reload Hot reloads local changes to CSS and sections (default)
 - full-page  Always refreshes the entire page
 - off        Deactivate live reload`,
-      default: 'hot-reload',
-      options: ['hot-reload', 'full-page', 'off'],
-      env: 'SHOPIFY_FLAG_LIVE_RELOAD'
+      default: "hot-reload",
+      options: ["hot-reload", "full-page", "off"],
+      env: "SHOPIFY_FLAG_LIVE_RELOAD",
     }),
     poll: Flags.boolean({
-      description: 'Force polling to detect file changes.',
-      env: 'SHOPIFY_FLAG_POLL'
+      description: "Force polling to detect file changes.",
+      env: "SHOPIFY_FLAG_POLL",
     }),
-    'theme-editor-sync': Flags.boolean({
-      char: 'e',
-      description: 'Synchronize Theme Editor updates in the local theme files.',
-      env: 'SHOPIFY_FLAG_THEME_EDITOR_SYNC'
+    "theme-editor-sync": Flags.boolean({
+      char: "e",
+      description: "Synchronize Theme Editor updates in the local theme files.",
+      env: "SHOPIFY_FLAG_THEME_EDITOR_SYNC",
     }),
     port: Flags.string({
-      description: 'Local port to serve theme preview from.',
-      env: 'SHOPIFY_FLAG_PORT'
+      description: "Local port to serve theme preview from.",
+      env: "SHOPIFY_FLAG_PORT",
     }),
     store: themeFlags.store,
     theme: Flags.string({
-      char: 't',
-      description: 'Theme ID or name of the remote theme.',
-      env: 'SHOPIFY_FLAG_THEME_ID'
+      char: "t",
+      description: "Theme ID or name of the remote theme.",
+      env: "SHOPIFY_FLAG_THEME_ID",
     }),
     only: Flags.string({
-      char: 'o',
+      char: "o",
       multiple: true,
-      description: 'Hot reload only files that match the specified pattern.',
-      env: 'SHOPIFY_FLAG_ONLY'
+      description: "Hot reload only files that match the specified pattern.",
+      env: "SHOPIFY_FLAG_ONLY",
     }),
     ignore: Flags.string({
-      char: 'x',
+      char: "x",
       multiple: true,
-      description: 'Skip hot reloading any files that match the specified pattern.',
-      env: 'SHOPIFY_FLAG_IGNORE'
+      description:
+        "Skip hot reloading any files that match the specified pattern.",
+      env: "SHOPIFY_FLAG_IGNORE",
     }),
     stable: Flags.boolean({
       hidden: true,
       description:
-        'Performs the upload by relying in the legacy upload approach (slower, but it might be more stable in some scenarios)',
-      env: 'SHOPIFY_FLAG_STABLE'
+        "Performs the upload by relying in the legacy upload approach (slower, but it might be more stable in some scenarios)",
+      env: "SHOPIFY_FLAG_STABLE",
     }),
     force: Flags.boolean({
       hidden: true,
-      char: 'f',
-      description: 'Proceed without confirmation, if current directory does not seem to be theme directory.',
-      env: 'SHOPIFY_FLAG_FORCE'
+      char: "f",
+      description:
+        "Proceed without confirmation, if current directory does not seem to be theme directory.",
+      env: "SHOPIFY_FLAG_FORCE",
     }),
-    password: themeFlags.password
-  }
+    password: themeFlags.password,
+  };
 
   static ignoredFiles = [
-    'package.json',
-    'jsconfig.json',
-    'src/',
-    'tsconfig.json',
-    '.vscode',
-    'node_modules'
-  ]
+    "package.json",
+    "jsconfig.json",
+    "src/",
+    "tsconfig.json",
+    ".vscode",
+    "node_modules",
+  ];
 
   static cli2Flags = [
-    'host',
-    'live-reload',
-    'poll',
-    'theme-editor-sync',
-    'port',
-    'theme',
-    'only',
-    'ignore',
-    'stable',
-    'force'
-  ]
+    "host",
+    "live-reload",
+    "poll",
+    "theme-editor-sync",
+    "port",
+    "theme",
+    "only",
+    "ignore",
+    "stable",
+    "force",
+  ];
 
   // Tokens are valid for 120m, better to be safe and refresh every 110min
-  ThemeRefreshTimeoutInMs = 24 * 110 * 60 * 1000
+  ThemeRefreshTimeoutInMs = 24 * 110 * 60 * 1000;
 
   /**
    * Executes the theme serve command.
    * Every 110 minutes, it will refresh the session token and restart the server.
    */
-  async run (): Promise<void> {
+  async run(): Promise<void> {
     // @ts-expect-error
-    const { flags } = await this.parse(Dev)
+    const { flags } = await this.parse(Dev);
 
-    const flagsToPass = this.passThroughFlags(flags, { allowedFlags: Dev.cli2Flags })
-    const command = ['theme', 'serve', flags.path, '--ignore', ...Dev.ignoredFiles, ...flagsToPass]
+    const flagsToPass = this.passThroughFlags(flags, {
+      allowedFlags: Dev.cli2Flags,
+    });
+    const command = [
+      "theme",
+      "serve",
+      flags.path,
+      "--ignore",
+      ...Dev.ignoredFiles,
+      ...flagsToPass,
+    ];
 
-    const store = getThemeStore(flags)
+    const store = getThemeStore(flags);
 
-    let controller = new AbortController()
+    let controller = new AbortController();
 
     const customLogger = {
       ...logger,
       info: (msg: string, options?: LogOptions) => {
-        logger.clearScreen('info')
-        printOtherUrls(store, 498249289482, logger.info)
-        log('info', msg)
+        logger.clearScreen("info");
+        printOtherUrls(store, 498249289482, logger.info);
+        log("info", msg);
       },
       warn: (msg: string, options?: LogOptions) => {
-        logger.clearScreen('warn')
-        log('warn', msg)
+        logger.clearScreen("warn");
+        log("warn", msg);
       },
       error: (msg: string, options?: LogOptions) => {
-        logger.clearScreen('error')
-        log('error', msg)
-      }
-    }
+        logger.clearScreen("error");
+        log("error", msg);
+      },
+    };
 
     const server = await createServer({
-      customLogger
-    })
+      customLogger,
+    });
 
     setInterval(() => {
-      outputDebug('Refreshing theme session token and restarting theme server...')
-      controller.abort()
-      controller = new AbortController()
+      outputDebug(
+        "Refreshing theme session token and restarting theme server..."
+      );
+      controller.abort();
+      controller = new AbortController();
 
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      this.execute(store, flags.password, command, controller).then(async () => await server.restart())
-    }, this.ThemeRefreshTimeoutInMs)
+      this.execute(store, flags.password, command, controller).then(
+        async () => await server.restart()
+      );
+    }, this.ThemeRefreshTimeoutInMs);
 
-    await server.listen()
+    await server.listen();
 
-    logInitiateSequence(store)
-    startDevMessage(store)
+    logInitiateSequence(store);
+    startDevMessage(store);
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    await this.execute(store, flags.password, command, controller)
+    await this.execute(store, flags.password, command, controller);
   }
 
   // eslint-disable-next-line
-  async execute (store: string, password: string | undefined, command: string[], controller: AbortController) {
-    await sleep(2)
-    const adminSession = await ensureAuthenticatedThemes(store, password, [], true)
-    const storefrontToken = await ensureAuthenticatedStorefront([], password)
-    return execCLI2(command, { adminSession, storefrontToken, signal: controller.signal })
+  async execute(
+    store: string,
+    password: string | undefined,
+    command: string[],
+    controller: AbortController
+  ) {
+    await sleep(2);
+    const adminSession = await ensureAuthenticatedThemes(
+      store,
+      password,
+      [],
+      true
+    );
+    const storefrontToken = await ensureAuthenticatedStorefront([], password);
+    return execCLI2(command, {
+      adminSession,
+      storefrontToken,
+      signal: controller.signal,
+    });
   }
 }

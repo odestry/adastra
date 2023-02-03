@@ -34,7 +34,9 @@ var ThemeCommand = class extends Command {
       } else if (typeof value === "boolean") {
         passThroughFlags.push(`--${label}`);
       } else if (Array.isArray(value)) {
-        value.forEach((element) => passThroughFlags.push(`--${label}`, `${element}`));
+        value.forEach(
+          (element) => passThroughFlags.push(`--${label}`, `${element}`)
+        );
       } else {
         passThroughFlags.push(`--${label}`, `${value}`);
       }
