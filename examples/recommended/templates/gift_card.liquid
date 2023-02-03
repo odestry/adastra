@@ -139,29 +139,31 @@
     </main>
 
     <script>
-      let string = { qrImageAlt: {{ 'gift_cards.issued.qr_image_alt' | t | json }} };
-      document.addEventListener('DOMContentLoaded', () => {
-        new QRCode(document.querySelector('.gift-card__qr-code'), {
-          text: document.querySelector('.gift-card__qr-code').dataset.identifier,
-          width: 120,
-          height: 120,
-          imageAltText: string.qrImageAlt
-        });
-      });
-
-      let template = document.getElementsByTagName("template")[0];
-      let clonedTemplate = template.content.cloneNode(true);
-
-      let isMessageDisplayed = false;
-      document.querySelector('.gift-card__copy-link')
-        .addEventListener('click', () => {
-          navigator.clipboard.writeText(document.querySelector('.gift-card__number').value).then(() => {
-            if (!isMessageDisplayed) {
-              document.querySelector('.gift-card__copy-success').appendChild(clonedTemplate);
-              isMessageDisplayed = true
-            }
+      (() => {
+        let string = { qrImageAlt: {{ 'gift_cards.issued.qr_image_alt' | t | json }} };
+        document.addEventListener('DOMContentLoaded', () => {
+          new QRCode(document.querySelector('.gift-card__qr-code'), {
+            text: document.querySelector('.gift-card__qr-code').dataset.identifier,
+            width: 120,
+            height: 120,
+            imageAltText: string.qrImageAlt
           });
         });
+
+        let template = document.getElementsByTagName("template")[0];
+        let clonedTemplate = template.content.cloneNode(true);
+
+        let isMessageDisplayed = false;
+        document.querySelector('.gift-card__copy-link')
+          .addEventListener('click', () => {
+            navigator.clipboard.writeText(document.querySelector('.gift-card__number').value).then(() => {
+              if (!isMessageDisplayed) {
+                document.querySelector('.gift-card__copy-success').appendChild(clonedTemplate);
+                isMessageDisplayed = true
+              }
+            });
+          });
+      })();
     </script>
   </body>
 </html>

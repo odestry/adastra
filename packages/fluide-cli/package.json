@@ -5,6 +5,7 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
     "fluide": "./bin/run.js"
@@ -17,8 +18,8 @@
   ],
   "scripts": {
     "dev": "npm run build -- --watch",
-    "build": "shx rm -rf dist && tsc -b",
-    "watch": "shx rm -rf dist && tsc -b --watch",
+    "build": "tsup src/**/**/*.ts --dts --format esm",
+    "watch": "tsup src/**/**/*.ts --dts --format esm --watch",
     "prepack": "oclif manifest",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
@@ -61,7 +62,7 @@
   "oclif": {
     "bin": "fluide",
     "dirname": "fluide",
-    "commands": "./dist/commands",
+    "commands": "./dist",
     "plugins": [
       "@oclif/plugin-help"
     ],

@@ -10,8 +10,8 @@
     "examples/*"
   ],
   "scripts": {
-    "dev": "turbo run dev --filter=*fluide* --parallel",
-    "dev:examples": "turbo run dev --filter=with-* --parallel",
+    "dev": "turbo run dev --filter=@fluide/* --parallel",
+    "dev:examples": "turbo run dev --filter='./examples/*'",
     "build": "turbo run build --filter=*fluide*",
     "build:examples": "turbo run build --filter=with-*",
     "lint": "turbo run lint",
@@ -19,8 +19,7 @@
     "test:watch": "turbo run test:watch --filter=*fluide*",
     "change:add": "changeset add",
     "change:version": "changeset version",
-    "change:release": "turbo run build lint test && changeset version && changeset publish",
-    "clean": "turbo run clean"
+    "change:release": "turbo run build lint test && changeset version && changeset publish"
   },
   "packageManager": "pnpm@7.26.1",
   "engines": {

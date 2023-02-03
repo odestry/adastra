@@ -1,6 +1,8 @@
 import { AbortController } from '@shopify/cli-kit/node/abort';
-import ThemeCommand from '../../utilities/theme-command.js';
-export default class Dev extends ThemeCommand {
+import { T as ThemeCommand } from '../theme-command-cfc054a4.js';
+import '@shopify/cli-kit/node/base-command';
+
+declare class Dev extends ThemeCommand {
     static description: string;
     static flags: any;
     static ignoredFiles: string[];
@@ -13,3 +15,5 @@ export default class Dev extends ThemeCommand {
     run(): Promise<void>;
     execute(store: string, password: string | undefined, command: string[], controller: AbortController): Promise<any>;
 }
+
+export { Dev as default };

@@ -12,8 +12,8 @@
   ],
   "scripts": {
     "dev": "npm run build -- --watch",
-    "build": "tsc -p .",
-    "watch": "tsup src/**/*.ts --dts --format cjs,esm",
+    "build": "tsup src/index.ts --dts --format esm",
+    "watch": "tsup src/index.ts --format esm --dts --watch",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "lint:types": "tsc --noEmit",
@@ -40,5 +40,8 @@
   "keywords": [
     "fluide",
     "cli-kit"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
