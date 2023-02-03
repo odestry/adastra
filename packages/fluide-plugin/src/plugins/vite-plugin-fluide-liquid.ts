@@ -37,7 +37,8 @@ export default (options: ResolvedFluidePluginOptions): Plugin => {
 
       const modulesAlias = config.resolve.alias.find(
         (value) => value.find === "@modules"
-      );
+      )
+
       if (modulesAlias != null) {
         // Store relative path to modules directory
         modulesPath = normalizePath(

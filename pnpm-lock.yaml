@@ -217,6 +217,7 @@ importers:
   packages/fluide-plugin:
     specifiers:
       '@fluide/tsconfig': workspace:*
+      '@types/debug': ^4.1.7
       debug: ^4.3.4
       eslint: ^7.32.0
       eslint-config-fluide: workspace:*
@@ -228,6 +229,7 @@ importers:
       vite: 4.1.1
     devDependencies:
       '@fluide/tsconfig': link:../tsconfig
+      '@types/debug': 4.1.7
       eslint: 7.32.0
       eslint-config-fluide: link:../eslint-config-fluide
 
@@ -1761,6 +1763,12 @@ packages:
     dependencies:
       '@types/node': 18.11.18
 
+  /@types/debug/4.1.7:
+    resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
+    dependencies:
+      '@types/ms': 0.7.31
+    dev: true
+
   /@types/degit/2.8.3:
     resolution: {integrity: sha512-CL7y71j2zaDmtPLD5Xq5S1Gv2dFoHl0/GBZm6s39Mj/ls28L3NzAOqf7H4H0/2TNVMgMjMVf9CAFYSjmXhi3bw==}
     dev: true
@@ -1819,6 +1827,10 @@ packages:
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
+    dev: true
+
+  /@types/ms/0.7.31:
+    resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
   /@types/node/12.20.55:

@@ -15,20 +15,17 @@ import {
 import { sleep } from "@shopify/cli-kit/node/system";
 // @ts-expect-error
 import { outputDebug } from "@shopify/cli-kit/node/output";
-import { createServer, createLogger, LogOptions } from "vite";
+import { createServer } from "vite";
 import themeFlags from "../../utilities/theme-flags.js";
-import getThemeStore from "../../utilities/theme-store.js";
 import ThemeCommand from "../../utilities/theme-command.js";
 import color from "chalk";
 import {
-  log,
+  customLogger,
   logInitiateSequence,
-  printOtherUrls,
-  startDevMessage,
 } from "../../utilities/logger.js";
 import { brand } from "@fluide/cli-kit";
+import getThemeVars from "../../utilities/theme-vars.js";
 
-const logger = createLogger();
 
 export default class Dev extends ThemeCommand {
   static description = color.hex(brand.colors.yellowgreen)(
@@ -98,13 +95,18 @@ export default class Dev extends ThemeCommand {
       env: "SHOPIFY_FLAG_FORCE",
     }),
     password: themeFlags.password,
+    mode: Flags.string({
+      char: "m",
+      description: "Loaded env variables from specific env files.",
+      env: "NODE_ENV",
+    }),
   };
 
   static ignoredFiles = [
     "package.json",
     "jsconfig.json",
     "src/",
-    "tsconfig.json",
+    "tsconfig*.json",
     ".vscode",
     "node_modules",
   ];
@@ -136,6 +138,9 @@ export default class Dev extends ThemeCommand {
     const flagsToPass = this.passThroughFlags(flags, {
       allowedFlags: Dev.cli2Flags,
     });
+
+    const { store, password, port } = getThemeVars(flags)
+
     const command = [
       "theme",
       "serve",
@@ -143,31 +148,16 @@ export default class Dev extends ThemeCommand {
       "--ignore",
       ...Dev.ignoredFiles,
       ...flagsToPass,
+      '--port', port
     ];
-
-    const store = getThemeStore(flags);
 
     let controller = new AbortController();
 
-    const customLogger = {
-      ...logger,
-      info: (msg: string, options?: LogOptions) => {
-        logger.clearScreen("info");
-        printOtherUrls(store, 498249289482, logger.info);
-        log("info", msg);
-      },
-      warn: (msg: string, options?: LogOptions) => {
-        logger.clearScreen("warn");
-        log("warn", msg);
-      },
-      error: (msg: string, options?: LogOptions) => {
-        logger.clearScreen("error");
-        log("error", msg);
-      },
-    };
-
     const server = await createServer({
-      customLogger,
+      customLogger: customLogger(store),
+      server: {
+        port: +port - 1
+      }
     });
 
     setInterval(() => {
@@ -177,21 +167,17 @@ export default class Dev extends ThemeCommand {
       controller.abort();
       controller = new AbortController();
 
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      this.execute(store, flags.password, command, controller).then(
+      this.execute(store, password, command, controller).then(
         async () => await server.restart()
       );
     }, this.ThemeRefreshTimeoutInMs);
 
-    await server.listen();
-
     logInitiateSequence(store);
-    startDevMessage(store);
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    await this.execute(store, flags.password, command, controller);
+
+    await server.listen();
+    await this.execute(store, password, command, controller);
   }
 
-  // eslint-disable-next-line
   async execute(
     store: string,
     password: string | undefined,

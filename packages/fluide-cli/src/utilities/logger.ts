@@ -1,6 +1,9 @@
 import moment from "moment";
 import { brand, label } from "@fluide/cli-kit";
 import color from "chalk";
+import { createLogger, LogOptions, Logger } from 'vite'
+
+const logger = createLogger();
 
 export const log = (
   logLevel: "info" | "warn" | "error",
@@ -30,14 +33,13 @@ export const log = (
 
 export const printUrls = (
   baseUrl: string,
-  themeId: number,
   logger = console.log,
   host: string = "localhost",
   port: number = 9292
 ): void => {
   const devUrl = `http://${host}:${port}`;
-  const editingUrl = `https://${baseUrl}/admin/themes/${themeId}/editor`;
-  const previewUrl = `https://${baseUrl}/preview_theme_id=${themeId}&pb=0`;
+  const editingUrl = `https://${baseUrl}/admin/themes/editor`;
+  const previewUrl = `https://${baseUrl}/preview_theme_id=pb=0`;
   const stopServerMessage = "(Use Ctrl-C to stop server)";
   logger(
     `${" ".repeat(2)}${color.white(
@@ -56,11 +58,10 @@ export const printUrls = (
 
 export const printOtherUrls = (
   baseUrl: string,
-  themeId: number,
   logger = console.log
 ): void => {
-  const editingUrl = `https://${baseUrl}/admin/themes/${themeId}/editor`;
-  const previewUrl = `https://${baseUrl}/preview_theme_id=${themeId}&pb=0`;
+  const editingUrl = `https://${baseUrl}/admin/themes/editor`;
+  const previewUrl = `https://${baseUrl}/preview_theme_id=pb=0`;
   const stopServerMessage = "(Use Ctrl-C to stop server)";
   logger(
     `${" ".repeat(2)}${color.white(
@@ -99,3 +100,20 @@ export const startDevMessage = (
     )}`
   );
 };
+
+export const customLogger = (store: string): Logger => ({
+  ...logger,
+  info: (msg: string, options?: LogOptions) => {
+    logger.clearScreen("info");
+    printOtherUrls(store, logger.info);
+    log("info", msg);
+  },
+  warn: (msg: string, options?: LogOptions) => {
+    logger.clearScreen("warn");
+    log("warn", msg);
+  },
+  error: (msg: string, options?: LogOptions) => {
+    logger.clearScreen("error");
+    log("error", msg);
+  },
+});

@@ -82,7 +82,7 @@ export default (options: ResolvedFluidePluginOptions): Plugin => {
           https,
           port,
           origin,
-          strictPort: true,
+          strictPort: false,
           hmr: {
             host: host as string,
             port,

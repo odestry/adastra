@@ -14,46 +14,15 @@ import {
 } from "@shopify/cli-kit/node/session";
 import { sleep } from "@shopify/cli-kit/node/system";
 import { outputDebug } from "@shopify/cli-kit/node/output";
-import { createServer, createLogger } from "vite";
-
-// src/utilities/theme-conf.ts
-import { Conf } from "@shopify/cli-kit/node/conf";
-var _instance;
-function themeConf() {
-  if (!_instance) {
-    _instance = new Conf({
-      projectName: "shopify-cli-theme-conf"
-    });
-  }
-  return _instance;
-}
-
-// src/utilities/theme-store.ts
-import { AbortError } from "@shopify/cli-kit/node/error";
-import { outputContent, outputToken } from "@shopify/cli-kit/node/output";
-function getThemeStore(flags) {
-  const store = flags.store || themeConf().get("themeStore");
-  if (!store) {
-    throw new AbortError(
-      "A store is required",
-      `Specify the store passing ${outputContent`${outputToken.genericShellCommand(
-        `--${theme_flags_default.store.name}={your_store_url}`
-      )}`.value} or set the ${outputContent`${outputToken.genericShellCommand(
-        theme_flags_default.store.env
-      )}`.value} environment variable.`
-    );
-  }
-  themeConf().set("themeStore", store);
-  return store;
-}
-
-// src/commands/dev/index.ts
+import { createServer } from "vite";
 import color2 from "chalk";
 
 // src/utilities/logger.ts
 import moment from "moment";
 import { brand, label } from "@fluide/cli-kit";
 import color from "chalk";
+import { createLogger } from "vite";
+var logger = createLogger();
 var log = (logLevel, msg, logger2 = console) => {
   const message = (currentColor = brand.colors.yellowgreen) => `${color.white(moment().format("hh:mm:ss"))} ${color.hex(currentColor).bold(`[Fluide]`)} ${msg}`;
   switch (logLevel) {
@@ -70,9 +39,9 @@ var log = (logLevel, msg, logger2 = console) => {
     logger2.info(message());
   }
 };
-var printOtherUrls = (baseUrl, themeId, logger2 = console.log) => {
-  const editingUrl = `https://${baseUrl}/admin/themes/${themeId}/editor`;
-  const previewUrl = `https://${baseUrl}/preview_theme_id=${themeId}&pb=0`;
+var printOtherUrls = (baseUrl, logger2 = console.log) => {
+  const editingUrl = `https://${baseUrl}/admin/themes/editor`;
+  const previewUrl = `https://${baseUrl}/preview_theme_id=pb=0`;
   const stopServerMessage = "(Use Ctrl-C to stop server)";
   logger2(
     `${" ".repeat(2)}${color.white(
@@ -95,22 +64,81 @@ var logInitiateSequence = (baseUrl, logger2 = console.log) => {
     )}`
   );
 };
-var startDevMessage = (baseUrl, logger2 = console.log, clearScreen = console.clear) => {
-  clearScreen();
-  logger2(
-    `${" ".repeat(2)}${label("Fluide")} ${color.hex(brand.colors.yellowgreen)(
-      `Initiating launch sequence for ${baseUrl.replace(
-        ".myshopify.com",
-        ""
-      )} store
-`
-    )}`
-  );
-};
+var customLogger = (store) => ({
+  ...logger,
+  info: (msg, options) => {
+    logger.clearScreen("info");
+    printOtherUrls(store, logger.info);
+    log("info", msg);
+  },
+  warn: (msg, options) => {
+    logger.clearScreen("warn");
+    log("warn", msg);
+  },
+  error: (msg, options) => {
+    logger.clearScreen("error");
+    log("error", msg);
+  }
+});
 
 // src/commands/dev/index.ts
 import { brand as brand2 } from "@fluide/cli-kit";
-var logger = createLogger();
+
+// src/utilities/theme-vars.ts
+import { loadEnv } from "vite";
+
+// src/utilities/theme-conf.ts
+import { Conf } from "@shopify/cli-kit/node/conf";
+var _instance;
+function themeConf() {
+  if (!_instance) {
+    _instance = new Conf({
+      projectName: "shopify-cli-theme-conf"
+    });
+  }
+  return _instance;
+}
+
+// src/utilities/theme-vars.ts
+import { AbortError } from "@shopify/cli-kit/node/error";
+import { outputContent, outputToken } from "@shopify/cli-kit/node/output";
+function getThemeVars(flags) {
+  let store = flags.store || themeConf().get("themeStore");
+  if (!store) {
+    throw new AbortError(
+      "A store is required",
+      `Specify the store passing ${outputContent`${outputToken.genericShellCommand(
+        `--${theme_flags_default.store.name}={your_store_url}`
+      )}`.value} or set the ${outputContent`${outputToken.genericShellCommand(
+        theme_flags_default.store.env
+      )}`.value} environment variable.`
+    );
+  }
+  let password = typeof flags?.password !== "undefined" ? flags.password : "";
+  let port = typeof flags?.port !== "undefined" ? flags.port : "9292";
+  const mode = typeof flags?.mode !== "undefined" ? flags.mode : "";
+  const path = typeof flags?.path !== "undefined" ? flags.path : ".";
+  const envars = loadEnv(
+    mode,
+    path,
+    ["VITE_", "SHOPIFY_"]
+  );
+  if (envars.SHOPIFY_FLAG_STORE) {
+    store = envars.SHOPIFY_FLAG_STORE;
+    themeConf().set("themeStore", store);
+  }
+  if (envars.SHOPIFY_CLI_THEME_TOKEN)
+    password = envars.SHOPIFY_CLI_THEME_TOKEN;
+  if (envars.SHOPIFY_FLAG_PORT)
+    port = envars.SHOPIFY_FLAG_PORT;
+  return {
+    store,
+    password,
+    port
+  };
+}
+
+// src/commands/dev/index.ts
 var _Dev = class extends ThemeCommand {
   constructor() {
     super(...arguments);
@@ -121,34 +149,23 @@ var _Dev = class extends ThemeCommand {
     const flagsToPass = this.passThroughFlags(flags, {
       allowedFlags: _Dev.cli2Flags
     });
+    const { store, password, port } = getThemeVars(flags);
     const command = [
       "theme",
       "serve",
       flags.path,
       "--ignore",
       ..._Dev.ignoredFiles,
-      ...flagsToPass
+      ...flagsToPass,
+      "--port",
+      port
     ];
-    const store = getThemeStore(flags);
     let controller = new AbortController();
-    const customLogger = {
-      ...logger,
-      info: (msg, options) => {
-        logger.clearScreen("info");
-        printOtherUrls(store, 498249289482, logger.info);
-        log("info", msg);
-      },
-      warn: (msg, options) => {
-        logger.clearScreen("warn");
-        log("warn", msg);
-      },
-      error: (msg, options) => {
-        logger.clearScreen("error");
-        log("error", msg);
-      }
-    };
     const server = await createServer({
-      customLogger
+      customLogger: customLogger(store),
+      server: {
+        port: +port - 1
+      }
     });
     setInterval(() => {
       outputDebug(
@@ -156,14 +173,13 @@ var _Dev = class extends ThemeCommand {
       );
       controller.abort();
       controller = new AbortController();
-      this.execute(store, flags.password, command, controller).then(
+      this.execute(store, password, command, controller).then(
         async () => await server.restart()
       );
     }, this.ThemeRefreshTimeoutInMs);
-    await server.listen();
     logInitiateSequence(store);
-    startDevMessage(store);
-    await this.execute(store, flags.password, command, controller);
+    await server.listen();
+    await this.execute(store, password, command, controller);
   }
   async execute(store, password, command, controller) {
     await sleep(2);
@@ -243,13 +259,18 @@ Dev.flags = {
     description: "Proceed without confirmation, if current directory does not seem to be theme directory.",
     env: "SHOPIFY_FLAG_FORCE"
   }),
-  password: theme_flags_default.password
+  password: theme_flags_default.password,
+  mode: Flags.string({
+    char: "m",
+    description: "Loaded env variables from specific env files.",
+    env: "NODE_ENV"
+  })
 };
 Dev.ignoredFiles = [
   "package.json",
   "jsconfig.json",
   "src/",
-  "tsconfig.json",
+  "tsconfig*.json",
   ".vscode",
   "node_modules"
 ];

@@ -1,7 +1,7 @@
 import path from "path";
 import { normalizePath } from "vite";
 
-import { KNOWN_CSS_EXTENSIONS, CLIENT_SCRIPT_PATH } from "../constants";
+import { KNOWN_CSS_EXTENSIONS, CLIENT_REACT_REFRESH_PATH, KNOWN_JSX_EXTENSIONS, CLIENT_SCRIPT_PATH } from "../constants";
 
 export const disableThemeCheckTag = "{% # theme-check-disable %}\n";
 export const fluideTagDisclaimer =
@@ -63,6 +63,7 @@ export const fluideTagSnippetDev = (
   else
     assign file_url_prefix = '${assetHost}/${entrypointsDir}/'
   endif
+
   assign file_url = path | prepend: file_url_prefix
   assign file_name = path | split: '/' | last
   if file_name contains '.'
@@ -70,20 +71,37 @@ export const fluideTagSnippetDev = (
   endif
 
   assign css_extensions = '${KNOWN_CSS_EXTENSIONS.join("|")}' | split: '|'
+  assign jsx_extensions = '${KNOWN_JSX_EXTENSIONS.join("|")}' | split: '|'
   assign is_css = false
+  assign is_jsx = false
 
   if css_extensions contains file_extension
     assign is_css = true
   endif
+
+  if jsx_extensions contains file_extension
+    assign is_jsx = true
+  endif
+
   assign modules_path = '${modulesPath}'
   if file_extension == blank and modules_path != blank and file_url contains modules_path
     assign file_url = file_url | append: '/' | append: file_name
   endif
 %}
 
+{% if is_jsx %}
+  <script type="module">
+    import RefreshRuntime from "${assetHost}/${CLIENT_REACT_REFRESH_PATH}"
+    RefreshRuntime.injectIntoGlobalHook(window)
+    window.$RefreshReg$ = () => {}
+    window.$RefreshSig$ = () => (type) => type
+    window.__vite_plugin_react_preamble_installed__ = true
+  </script>
+{% endif %}
+
 <script src="${assetHost}/${CLIENT_SCRIPT_PATH}" type="module"></script>
 
-{% if is_css == true %}
+{% if is_css %}
   {{ file_url | stylesheet_tag }}
 {% else %}
   <script src="{{ file_url }}" type="module" crossorigin="anonymous"></script>

@@ -4,6 +4,7 @@ import Command from "@shopify/cli-kit/node/base-command";
 interface FlagValues {
   [key: string]: boolean | string | string[] | number | undefined;
 }
+
 interface PassThroughFlagsOptions {
   // Only pass on flags that are relevant to CLI2
   allowedFlags?: string[];

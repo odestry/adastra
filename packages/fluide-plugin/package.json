@@ -27,8 +27,9 @@
     "fast-glob": "^3.2.11"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
     "@fluide/tsconfig": "workspace:*",
+    "@types/debug": "^4.1.7",
+    "eslint": "^7.32.0",
     "eslint-config-fluide": "workspace:*"
   },
   "peerDependencies": {
