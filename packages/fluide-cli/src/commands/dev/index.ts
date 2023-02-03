@@ -5,10 +5,11 @@ import { globalFlags } from "@shopify/cli-kit/node/cli";
 import { execCLI2 } from "@shopify/cli-kit/node/ruby";
 // @ts-expect-error
 import { AbortController } from "@shopify/cli-kit/node/abort";
-// @ts-expect-error
+
 import {
   ensureAuthenticatedStorefront,
   ensureAuthenticatedThemes,
+  // @ts-expect-error
 } from "@shopify/cli-kit/node/session";
 // @ts-expect-error
 import { sleep } from "@shopify/cli-kit/node/system";
