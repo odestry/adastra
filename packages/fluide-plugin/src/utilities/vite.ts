@@ -1,4 +1,4 @@
 // `version` is only exported in Vite 3
-import * as vite from "vite";
+import * as vite from 'vite'
 
-export const isViteThree = vite.version?.startsWith("3.");
+export const isViteThree = vite.version?.startsWith('3.')

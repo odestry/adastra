@@ -1,1 +1,1 @@
-export default (a: number): number => a;
+export default (a: number): number => a

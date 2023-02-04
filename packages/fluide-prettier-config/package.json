@@ -1,0 +1,15 @@
+{
+  "name": "@fluide/prettier-config",
+  "version": "0.1.0",
+  "author": "Blanklob",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.0.6",
+    "prettier": "^2.8.3",
+    "prettier-plugin-tailwindcss": "^0.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

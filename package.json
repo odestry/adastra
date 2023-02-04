@@ -20,11 +20,7 @@
     "change:add": "changeset add",
     "change:version": "changeset version",
     "change:release": "turbo run build lint test && changeset version && changeset publish",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "packageManager": "pnpm@7.26.1",
-  "engines": {
-    "node": ">=14.0.0"
+    "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
@@ -33,9 +29,15 @@
     "eslint": "^7.32.0",
     "eslint-config-fluide": "workspace:*",
     "prettier": "latest",
+    "@fluide/prettier-config": "workspace:*",
     "tsup": "^6.5.0",
     "turbo": "latest",
     "typescript": "^4.9.5",
     "vitest": "^0.28.4"
-  }
+  },
+  "packageManager": "pnpm@7.26.1",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "prettier": "@fluide/prettier-config"
 }

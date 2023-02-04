@@ -1,23 +1,23 @@
-import { Command } from "@oclif/core";
-import { build } from "vite";
+import { Command } from '@oclif/core'
+import { build } from 'vite'
 
 export default class Build extends Command {
-  static description = "Say Build";
+  static description = 'Say Build'
 
   static examples = [
     `$ fluide build
   launch build (./src/commands/build/index.ts)
-`,
-  ];
+`
+  ]
 
-  static flags = {};
+  static flags = {}
 
-  static args = {};
+  static args = {}
 
   async run(): Promise<void> {
     await build({
-      logLevel: "silent",
-    });
-    this.log("build fluide complete");
+      logLevel: 'silent'
+    })
+    this.log('build fluide complete')
   }
 }

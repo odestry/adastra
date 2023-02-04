@@ -1,5 +1,5 @@
 class HelloWorld extends window.HTMLElement {
-  constructor () {
+  constructor() {
     super()
 
     this.button = this.querySelector('button')

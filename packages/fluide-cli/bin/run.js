@@ -10,7 +10,7 @@ if (requiredMajorVersion < minimumMajorVersion) {
   process.exit(1)
 }
 
-(async () => {
+;(async () => {
   const oclif = await import('@oclif/core')
-  await oclif.execute({ type: 'esm', dir: import.meta.url })
+  await oclif.execute({type: 'esm', dir: import.meta.url})
 })()

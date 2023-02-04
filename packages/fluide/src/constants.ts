@@ -1,1 +1,1 @@
-export const CLIENT_SCRIPT_PATH = "@vite/client";
+export const CLIENT_SCRIPT_PATH = '@vite/client'

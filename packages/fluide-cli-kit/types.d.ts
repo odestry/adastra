@@ -1,44 +1,44 @@
 interface BasePrompt {
-  name: string;
+  name: string
 }
 
 interface TextPrompt extends BasePrompt {
-  type: "text";
+  type: 'text'
 }
 
 interface ConfirmPrompt extends BasePrompt {
-  type: "confirm";
+  type: 'confirm'
 }
 
 interface SelectPrompt<Choices extends Readonly<Array<Readonly<Choice>>>>
   extends BasePrompt {
-  type: "select";
-  choices: Choices;
+  type: 'select'
+  choices: Choices
 }
 
 interface MultiselectPrompt<Choices extends Readonly<Array<Readonly<Choice>>>>
   extends BasePrompt {
-  type: "multiselect";
-  choices: Choices;
+  type: 'multiselect'
+  choices: Choices
 }
 
 interface Choice {
-  value: any;
-  label: string;
-  hint?: string;
+  value: any
+  label: string
+  hint?: string
 }
 
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   k: infer I
 ) => void
   ? I
-  : never;
+  : never
 
 type Prompt =
   | TextPrompt
   | ConfirmPrompt
   | SelectPrompt<Readonly<Choice[]>>
-  | MultiselectPrompt<Readonly<Choice[]>>;
+  | MultiselectPrompt<Readonly<Choice[]>>
 
 type Answer<
   T extends Prompt,
@@ -52,24 +52,24 @@ type Answer<
   : T extends ConfirmPrompt
   ? boolean
   : T extends SelectPrompt<Choices>
-  ? Choices[number]["value"]
+  ? Choices[number]['value']
   : T extends MultiselectPrompt<Choices>
-  ? Array<Choices[number]["value"] | undefined>
-  : never;
+  ? Array<Choices[number]['value'] | undefined>
+  : never
 
 type Answers<T extends Readonly<Prompt> | Readonly<Prompt[]>> =
   T extends Readonly<Prompt>
-    ? Partial<{ [key in T["name"]]: Answer<T> }>
+    ? Partial<{ [key in T['name']]: Answer<T> }>
     : T extends Readonly<Prompt[]>
     ? UnionToIntersection<Answers<T[number]>>
-    : never;
+    : never
 
 interface PromptOptions {
-  onSubmit?: () => any;
-  onCancel?: () => any;
+  onSubmit?: () => any
+  onCancel?: () => any
 }
 
 export default function prompt<T extends Readonly<Prompt> | Readonly<Prompt[]>>(
   questions: T,
   opts?: PromptOptions
-): Promise<Answers<T>>;
+): Promise<Answers<T>>

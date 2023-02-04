@@ -4,12 +4,12 @@ export {
   frame,
   FULL_FRAMES,
   gradient,
-  spinner,
-} from "./spinner.js";
+  spinner
+} from './spinner.js'
 
-export { say, label } from "./messages.js";
+export { say, label } from './messages.js'
 
-export { generateProjectName } from "./project/index.js";
+export { generateProjectName } from './project/index.js'
 
 export {
   useAscii,
@@ -20,7 +20,7 @@ export {
   align,
   random,
   forceUnicode,
-  sleep,
-} from "./utils.js";
+  sleep
+} from './utils.js'
 
-export { brand } from "./brand.js";
+export { brand } from './brand.js'

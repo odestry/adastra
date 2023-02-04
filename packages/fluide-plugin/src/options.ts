@@ -1,28 +1,28 @@
-import path from "path";
-import { normalizePath } from "vite";
-import type { PluginFluideOptions, ResolvedFluidePluginOptions } from "./types";
+import path from 'path'
+import { normalizePath } from 'vite'
+import type { PluginFluideOptions, ResolvedFluidePluginOptions } from './types'
 
 export const resolveOptions = (
   options: PluginFluideOptions
 ): ResolvedFluidePluginOptions => {
   const themeRoot =
-    typeof options.themeRoot !== "undefined"
+    typeof options.themeRoot !== 'undefined'
       ? path.normalize(options.themeRoot)
-      : "./";
+      : './'
   const sourceCodeDir =
-    typeof options.sourceCodeDir !== "undefined"
+    typeof options.sourceCodeDir !== 'undefined'
       ? path.normalize(options.sourceCodeDir)
-      : "src";
+      : 'src'
   const entrypointsDir =
-    typeof options.entrypointsDir !== "undefined"
+    typeof options.entrypointsDir !== 'undefined'
       ? path.normalize(options.entrypointsDir)
-      : normalizePath(path.join(sourceCodeDir));
+      : normalizePath(path.join(sourceCodeDir))
   const additionalEntrypoints =
-    typeof options.additionalEntrypoints !== "undefined"
+    typeof options.additionalEntrypoints !== 'undefined'
       ? options.additionalEntrypoints
-      : [];
-  const hash = typeof options.hash !== "undefined";
-  const minify = typeof options.minify === "undefined";
+      : []
+  const hash = typeof options.hash !== 'undefined'
+  const minify = typeof options.minify === 'undefined'
 
   return {
     themeRoot,
@@ -30,6 +30,6 @@ export const resolveOptions = (
     entrypointsDir,
     additionalEntrypoints,
     hash,
-    minify,
-  };
-};
+    minify
+  }
+}

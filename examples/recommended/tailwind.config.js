@@ -22,14 +22,14 @@ module.exports = {
         sm: ['var(--font-size-sm)', '1.428'],
         base: ['var(--font-size-base)', '1.5'],
         lg: ['var(--font-size-lg)', '1.555'],
-        xl: ['var(--font-size-xl)', '1.4'],
+        xl: ['var(--font-size-xl)', '1.4']
       },
       colors: {
         accent: 'hsla(var(--color-accent) / <alpha-value>)',
         surface: 'hsla(var(--color-surface) / <alpha-value>)',
         primary: 'hsla(var(--color-primary) / <alpha-value>)',
         contrast: 'hsla(var(--color-contrast) / <alpha-value>)',
-        secondary: 'hsla(var(--color-secondary) / <alpha-value>)',
+        secondary: 'hsla(var(--color-secondary) / <alpha-value>)'
       }
     }
   }

@@ -1,10 +1,10 @@
 module.exports = {
   root: true,
   // This tells ESLint to load the config from the package `eslint-config-custom`
-  extends: ["fluide"],
+  extends: ['fluide'],
   settings: {
     next: {
-      rootDir: ["[packages]/*/"],
-    },
-  },
-};
+      rootDir: ['[packages]/*/']
+    }
+  }
+}
