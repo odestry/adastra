@@ -11,12 +11,7 @@
     <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer="defer"></script>
 
     {% if settings.favicon != blank %}
-      <link
-        fetchpriority="low"
-        rel="icon"
-        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
-        sizes="32x32"
-      >
+      <link fetchpriority="low" rel="icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" sizes="32x32">
     {% endif %}
 
     {% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros | strip_html %}
@@ -81,8 +76,8 @@
       <div class="flex items-center justify-center sm:max-w-sm mx-auto">
         <img
           src="{{ 'gift-card/card.svg' | shopify_asset_url }}"
-          alt=""
-          class=""
+          alt="Giftcard"
+          class="w-full"
           height="{{ 570 | divided_by: 1.5 }}"
           width="570"
           loading="lazy"
@@ -114,8 +109,7 @@
               width="120"
               height="40"
               alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}"
-              loading="lazy"
-            >
+              loading="lazy">
           </a>
         {% endif %}
         <div class="mt-4">
@@ -124,14 +118,12 @@
             class="button bg-primary text-contrast block w-full max-w-[250px] mx-auto"
             target="_blank"
             rel="noopener"
-            aria-describedby="a11y-new-window-message"
-          >
+            aria-describedby="a11y-new-window-message">
             {{ 'gift_cards.issued.shop_link' | t }}
           </a>
           <button
             class="button border border-primary/10 bg-contrast text-primary block w-full max-w-[250px] mt-4 mx-auto"
-            onclick="window.print();"
-          >
+            onclick="window.print();" >
             {{ 'gift_cards.issued.print_gift_card' | t }}
           </button>
         </div>
