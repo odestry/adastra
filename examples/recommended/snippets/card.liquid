@@ -14,10 +14,15 @@
 {% endcomment %}
 
 {% if heading or heading != empty %}
-  <div class="card">
-    <a target="_blank" rel="noopener noreferrer" href="{{ link | append: '?utm_source=create-Fluide&amp;utm_medium=Fluide-lite-template&amp;utm_campaign=create-Fluide' | default: routes.root_url }}">
-      <h2>{{ heading }} <span>&rarr;</span></h2>
-      {% if description %}<p>{{ description }}</p>{% endif %}
+  <div class="card relative rounded-xl p-1 shadow-sm">
+    <a class="group hover:backdrop-blur-sm bg-white/90 flex flex-col gap-y-3 p-5 rounded-xl" href="{{ link | default: routes.root_url }}" target="_blank" rel="noopener noreferrer">
+      <h2 class="text-xl tracking-tight text-accent">{{ heading }} &rarr;</h2>
+      {% if description %}
+        <p class="text-accent/60">{{ description }}</p>
+      {% endif %}
     </a>
+    {% unless link %}
+      <span class="font-mono text-xs font-medium bg-contrast text-primary/90 rounded-full absolute -top-1 -right-2 rotate-6 px-2 leading-relaxed">coming soon</span>
+    {% endunless %}
   </div>
 {% endif %}

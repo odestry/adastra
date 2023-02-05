@@ -2,174 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-  --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
-  --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3rem);
-
-  --color-text: hsl(216, 8%, 12%);
-  --color-bg: hsl(210, 15%, 95%);
-
-  --gradient-bg: radial-gradient(
-    181.45% 157.66% at 0% 0%,
-    #cef141 0%,
-    #85e8fe 100%
-  );
-}
-
-html {
-  font-family: system-ui, sans-serif;
-  font-size: var(--font-size-base);
-  color: var(--color-text);
-  background-color: var(--color-bg);
-}
-
-body {
-  margin: 0;
-}
-
-:global(h1) {
-  font-size: var(--font-size-xl);
-}
-
-:global(h2) {
-  font-size: var(--font-size-lg);
-}
-
-:global(code) {
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-:root {
-  --color-border: #fff;
-  --gradient: linear-gradient(0deg, #cef141, #85e8fe);
-  --link-gradient: linear-gradient(
-    45deg,
-    #cef141,
-    #85e8fe 30%,
-    var(--color-border) 60%
-  );
-}
-
-h2 {
-  margin: 0;
-  transition: color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-h2 span {
-  display: inline-flex;
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-code {
-  font-size: 0.875em;
-  border: 0.1em solid var(--color-border);
-  border-radius: 4px;
-  padding: 0.15em 0.25em;
-}
-
-main {
-  margin: auto;
-  padding: 1em;
-  max-width: 60ch;
-}
-
-h1 span,
-.gradient {
-  font-weight: 900;
-  background-image: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 100% 200%;
-  background-position-y: 100%;
-  border-radius: 0.4rem;
-  animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    background-position-y: 0%;
+@layer base {
+  html {
+    @apply h-full antialiased font-body text-base text-accent bg-surface;
   }
-  50% {
-    background-position-y: 80%;
+
+  h1,
+  h2 {
+    @apply font-heading font-semibold;
+  }
+
+  p > span {
+    @apply font-mono text-lg font-semibold bg-secondary/10 text-secondary/90 py-1 px-2 rounded;
   }
 }
 
-.instructions {
-  line-height: 1.8;
-  margin-bottom: 2rem;
-  background-image: var(--gradient-bg);
-  padding: 1.5rem;
-  border-radius: 0.4rem;
-  color: var(--color-text);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
-  gap: 1rem;
-  padding: 0;
-}
-
-.list-none {
-  list-style-type: none;
-}
-
-.card {
-  list-style: none;
-  display: flex;
-  padding: 0.15rem;
-  background-image: var(--link-gradient);
-  background-size: 400%;
-  border-radius: 0.5rem;
-  background-position: 100%;
-  transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.card > a {
-  width: 100%;
-  text-decoration: none;
-  line-height: 1.4;
-  padding: 1em 1.3em;
-  border-radius: 0.35rem;
-  color: var(--text-color);
-  background-color: white;
-  opacity: 0.8;
-}
-
-.card:is(:hover, :focus-within) {
-  background-position: 0;
-}
-
-.card:is(:hover, :focus-within) h2 {
-  color: var(--night-sky-gradient);
-}
-
-.card:is(:hover, :focus-within) h2 span {
-  transform: translateX(2px);
-}
-
-.heart {
-  display: inline-flex;
-  color: #da62c4;
-  animation: heartbeat 3s ease-in-out infinite;
-}
-
-@keyframes heartbeat {
-  0%,
-  50%,
-  100% {
-    transform: scale(1);
+@layer components {
+  .button,
+  button {
+    @apply inline-flex items-center justify-center text-center align-middle py-3 px-6 appearance-none select-none no-underline rounded-lg font-semibold tracking-tight shadow-sm hover:shadow-md transition-shadow;
   }
-  5% {
-    transform: scale(1.125);
+
+  .card {
+    background-image: var(--gradient);
+    background-size: 400%;
+    background-position: 100%;
+    transition: background-position 2s;
+    @apply ease-wiggle;
   }
-  10% {
-    transform: scale(1.05);
-  }
-  15% {
-    transform: scale(1.25);
+
+  .card:is(:hover, :focus-within) {
+    background-position: 0;
   }
 }

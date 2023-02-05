@@ -10,13 +10,13 @@
     - loop: {boolean} Enable video looping (optional)
 
   Usage:
-    {% render 'media' media: media %}
+    {% render 'media' media: product.featured_media %}
 {% endcomment %}
 
 <div class="flex" data-media-id="{{ media.id }}">
   {% case media.media_type %}
     {% when 'image' %}
-      {% render 'image' with image: media.preview_image %}
+      {% render 'image' image: media.preview_image %}
 
     {% when 'video', 'external_video' %}
       {% render 'video' video: media %}

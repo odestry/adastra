@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import createDebugger from 'debug'
-import { Manifest, Plugin, ResolvedConfig, normalizePath } from 'vite'
+import {Manifest, Plugin, ResolvedConfig, normalizePath} from 'vite'
 
 import {
   disableThemeCheckTag,
@@ -11,10 +11,10 @@ import {
   stylesheetTag,
   scriptTag,
   preloadScriptTag,
-  fluideEntryTag
+  fluideEntryTag,
 } from '../utilities'
-import { CSS_EXTENSIONS_REGEX } from '../constants'
-import type { ResolvedFluidePluginOptions } from '../types'
+import {CSS_EXTENSIONS_REGEX} from '../constants'
+import type {ResolvedFluidePluginOptions} from '../types'
 
 const debug = createDebugger('fluide:liquid')
 
@@ -23,10 +23,7 @@ export default (options: ResolvedFluidePluginOptions): Plugin => {
   let config: ResolvedConfig
   let modulesPath = ''
 
-  const fluideTagSnippetPath = path.resolve(
-    options.themeRoot,
-    `snippets/fluide.liquid`
-  )
+  const fluideTagSnippetPath = path.resolve(options.root, `snippets/fluide.liquid`)
 
   return {
     name: `fluide:liquid`,
@@ -35,32 +32,21 @@ export default (options: ResolvedFluidePluginOptions): Plugin => {
       // Store reference to resolved config
       config = resolvedConfig
 
-      const modulesAlias = config.resolve.alias.find(
-        value => value.find === '@modules'
-      )
+      const modulesAlias = config.resolve.alias.find((value) => value.find === '@modules')
 
       if (modulesAlias != null) {
         // Store relative path to modules directory
-        modulesPath = normalizePath(
-          path.relative(options.entrypointsDir, modulesAlias.replacement)
-        )
+        modulesPath = normalizePath(path.relative(options.entrypointsDir, modulesAlias.replacement))
       }
     },
-    configureServer({ config }) {
+    configureServer({config}) {
       const protocol = config.server?.https === true ? 'https:' : 'http:'
-      const host =
-        typeof config.server?.host === 'string'
-          ? config.server.host
-          : 'localhost'
-      const port =
-        typeof config.server?.port !== 'undefined' ? config.server.port : 5173
+      const host = typeof config.server?.host === 'string' ? config.server.host : 'localhost'
+      const port = typeof config.server?.port !== 'undefined' ? config.server.port : 5173
 
-      const assetHost =
-        typeof config.server?.origin === 'string'
-          ? config.server.origin
-          : `${protocol}//${host}:${port}`
+      const assetHost = typeof config.server?.origin === 'string' ? config.server.origin : `${protocol}//${host}:${port}`
 
-      debug({ assetHost })
+      debug({assetHost})
 
       const fluideTagSnippetContent =
         disableThemeCheckTag +
@@ -72,29 +58,22 @@ export default (options: ResolvedFluidePluginOptions): Plugin => {
       fs.writeFileSync(fluideTagSnippetPath, fluideTagSnippetContent)
     },
     closeBundle() {
-      const manifestFilePath = path.resolve(
-        options.themeRoot,
-        `assets/fluide.json`
-      )
+      const manifestFilePath = path.resolve(options.root, `assets/fluide.json`)
 
       if (!fs.existsSync(manifestFilePath)) {
         return
       }
 
       const assetTags: string[] = []
-      const manifest = JSON.parse(
-        fs.readFileSync(manifestFilePath, 'utf8')
-      ) as Manifest
+      const manifest = JSON.parse(fs.readFileSync(manifestFilePath, 'utf8')) as Manifest
 
-      Object.keys(manifest).forEach(src => {
-        const { file, isEntry, css, imports } = manifest[src]
+      Object.keys(manifest).forEach((src) => {
+        const {file, isEntry, css, imports} = manifest[src]
         const ext = path.extname(src)
 
         // Generate tags for JS and CSS entry points
         if (isEntry === true) {
-          const entryName = normalizePath(
-            path.relative(options.entrypointsDir, src)
-          )
+          const entryName = normalizePath(path.relative(options.entrypointsDir, src))
           const entryPaths = [`/${src}`, entryName]
           const tagsForEntry = []
 
@@ -118,7 +97,7 @@ export default (options: ResolvedFluidePluginOptions): Plugin => {
             if (typeof imports !== 'undefined' && imports.length > 0) {
               imports.forEach((importFilename: string) => {
                 const chunk = manifest[importFilename]
-                const { css } = chunk
+                const {css} = chunk
                 // Render preload tags for JS imports
                 tagsForEntry.push(preloadScriptTag(chunk.file))
 
@@ -133,21 +112,12 @@ export default (options: ResolvedFluidePluginOptions): Plugin => {
             }
 
             // Add shorthand path for theme module entries
-            if (
-              modulesPath !== '' &&
-              !path.relative(modulesPath, entryName).includes('..')
-            ) {
+            if (modulesPath !== '' && !path.relative(modulesPath, entryName).includes('..')) {
               entryPaths.push(path.dirname(entryName))
             }
           }
 
-          assetTags.push(
-            fluideEntryTag(
-              entryPaths,
-              tagsForEntry.join('\n  '),
-              assetTags.length === 0
-            )
-          )
+          assetTags.push(fluideEntryTag(entryPaths, tagsForEntry.join('\n  '), assetTags.length === 0))
         }
 
         // Generate entry tag for bundled "style.css" file when cssCodeSplit is false
@@ -165,6 +135,6 @@ export default (options: ResolvedFluidePluginOptions): Plugin => {
 
       // Write fluide tag snippet for production build
       fs.writeFileSync(fluideTagSnippetPath, fluideTagSnippetContent)
-    }
+    },
   }
 }

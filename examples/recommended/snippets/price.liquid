@@ -4,7 +4,6 @@
   Accepts:
   - product: {object} Product Liquid object (optional)
   - use_variant: {boolean} Renders selected or first variant price instead of overall product pricing (optional)
-  - price_class: {string} Adds a price class to the price element (optional)
 
   Usage:
     {% render 'price', product: product %}
@@ -18,12 +17,12 @@
   endif
 %}
 
-<div class="flex gap-4 text-copy relative z-0 {% if price_class %}{{ price_class }}{% endif %}">
+<div class="flex gap-x-3 text-base font-normal">
   {% if target.compare_at_price > target.price %}
     <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
     <span>{{ target.price | money_without_trailing_zeros }}</span>
     <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
-    <span class="strike opacity-50">{{ target.compare_at_price | money_without_trailing_zeros }}</span>
+    <span class="line-through opacity-60">{{ target.compare_at_price | money_without_trailing_zeros }}</span>
   {% elsif target.price_varies %}
     {% capture formatted_min_price %}<span>{{ target.price_min | money_without_trailing_zeros }}</span>{% endcapture %}
     {% capture formatted_max_price %}<span>{{ target.price_max | money_without_trailing_zeros }}</span>{% endcapture %}

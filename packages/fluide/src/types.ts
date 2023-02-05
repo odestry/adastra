@@ -1,8 +1,8 @@
 export type PluginFluideOptions = {
-  themeRoot?: string
+  root?: string
   entrypointsDir?: string
+  sourceDir?: string
   additionalEntrypoints?: string[]
-  sourceCodeDir?: string
   hash?: boolean
   minify?: boolean
 }

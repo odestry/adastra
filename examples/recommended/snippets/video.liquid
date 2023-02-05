@@ -1,6 +1,11 @@
 {% comment %}
   Renders a specific video or external video (iframe).
 
+  Fluide also teaches you stuff ✦
+  - In Shopify you have two types of videos, you have static video,
+  and iframe videos (external_video) from other providers like Youtube
+  and vimeo ;)
+
   Accepts:
     - video: {object} Video or external_video object.
     - loop: {boolean} Enable video looping (optional)
@@ -10,7 +15,7 @@
 {% endcomment %}
 
 {% if video and video != blank %}
-  <div class="flex" id="{{ video.id }}">
+  <div class="flex w-full" data-video-id="{{ video.id }}">
     {% case video.media_type %}
       {% when 'video' %}
         {{ video | video_tag: image_size: "2048x", autoplay: true, loop: loop, controls: false, muted: true, preload: "none" }}

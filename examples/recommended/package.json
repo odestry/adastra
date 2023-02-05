@@ -9,6 +9,7 @@
     "check": "fluide check",
     "sync": "fluide sync"
   },
+  "dependencies": {},
   "devDependencies": {
     "@fluide/plugin": "workspace:*",
     "@fluide/cli": "workspace:*",

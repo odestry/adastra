@@ -1,13 +1,8 @@
-import type { Key } from 'node:readline'
+import type {Key} from 'node:readline'
 
-export const action = (
-  key: Key,
-  isSelect: boolean
-): string | undefined | boolean => {
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+export const action = (key: Key, isSelect: boolean): string | undefined | boolean => {
   if (key.meta && key.name !== 'escape') return
 
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (key.ctrl) {
     if (key.name === 'a') return 'first'
     if (key.name === 'c') return 'abort'
@@ -30,9 +25,7 @@ export const action = (
   if (key.name === 'tab') return 'next'
   if (key.name === 'pagedown') return 'nextPage'
   if (key.name === 'pageup') return 'prevPage'
-  // TODO create home() in prompt types (e.g. TextPrompt)
   if (key.name === 'home') return 'home'
-  // TODO create end() in prompt types (e.g. TextPrompt)
   if (key.name === 'end') return 'end'
 
   if (key.name === 'up') return 'up'

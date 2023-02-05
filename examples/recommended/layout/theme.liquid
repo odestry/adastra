@@ -9,12 +9,7 @@
     <link rel="canonical" href="{{ canonical_url }}">
 
     {% if settings.favicon != blank %}
-      <link
-        fetchpriority="low"
-        rel="icon"
-        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
-        sizes="32x32"
-      >
+      <link fetchpriority="low" rel="icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" sizes="32x32">
     {% endif %}
 
     <title>{{ page_title }}</title>
@@ -51,8 +46,7 @@
   <body class="template-{{ request.page_type | handle }}">
     <main
       id="MainContent"
-      tabindex="-1"
-    >
+      tabindex="-1">
       {{ content_for_layout }}
     </main>
 

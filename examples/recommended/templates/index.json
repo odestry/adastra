@@ -7,48 +7,40 @@
           "type": "card",
           "settings": {
             "heading": "Documentation",
-            "description": "Find in-depth information about Fluide features and how to use it.",
-            "link": "https://dosc.fluide.run"
+            "description": "Find in-depth information about Blanke features and how to use it.",
+            "link": "https://dosc.blanke.build?utm_source=create-blanke&amp;utm_medium=basic-example&amp;utm_campaign=create-blanke"
           }
         },
         "card-chat": {
           "type": "card",
           "settings": {
             "heading": "Chat",
-            "description": "Come say hey to our amazing Discord community. 💚",
-            "link": "https://chat.fluide.run"
+            "description": "Come say hey to our amazing Discord community 💚",
+            "link": "https://chat.blanke.build?utm_source=create-blanke&amp;utm_medium=basic-example&amp;utm_campaign=create-blanke"
           }
         },
         "card-sections": {
           "type": "card",
           "settings": {
             "heading": "Sections",
-            "description": "Explore a galaxy of community-built Fluide sections.",
-            "link": "https://Fluide.run/sections"
+            "description": "Explore a galaxy of paid and community-built Blanke sections."
           }
         },
         "card-plus": {
           "type": "card",
           "settings": {
-            "heading": "Fluide Plus",
-            "description": "Instantly build a production ready Shopify store.",
-            "link": "https://Fluide.run/plus"
+            "heading": "Blanke Pro",
+            "description": "Instantly build a production-ready Shopify storefronts."
           }
         }
       },
-      "block_order": [
-        "card-docs",
-        "card-chat",
-        "card-sections",
-        "card-plus"
-      ],
+      "block_order": ["card-docs", "card-chat", "card-sections", "card-plus"],
       "settings": {
-        "heading": "Welcome to Fluide on Shopify",
-        "description": "<strong>Your first mission:</strong> tweak this message to try our hot module reloading. Check the sections/example directory!"
+        "heading": "Welcome to Fluide ✨",
+        "instruction_1": "Currently there is no products in your store. To get started <strong>create your first product</strong> and set its price and quantity.",
+        "instruction_2": "<strong>Code Challenge:</strong> Tweak this button so when we add to cart, it shows a spinner. Check the <span>src/components</span> directory!"
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }

@@ -118,11 +118,7 @@ function getThemeVars(flags) {
   let port = typeof flags?.port !== "undefined" ? flags.port : "9292";
   const mode = typeof flags?.mode !== "undefined" ? flags.mode : "";
   const path = typeof flags?.path !== "undefined" ? flags.path : ".";
-  const envars = loadEnv(
-    mode,
-    path,
-    ["VITE_", "SHOPIFY_"]
-  );
+  const envars = loadEnv(mode, path, ["VITE_", "SHOPIFY_"]);
   if (envars.SHOPIFY_FLAG_STORE) {
     store = envars.SHOPIFY_FLAG_STORE;
     themeConf().set("themeStore", store);

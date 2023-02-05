@@ -1,10 +1,11 @@
 export type PluginFluideOptions = {
-  themeRoot?: string
+  root?: string
+  sourceDir?: string
   entrypointsDir?: string
   additionalEntrypoints?: string[]
-  sourceCodeDir?: string
   hash?: boolean
   minify?: boolean
+  sourcemap?: boolean
 }
 
 export type ResolvedFluidePluginOptions = Required<PluginFluideOptions>

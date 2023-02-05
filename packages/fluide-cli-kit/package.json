@@ -22,6 +22,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@fluide/branding": "workspace:*",
     "chalk": "^5.0.1",
     "gradient-string": "^2.0.2",
     "log-update": "^5.0.1",

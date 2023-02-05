@@ -67,7 +67,7 @@
     "topicSeparator": " ",
     "topics": {
       "create": {
-        "description": "Scafold a new Astra project"
+        "description": "Scafold a new Fluide project"
       },
       "dev": {
         "description": "Launch theme dev server"

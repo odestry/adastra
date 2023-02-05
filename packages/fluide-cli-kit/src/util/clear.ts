@@ -1,9 +1,9 @@
-import { erase, cursor } from 'sisteransi'
+import {erase, cursor} from 'sisteransi'
 
 export const strip = (str: string): string => {
   const pattern = [
     '[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)',
-    '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))'
+    '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))',
   ].join('|')
 
   const RGX = new RegExp(pattern, 'g')
@@ -24,11 +24,7 @@ export const breakIntoWords = (str: string): string[] => {
   return parts
 }
 
-export const wrap = (
-  str: string,
-  indent = '',
-  max = process.stdout.columns
-): string => {
+export const wrap = (str: string, indent = '', max = process.stdout.columns): string => {
   const words = breakIntoWords(str)
   let i = 0
   const lines = []
@@ -55,7 +51,7 @@ export interface Part {
 export const split = (str: string): Part[] => {
   const pattern = [
     '[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)',
-    '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))'
+    '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))',
   ].join('|')
 
   const ansiRE = new RegExp(pattern, 'g')
@@ -67,7 +63,7 @@ export const split = (str: string): Part[] => {
     const raw = str.slice(lastIndex, index)
     const text = strip(raw)
     const prefix = raw.slice(0, raw.length - text.length)
-    parts.push({ raw, prefix, text, words: breakIntoWords(text) })
+    parts.push({raw, prefix, text, words: breakIntoWords(text)})
   }
   while ((match = ansiRE.exec(str)) != null) {
     const index = match.index
@@ -82,13 +78,12 @@ export const split = (str: string): Part[] => {
 export const lines = (msg: string, perLine: number): number => {
   const lines = String(strip(msg).length > 0 || '').split(/\r?\n/)
 
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (!perLine) return lines.length
-  return lines.map(l => Math.ceil(l.length / perLine)).reduce((a, b) => a + b)
+  return lines.map((l) => Math.ceil(l.length / perLine)).reduce((a, b) => a + b)
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (prompt: string, perLine: number): string {
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (!perLine) return erase.line + cursor.to(0)
 
   let rows = 0

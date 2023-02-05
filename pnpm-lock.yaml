@@ -201,6 +201,7 @@ importers:
 
   packages/fluide-cli-kit:
     specifiers:
+      '@fluide/branding': workspace:*
       '@fluide/tsconfig': workspace:*
       '@types/gradient-string': ^1.1.2
       chalk: ^5.0.1
@@ -210,6 +211,7 @@ importers:
       log-update: ^5.0.1
       sisteransi: ^1.0.5
     dependencies:
+      '@fluide/branding': link:../fluide-branding
       chalk: 5.2.0
       gradient-string: 2.0.2
       log-update: 5.0.1
