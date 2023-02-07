@@ -1,0 +1,58 @@
+{
+  "name": "create-adastra",
+  "version": "0.1.0",
+  "author": "Blanklob",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "create-adastra": "./dist/create-adastra.js"
+  },
+  "scripts": {
+    "start": "./dist/create-adastra.js",
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/*.ts --dts --format esm",
+    "watch": "tsup src/*.ts --dts --format esm --watch",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "adastra-cli-kit": "workspace:*",
+    "chalk": "^5.0.1",
+    "comment-json": "^4.2.3",
+    "execa": "^6.1.0",
+    "giget": "^1.0.0",
+    "kleur": "^4.1.4",
+    "open": "^8.4.0",
+    "ora": "^6.1.0",
+    "prompts": "^2.4.2",
+    "strip-ansi": "^7.0.1",
+    "which-pm-runs": "^1.1.0",
+    "yargs-parser": "^21.0.1"
+  },
+  "devDependencies": {
+    "adastra-tsconfig": "workspace:*",
+    "eslint-config-adastra": "workspace:*",
+    "eslint": "^7.32.0",
+    "@types/degit": "^2.8.3",
+    "@types/prompts": "^2.0.14",
+    "@types/which-pm-runs": "^1.0.0",
+    "@types/yargs-parser": "^21.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blanklob/adastra.git",
+    "directory": "packages/create-adastra"
+  },
+  "keywords": [
+    "adastra",
+    "adastra create"
+  ]
+}

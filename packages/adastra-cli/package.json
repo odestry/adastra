@@ -1,0 +1,86 @@
+{
+  "name": "adastra-cli",
+  "version": "0.1.0",
+  "author": "Blanklob",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "adastra": "./bin/run.js"
+  },
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/**/**/*.ts --dts --format esm",
+    "watch": "tsup src/**/**/*.ts --dts --format esm --watch",
+    "prepack": "oclif manifest",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "adastra-cli-kit": "workspace:*",
+    "@shopify/cli-kit": "^3.38.0",
+    "@oclif/core": "^2",
+    "@oclif/plugin-help": "^5",
+    "chalk": "^5.0.1",
+    "moment": "^2.29.4",
+    "vite": "^4.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "adastra-tsconfig": "workspace:*",
+    "eslint-config-adastra": "workspace:*",
+    "oclif": "^3"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanklob/adastra.git",
+    "directory": "packages/adastra-cli"
+  },
+  "keywords": [
+    "adastra",
+    "cli"
+  ],
+  "oclif": {
+    "bin": "adastra",
+    "dirname": "adastra",
+    "commands": "./dist",
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "create": {
+        "description": "Scafold a new adastra project"
+      },
+      "dev": {
+        "description": "Launch theme dev server"
+      },
+      "build": {
+        "description": "Build files for production"
+      },
+      "check": {
+        "description": "Run theme check"
+      },
+      "sync": {
+        "description": "Run theme check"
+      }
+    }
+  }
+}

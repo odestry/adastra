@@ -1,0 +1,38 @@
+{
+  "name": "adastra-branding",
+  "version": "0.1.0",
+  "author": "Blanklob",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "watch": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "adastra-tsconfig": "workspace:*",
+    "eslint-config-adastra": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanklob/adastra.git",
+    "directory": "packages/adastra-branding"
+  },
+  "keywords": [
+    "adastra",
+    "branding"
+  ]
+}

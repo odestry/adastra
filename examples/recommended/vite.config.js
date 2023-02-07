@@ -1,6 +1,6 @@
-import {defineConfig} from 'vite'
-import fluide from '@fluide/plugin'
+import { defineConfig } from 'vite'
+import adastra from 'adastra-plugin'
 
 export default defineConfig({
-  plugins: [fluide()],
+  plugins: [adastra()]
 })

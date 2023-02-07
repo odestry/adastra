@@ -8,7 +8,7 @@
           "settings": {
             "heading": "Documentation",
             "description": "Find in-depth information about Blanke features and how to use it.",
-            "link": "https://dosc.blanke.build?utm_source=create-blanke&amp;utm_medium=basic-example&amp;utm_campaign=create-blanke"
+            "link": "https://dosc.adastra.build?utm_source=create-adastra&amp;utm_medium=basic-example&amp;utm_campaign=create-adastra"
           }
         },
         "card-chat": {
@@ -16,7 +16,7 @@
           "settings": {
             "heading": "Chat",
             "description": "Come say hey to our amazing Discord community 💚",
-            "link": "https://chat.blanke.build?utm_source=create-blanke&amp;utm_medium=basic-example&amp;utm_campaign=create-blanke"
+            "link": "https://chat.adastra.build?utm_source=create-adastra&amp;utm_medium=basic-example&amp;utm_campaign=create-adastra"
           }
         },
         "card-sections": {
@@ -36,7 +36,7 @@
       },
       "block_order": ["card-docs", "card-chat", "card-sections", "card-plus"],
       "settings": {
-        "heading": "Welcome to Fluide ✨",
+        "heading": "Welcome to Adastra ✨",
         "instruction_1": "Currently there is no products in your store. To get started <strong>create your first product</strong> and set its price and quantity.",
         "instruction_2": "<strong>Code Challenge:</strong> Tweak this button so when we add to cart, it shows a spinner. Check the <span>src/components</span> directory!"
       }

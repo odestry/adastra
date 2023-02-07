@@ -1,0 +1,8 @@
+{
+  "extends": "adastra-tsconfig/base.json",
+  "include": ["src", "index.d.ts"],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

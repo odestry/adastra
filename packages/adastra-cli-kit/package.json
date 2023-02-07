@@ -1,0 +1,46 @@
+{
+  "name": "adastra-cli-kit",
+  "version": "0.1.0",
+  "author": "Blanklob",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/index.ts --dts --format esm",
+    "watch": "tsup src/index.ts --format esm --dts --watch",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "adastra-branding": "workspace:*",
+    "chalk": "^5.0.1",
+    "gradient-string": "^2.0.2",
+    "log-update": "^5.0.1",
+    "sisteransi": "^1.0.5"
+  },
+  "devDependencies": {
+    "adastra-tsconfig": "workspace:*",
+    "eslint-config-adastra": "workspace:*",
+    "eslint": "^7.32.0",
+    "@types/gradient-string": "^1.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanklob/adastra.git",
+    "directory": "packages/adastra-cli-kit"
+  },
+  "keywords": [
+    "adastra",
+    "cli-kit"
+  ]
+}

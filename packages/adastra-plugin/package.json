@@ -1,0 +1,48 @@
+{
+  "name": "adastra-plugin",
+  "version": "0.1.0",
+  "author": "Blanklob",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts --minify",
+    "watch": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:snap": "vitest -u",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "fast-glob": "^3.2.11"
+  },
+  "devDependencies": {
+    "adastra-tsconfig": "workspace:*",
+    "eslint-config-adastra": "workspace:*",
+    "@types/debug": "^4.1.7",
+    "eslint": "^7.32.0"
+  },
+  "peerDependencies": {
+    "vite": "^4.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanklob/adastra.git",
+    "directory": "packages/adastra-plugin"
+  },
+  "keywords": [
+    "adastra",
+    "vite",
+    "shopify"
+  ]
+}

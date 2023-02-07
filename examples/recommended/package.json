@@ -4,15 +4,15 @@
   "author": "You Astronaut",
   "private": true,
   "scripts": {
-    "dev": "fluide dev",
-    "build": "fluide build",
-    "check": "fluide check",
-    "sync": "fluide sync"
+    "dev": "adastra dev",
+    "build": "adastra build",
+    "check": "adastra check",
+    "sync": "adastra sync"
   },
   "dependencies": {},
   "devDependencies": {
-    "@fluide/plugin": "workspace:*",
-    "@fluide/cli": "workspace:*",
+    "adastra-plugin": "workspace:*",
+    "adastra-cli": "workspace:*",
     "vite": "^4.0.4",
     "tailwindcss": "^3.1.8",
     "autoprefixer": "^10.4.8",

@@ -15,7 +15,10 @@ class ProductForm extends HTMLElement {
 
     const fetchConfig = (type = 'javascript') => ({
       method: 'POST',
-      headers: {'X-Requested-With': 'XMLHttpRequest', Accept: `application/${type}`},
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        Accept: `application/${type}`
+      }
     })
 
     const config = fetchConfig()
@@ -24,13 +27,13 @@ class ProductForm extends HTMLElement {
 
     // We send a request to Ajax Cart API
     fetch(`${routes.cart_add_url}`, config)
-      .then((response) => response.json())
-      .then((response) => {
+      .then(response => response.json())
+      .then(response => {
         if (response.status) return
         // We redirect to checkout
         window.location = window.shopUrl + '/checkout'
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error)
       })
   }

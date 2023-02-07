@@ -1,23 +1,23 @@
-# Fluide
+# Adastra
 
-Shopify theme development framework created by Blanklob.
+A poweful, flexibile framework for building unique and custom Shopify themes at scale.
 
 ## Packages
 
 ### Public
 
-- [fluide](./packages/fluide)
-- [create-fluide](./packages/create-fluide)
-- [@fluide/plugin](./packages/fluide-plugin)
-- [@fluide/cli](./packages/fluide-cli)
-- [@fluide/cli-kit](./packages/fluide-cli-kit)
-- [@fluide/branding](./packages/fluide-branding)
+- [adastra](./packages/adastra)
+- [create-adastra](./packages/create-adastra)
+- [adastra-plugin](./packages/adastra-plugin)
+- [adastra-cli](./packages/adastra-cli)
+- [adastra-cli-kit](./packages/adastra-cli-kit)
+- [adastra-branding](./packages/adastra-branding)
 
 ### Configs
 
-- [@fluide/tsconfig](./packages/tsconfig)
-- [@fluide/prettier-config](./packages/prettier-config)
-- [eslint-config-fluide](./packages/eslint-config-fluide)
+- [adastra-tsconfig](./packages/tsconfig)
+- [adastra-prettier-config](./packages/prettier-config)
+- [eslint-config-adastra](./packages/eslint-config-adastra)
 
 ## Templates
 
