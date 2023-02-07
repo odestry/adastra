@@ -1,0 +1,126 @@
+{% comment %}
+  First, Thanks for chosing Adastra ✦ for your Shopify theme project.
+  Adastra is pretty straight forward, if you know basic Shopify
+  you wont need to learn nothing else to work or adopte Adastra :)
+
+  Let take for example this sample section, we have:
+  - Some section settings like heading
+  - Some card snippet and blocks each block represents a card
+  - And a product form using <product-form> element
+
+  The <product-form> element wraps the liquid form, to enhance it
+  with Ajax, if you remove the element the javascript wont be used,
+  and the form will still work!
+{% endcomment %}
+
+<section class="mx-auto max-w-2xl py-6 md:py-10 px-6">
+  {% if section.settings.heading != blank %}
+    <h1 class="text-3xl md:text-5xl font-bold mt-6 mb-4 md:mb-8">{{ section.settings.heading }}</h1>
+  {% endif %}
+
+  <div class="flex flex-col gap-y-4 p-6 my-4 rounded-xl bg-white/90 shadow-sm border border-primary/10">
+    {% assign featured_product = collections.all.products | first %}
+    {% if featured_product != nil %}
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8">
+        <p class="text-xl leading-relaxed font-medium col-span-1 md:col-span-3">{{ section.settings.instruction_2 }}</p>
+
+        <div class="flex flex-col p-4 rounded-xl bg-surface border border-primary/5 col-span-1 md:col-span-2">
+          <h2 class="text-2xl font-bold tracking-tight mb-2">{{ featured_product.title }}</h2>
+          {% render 'price', product: featured_product %}
+          <product-form>
+            {% form 'product', featured_product, class: 'grid w-full', novalidate: 'novalidate' %}
+              <input type="hidden" name="id" value="{{ featured_product.selected_or_first_available_variant.id }}" disabled>
+              <input type="text" name="quantity" min="1" value="1" hidden>
+              <button type="submit" name="add" class="group bg-contrast text-primary mt-2">
+                <span class="block group-[.loading]:hidden">{{ 'products.product.add_to_cart' | t }}</span>
+                {% comment %}
+                  Hint ✦ 1 In-comment this code
+                  <div class="hidden group-[.loading]:block" role="status">
+                    {% render 'icon' with 'spinner' %}
+                    <span class="sr-only">{{ 'accessibility.loading' | t }}</span>
+                  </div>
+                {% endcomment %}
+              </button>
+            {% endform %}
+          </product-form>
+        </div>
+      </div>
+    {% else %}
+      <p class="text-xl leading-relaxed">{{ section.settings.instruction_1 }}</p>
+      <a class="button bg-contrast text-primary w-fit" href="{{ shop.secure_url | append: '/admin/products/new' }}" target="_blank">Create a product</a>
+    {% endif %}
+  </div>
+
+  <ul class="grid grid-cols-1 md:grid-cols-2 gap-4" role="list">
+    {% for block in section.blocks %}
+      <li class="list-none">
+        {% render 'card', heading: block.settings.heading,
+          description: block.settings.description,
+          link: block.settings.link
+        %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <footer class="flex justify-center mt-10 md:mt-16 opacity-50">
+    {{ powered_by_link }}
+  </footer>
+</section>
+
+{% schema %}
+{
+  "name": "Hello World",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "instruction_1",
+      "label": "First instruction"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "instruction_2",
+      "label": "Second instruction"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Card",
+      "type": "card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "You are awesome"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Start building your next Shopify theme"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hello World"
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

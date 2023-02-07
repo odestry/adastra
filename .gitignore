@@ -1,0 +1,24 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+node_modules
+.pnpm-debug.log
+pnpm-lock.yaml
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.editorconfig
+
+# Misc
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+logs
+.env
+
+# Adastra
+assets
+snippets/adastra.*
