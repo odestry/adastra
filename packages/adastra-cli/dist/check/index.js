@@ -1,7 +1,7 @@
 import {
   ThemeCommand,
   theme_flags_default
-} from "../chunk-JY6WLQYU.js";
+} from "../chunk-R6OUDM2D.js";
 
 // src/commands/check/index.ts
 import { Flags } from "@oclif/core";
@@ -24,7 +24,7 @@ var _Check = class extends ThemeCommand {
   }
 };
 var Check = _Check;
-Check.description = "Validate the theme.";
+Check.description = "Validate the theme using theme check same as shopify theme check.";
 Check.flags = {
   ...globalFlags,
   path: theme_flags_default.path,

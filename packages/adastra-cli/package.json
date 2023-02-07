@@ -17,6 +17,7 @@
     "/oclif.manifest.json"
   ],
   "scripts": {
+    "start": "./bin/run.js",
     "dev": "npm run build -- --watch",
     "build": "tsup src/**/**/*.ts --dts --format esm",
     "watch": "tsup src/**/**/*.ts --dts --format esm --watch",
@@ -30,7 +31,7 @@
   },
   "dependencies": {
     "adastra-cli-kit": "workspace:*",
-    "@shopify/cli-kit": "^3.38.0",
+    "@shopify/cli-kit": "^3.40.2",
     "@oclif/core": "^2",
     "@oclif/plugin-help": "^5",
     "chalk": "^5.0.1",

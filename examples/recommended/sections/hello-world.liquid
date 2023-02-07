@@ -25,7 +25,7 @@
         <p class="text-xl leading-relaxed font-medium col-span-1 md:col-span-3">{{ section.settings.instruction_2 }}</p>
 
         <div class="flex flex-col p-4 rounded-xl bg-surface border border-primary/5 col-span-1 md:col-span-2">
-          <h2 class="text-2xl font-bold tracking-tight">{{ featured_product.title }}</h2>
+          <h2 class="text-2xl font-bold tracking-tight mb-2">{{ featured_product.title }}</h2>
           {% render 'price', product: featured_product %}
           <product-form>
             {% form 'product', featured_product, class: 'grid w-full', novalidate: 'novalidate' %}

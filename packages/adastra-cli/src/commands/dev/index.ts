@@ -1,32 +1,32 @@
-import { Flags } from '@oclif/core'
 // @ts-expect-error
 import { globalFlags } from '@shopify/cli-kit/node/cli'
 // @ts-expect-error
 import { execCLI2 } from '@shopify/cli-kit/node/ruby'
 // @ts-expect-error
 import { AbortController } from '@shopify/cli-kit/node/abort'
-
+// @ts-expect-error
+import { sleep } from '@shopify/cli-kit/node/system'
 import {
   ensureAuthenticatedStorefront,
   ensureAuthenticatedThemes
   // @ts-expect-error
 } from '@shopify/cli-kit/node/session'
-// @ts-expect-error
-import { sleep } from '@shopify/cli-kit/node/system'
-// @ts-expect-error
-import { outputDebug } from '@shopify/cli-kit/node/output'
+
+import { Flags } from '@oclif/core'
 import { createServer } from 'vite'
-import themeFlags from '../../utilities/theme-flags.js'
-import ThemeCommand from '../../utilities/theme-command.js'
-import color from 'chalk'
-import { customLogger, logInitiateSequence } from '../../utilities/logger.js'
-import { brand } from 'adastra-cli-kit'
-import getThemeVars from '../../utilities/theme-vars.js'
+
+import {
+  themeFlags,
+  ThemeCommand,
+  getThemeVars,
+  customLogger,
+  logInitiateSequence
+} from '../../utilities'
+import { startDevMessage } from '../../utilities/logger'
 
 export default class Dev extends ThemeCommand {
-  static description = color.hex(brand.colors.yellowgreen)(
-    'Uploads the current theme as a development theme to the connected store, then prints theme editor and preview URLs to your terminal. While running, changes will push to the store in real time.'
-  )
+  static description =
+    'Lauches a Vite development server and uploads the current theme as a development theme to the connected store, While running, changes will push to the store in real time.'
 
   static flags = {
     ...globalFlags,
@@ -93,16 +93,16 @@ export default class Dev extends ThemeCommand {
     password: themeFlags.password,
     mode: Flags.string({
       char: 'm',
-      description: 'Loaded env variables from specific env files.',
+      description: 'Load environment variables from specific env files.',
       env: 'NODE_ENV'
     })
   }
 
   static ignoredFiles = [
     'package.json',
-    'jsconfig.json',
+    'jsconfig.*',
+    'tsconfig.*',
     'src/',
-    'tsconfig*.json',
     '.vscode',
     'node_modules'
   ]
@@ -121,7 +121,7 @@ export default class Dev extends ThemeCommand {
   ]
 
   // Tokens are valid for 120m, better to be safe and refresh every 110min
-  ThemeRefreshTimeoutInMs = 24 * 110 * 60 * 1000
+  ThemeRefreshTimeoutInMs = 110 * 60 * 1000
 
   /**
    * Executes the theme serve command.
@@ -130,7 +130,6 @@ export default class Dev extends ThemeCommand {
   async run(): Promise<void> {
     // @ts-expect-error
     const { flags } = await this.parse(Dev)
-
     const flagsToPass = this.passThroughFlags(flags, {
       allowedFlags: Dev.cli2Flags
     })
@@ -151,14 +150,11 @@ export default class Dev extends ThemeCommand {
     let controller = new AbortController()
 
     const server = await createServer({
-      customLogger: customLogger(store),
-      server: {
-        port: +port - 1
-      }
+      customLogger: customLogger(store)
     })
 
     setInterval(() => {
-      outputDebug(
+      console.log(
         'Refreshing theme session token and restarting theme server...'
       )
       controller.abort()
@@ -171,6 +167,7 @@ export default class Dev extends ThemeCommand {
 
     logInitiateSequence(store)
 
+    startDevMessage(store)
     await server.listen()
     await this.execute(store, password, command, controller)
   }

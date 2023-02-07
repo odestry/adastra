@@ -5,11 +5,11 @@ import { execCLI2 } from '@shopify/cli-kit/node/ruby'
 // @ts-expect-error
 import { globalFlags } from '@shopify/cli-kit/node/cli'
 
-import themeFlags from '../../utilities/theme-flags.js'
-import ThemeCommand from '../../utilities/theme-command.js'
+import { themeFlags, ThemeCommand } from '../../utilities'
 
 export default class Check extends ThemeCommand {
-  static description = 'Validate the theme.'
+  static description =
+    'Validate the theme using theme check same as shopify theme check.'
 
   static flags = {
     ...globalFlags,

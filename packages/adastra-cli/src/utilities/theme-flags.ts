@@ -1,14 +1,10 @@
 import { Flags } from '@oclif/core'
 // @ts-expect-error
-import { normalizeStoreFqdn } from '@shopify/cli-kit/node/environment/fqdn'
+import { normalizeStoreFqdn } from '@shopify/cli-kit/node/context/fqdn'
 // @ts-expect-error
 import { resolvePath } from '@shopify/cli-kit/node/path'
 
-/**
- * An object that contains the flags that
- * are shared across all the theme commands.
- */
-export default {
+const themeFlags = {
   path: Flags.string({
     hidden: false,
     description: 'The path to your theme directory.',
@@ -30,3 +26,5 @@ export default {
     parse: async (input, _) => await Promise.resolve(normalizeStoreFqdn(input))
   })
 }
+
+export default themeFlags

@@ -109,7 +109,7 @@ importers:
     specifiers:
       '@oclif/core': ^2
       '@oclif/plugin-help': ^5
-      '@shopify/cli-kit': ^3.38.0
+      '@shopify/cli-kit': ^3.40.2
       adastra-cli-kit: workspace:*
       adastra-tsconfig: workspace:*
       chalk: ^5.0.1
@@ -1932,7 +1932,7 @@ packages:
     resolution: {integrity: sha512-4UqPv+2567NhMQuMLdKAyK4yzrfCqwaTt6bLhHEs8PFcxbHILsrxaY63n4wgE/BRLDWDQeI+WcTmkXKExh9hQg==}
     dependencies:
       '@types/expect': 1.20.4
-      '@types/node': 15.14.9
+      '@types/node': 18.13.0
     dev: true
 
   /@types/webxr/0.5.1:

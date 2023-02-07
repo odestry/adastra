@@ -1,7 +1,7 @@
 import moment from 'moment'
-import { brand, label } from 'adastra-cli-kit'
 import color from 'chalk'
 import { createLogger, LogOptions, Logger } from 'vite'
+import { brand, label } from 'adastra-cli-kit'
 
 const logger = createLogger()
 
@@ -31,52 +31,12 @@ export const log = (
   }
 }
 
-export const printUrls = (
-  baseUrl: string,
-  logger = console.log,
-  host: string = 'localhost',
-  port: number = 9292
-): void => {
-  const devUrl = `http://${host}:${port}`
-  const editingUrl = `https://${baseUrl}/admin/themes/editor`
-  const previewUrl = `https://${baseUrl}/preview_theme_id=pb=0`
-  const stopServerMessage = '(Use Ctrl-C to stop server)'
-  logger(
-    `${' '.repeat(2)}${color.white(
-      'Please open this URL and refresh your browser'
-    )}
-  ${color.hex(brand.colors.yellowgreen)(devUrl)}\n
-  ${color.white(
-    "Customize this theme in the Theme Editor, and use 'adastra sync'\n  to get the latest changes"
-  )}
-  ${color.hex(brand.colors.yellowgreen)(editingUrl)}\n
-  ${color.white('Share this theme preview with other some cool')}
-  ${color.hex(brand.colors.yellowgreen)(previewUrl)}\n
-  ${stopServerMessage}\n`
-  )
-}
-
-export const printOtherUrls = (baseUrl: string, logger = console.log): void => {
-  const editingUrl = `https://${baseUrl}/admin/themes/editor`
-  const previewUrl = `https://${baseUrl}/preview_theme_id=pb=0`
-  const stopServerMessage = '(Use Ctrl-C to stop server)'
-  logger(
-    `${' '.repeat(2)}${color.white(
-      "Customize this theme in the Theme Editor, and use 'adastra sync'\n  to get the latest changes"
-    )}
-  ${color.hex(brand.colors.yellowgreen)(editingUrl)}\n
-  ${color.white('Share this theme preview with other some cool')}
-  ${color.hex(brand.colors.yellowgreen)(previewUrl)}\n
-  ${stopServerMessage}\n`
-  )
-}
-
 export const logInitiateSequence = (
   baseUrl: string,
   logger = console.log
 ): void => {
   logger(
-    `${' '.repeat(3)}${label('adastra')} ${color.hex(brand.colors.yellowgreen)(
+    `${' '.repeat(3)}${label('Adastra')} ${color.hex(brand.colors.yellowgreen)(
       `Initiating launch sequence for ${baseUrl} \n`
     )}`
   )
@@ -89,7 +49,7 @@ export const startDevMessage = (
 ): void => {
   clearScreen()
   logger(
-    `${' '.repeat(2)}${label('adastra')} ${color.hex(brand.colors.yellowgreen)(
+    `${' '.repeat(2)}${label('Adastra')} ${color.hex(brand.colors.yellowgreen)(
       `Initiating launch sequence for ${baseUrl.replace(
         '.myshopify.com',
         ''
@@ -102,7 +62,6 @@ export const customLogger = (store: string): Logger => ({
   ...logger,
   info: (msg: string, options?: LogOptions) => {
     logger.clearScreen('info')
-    printOtherUrls(store, logger.info)
     log('info', msg)
   },
   warn: (msg: string, options?: LogOptions) => {

@@ -1,9 +1,8 @@
 import { describe, it, assert } from 'vitest'
-
-import a from '../src'
+import { BRAND } from '../src'
 
 describe('skipped suite', () => {
   it('test', () => {
-    assert.equal(a(4), 4)
+    assert.equal(BRAND.author, 'Blanklob')
   })
 })

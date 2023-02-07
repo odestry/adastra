@@ -7,7 +7,7 @@
           "type": "card",
           "settings": {
             "heading": "Documentation",
-            "description": "Find in-depth information about Blanke features and how to use it.",
+            "description": "Find in-depth infos about Adastra features and how to use it.",
             "link": "https://dosc.adastra.build?utm_source=create-adastra&amp;utm_medium=basic-example&amp;utm_campaign=create-adastra"
           }
         },
@@ -23,13 +23,13 @@
           "type": "card",
           "settings": {
             "heading": "Sections",
-            "description": "Explore a galaxy of paid and community-built Blanke sections."
+            "description": "Explore a galaxy of paid and community-built sections."
           }
         },
         "card-plus": {
           "type": "card",
           "settings": {
-            "heading": "Blanke Pro",
+            "heading": "Aurora",
             "description": "Instantly build a production-ready Shopify storefronts."
           }
         }
