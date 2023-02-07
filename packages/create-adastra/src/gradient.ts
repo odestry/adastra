@@ -1,4 +1,4 @@
-import { brand } from '../../adastra-cli-kit/dist'
+import { brand } from 'adastra-cli-kit'
 import color from 'chalk'
 import type { Ora } from 'ora'
 import ora from 'ora'

@@ -11,12 +11,7 @@ import { execa, execaCommand } from 'execa'
 import { downloadTemplate } from 'giget'
 import { bold, dim, green, reset, yellow } from 'kleur/colors'
 import { platform } from 'os'
-import {
-  brand,
-  generateProjectName,
-  label,
-  say
-} from '../../adastra-cli-kit/dist'
+import { brand, generateProjectName, label, say } from 'adastra-cli-kit'
 
 import { loadWithRocketGradient, rocketAscii } from './gradient.js'
 import { logger } from './logger.js'

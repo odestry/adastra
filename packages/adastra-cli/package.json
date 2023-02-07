@@ -77,9 +77,6 @@
       },
       "check": {
         "description": "Run theme check"
-      },
-      "sync": {
-        "description": "Run theme check"
       }
     }
   }

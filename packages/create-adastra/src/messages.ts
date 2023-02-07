@@ -1,5 +1,5 @@
 /* eslint no-console: 'off' */
-import { label, brand } from '../../adastra-cli-kit/dist'
+import { label, brand } from 'adastra-cli-kit'
 import { exec } from 'node:child_process'
 import { get } from 'node:https'
 import stripAnsi from 'strip-ansi'

@@ -20,7 +20,7 @@ import themeFlags from '../../utilities/theme-flags.js'
 import ThemeCommand from '../../utilities/theme-command.js'
 import color from 'chalk'
 import { customLogger, logInitiateSequence } from '../../utilities/logger.js'
-import { brand } from '../../../../adastra-cli-kit/dist'
+import { brand } from 'adastra-cli-kit'
 import getThemeVars from '../../utilities/theme-vars.js'
 
 export default class Dev extends ThemeCommand {
