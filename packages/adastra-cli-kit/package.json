@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "dev": "npm run build -- --watch",
-    "build": "tsup src/index.ts --dts --format esm",
+    "build": "tsup src/index.ts --dts --format esm --minify",
     "watch": "tsup src/index.ts --format esm --dts --watch",
     "lint": "eslint",
     "lint:fix": "eslint --fix",

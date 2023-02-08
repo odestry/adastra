@@ -31,34 +31,24 @@ export const log = (
   }
 }
 
-export const logInitiateSequence = (
-  baseUrl: string,
-  logger = console.log
-): void => {
-  logger(
-    `${' '.repeat(3)}${label('Adastra')} ${color.hex(brand.colors.yellowgreen)(
-      `Initiating launch sequence for ${baseUrl} \n`
-    )}`
-  )
-}
-
 export const startDevMessage = (
-  baseUrl: string,
+  store: string,
+  themeId?: string,
   logger = console.log,
   clearScreen: () => void = console.clear
 ): void => {
   clearScreen()
   logger(
     `${' '.repeat(2)}${label('Adastra')} ${color.hex(brand.colors.yellowgreen)(
-      `Initiating launch sequence for ${baseUrl.replace(
+      `Initiating launch sequence for ${store.replace(
         '.myshopify.com',
         ''
-      )} store\n`
+      )} store\n ${themeId ? `using theme with id: ${themeId}` : ''}`
     )}`
   )
 }
 
-export const customLogger = (store: string): Logger => ({
+export const customLogger = (): Logger => ({
   ...logger,
   info: (msg: string, options?: LogOptions) => {
     logger.clearScreen('info')

@@ -4,25 +4,24 @@ import { globalFlags } from '@shopify/cli-kit/node/cli'
 import { execCLI2 } from '@shopify/cli-kit/node/ruby'
 // @ts-expect-error
 import { AbortController } from '@shopify/cli-kit/node/abort'
-// @ts-expect-error
-import { sleep } from '@shopify/cli-kit/node/system'
 import {
+  AdminSession,
   ensureAuthenticatedStorefront,
   ensureAuthenticatedThemes
   // @ts-expect-error
 } from '@shopify/cli-kit/node/session'
-
+// @ts-expect-error
+import { sleep } from '@shopify/cli-kit/node/system'
 import { Flags } from '@oclif/core'
-import { createServer } from 'vite'
-
+import { createServer, loadConfigFromFile, ConfigEnv } from 'vite'
 import {
   themeFlags,
   ThemeCommand,
   getThemeVars,
+  DevelopmentThemeManager,
   customLogger,
-  logInitiateSequence
+  startDevMessage
 } from '../../utilities'
-import { startDevMessage } from '../../utilities/logger'
 
 export default class Dev extends ThemeCommand {
   static description =
@@ -112,6 +111,7 @@ export default class Dev extends ThemeCommand {
     'live-reload',
     'poll',
     'theme-editor-sync',
+    'overwrite-json',
     'port',
     'theme',
     'only',
@@ -129,12 +129,27 @@ export default class Dev extends ThemeCommand {
    */
   async run(): Promise<void> {
     // @ts-expect-error
-    const { flags } = await this.parse(Dev)
+    let { flags } = await this.parse(Dev)
+    const { store, password, port } = getThemeVars(flags)
+    const adminSession = await ensureAuthenticatedThemes(
+      store,
+      password,
+      [],
+      true
+    )
+    // @ts-expect-error
+    const theme = await new DevelopmentThemeManager(adminSession).findOrCreate()
+
+    flags = {
+      ...flags,
+      theme: theme.id.toString(),
+      'overwrite-json':
+        Boolean(flags['theme-editor-sync']) && theme.createdAtRuntime
+    }
+
     const flagsToPass = this.passThroughFlags(flags, {
       allowedFlags: Dev.cli2Flags
     })
-
-    const { store, password, port } = getThemeVars(flags)
 
     const command = [
       'theme',
@@ -142,16 +157,12 @@ export default class Dev extends ThemeCommand {
       flags.path,
       '--ignore',
       ...Dev.ignoredFiles,
-      ...flagsToPass,
       '--port',
-      port
+      port,
+      ...flagsToPass
     ]
 
     let controller = new AbortController()
-
-    const server = await createServer({
-      customLogger: customLogger(store)
-    })
 
     setInterval(() => {
       console.log(
@@ -159,32 +170,37 @@ export default class Dev extends ThemeCommand {
       )
       controller.abort()
       controller = new AbortController()
-
-      this.execute(store, password, command, controller).then(
-        async () => await server.restart()
-      )
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      this.execute(adminSession, password, command, controller)
     }, this.ThemeRefreshTimeoutInMs)
 
-    logInitiateSequence(store)
+    const configEnv: ConfigEnv = {
+      command: 'serve',
+      mode: flags.mode as string
+    }
 
-    startDevMessage(store)
-    await server.listen()
-    await this.execute(store, password, command, controller)
+    const config = await loadConfigFromFile(configEnv)
+
+    if (config) {
+      const server = await createServer({
+        customLogger: customLogger()
+      })
+      await server.listen()
+    }
+
+    startDevMessage(store, theme.id.toString())
+
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    this.execute(adminSession, password, command, controller)
   }
 
   async execute(
-    store: string,
+    adminSession: AdminSession,
     password: string | undefined,
     command: string[],
     controller: AbortController
   ) {
     await sleep(2)
-    const adminSession = await ensureAuthenticatedThemes(
-      store,
-      password,
-      [],
-      true
-    )
     const storefrontToken = await ensureAuthenticatedStorefront([], password)
     return execCLI2(command, {
       adminSession,

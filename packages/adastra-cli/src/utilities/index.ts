@@ -1,13 +1,25 @@
-import getThemeVars from './theme-vars'
-import ThemeCommand from './theme-command'
-import themeFlags from './theme-flags'
-import { customLogger, logInitiateSequence, log } from './logger'
+import getThemeVars from './theme-vars.js'
+import ThemeCommand from './theme-command.js'
+import themeFlags from './theme-flags.js'
+import {
+  removeDevelopmentTheme,
+  setDevelopmentTheme,
+  getDevelopmentTheme
+} from './theme-conf.js'
+
+import { DevelopmentThemeManager } from './development-theme-manager.js'
+
+import { customLogger, log, startDevMessage } from './logger.js'
 
 export {
   getThemeVars,
   ThemeCommand,
   themeFlags,
   customLogger,
-  logInitiateSequence,
-  log
+  log,
+  startDevMessage,
+  getDevelopmentTheme,
+  setDevelopmentTheme,
+  removeDevelopmentTheme,
+  DevelopmentThemeManager
 }

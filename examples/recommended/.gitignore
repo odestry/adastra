@@ -20,5 +20,5 @@ logs
 .env
 
 # Adastra
-assets
+/assets
 snippets/adastra.*

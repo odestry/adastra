@@ -1,24 +1,26 @@
 import { loadEnv } from 'vite'
-import themeConf from './theme-conf.js'
+import { themeConf } from './theme-conf.js'
 import themeFlags from './theme-flags.js'
 // @ts-expect-error
 import { AbortError } from '@shopify/cli-kit/node/error'
 // @ts-expect-error
 import { outputContent, outputToken } from '@shopify/cli-kit/node/output'
 
-interface themeVars {
+type ThemeVars = {
   store: string
   password: string
   port: string
 }
 
-export default function getThemeVars(flags: {
-  mode: string | undefined
-  path: string | undefined
-  store: string | undefined
-  password: string | undefined
-  port: string | undefined
-}): themeVars {
+type GetThemeVars = {
+  mode?: string
+  path?: string
+  store?: string
+  password?: string
+  port?: string
+}
+
+export default function getThemeVars(flags: GetThemeVars): ThemeVars {
   let store = flags.store || (themeConf().get('themeStore') as string)
 
   if (!store) {

@@ -4,10 +4,9 @@
   "author": "You Astronaut",
   "private": true,
   "scripts": {
-    "dev": "adastra dev -s blanklob-dawn",
+    "dev": "adastra dev",
     "build": "adastra build",
-    "check": "adastra check",
-    "sync": "adastra sync"
+    "check": "adastra check"
   },
   "dependencies": {},
   "devDependencies": {

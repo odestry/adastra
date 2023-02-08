@@ -1,7 +1,7 @@
 import {
   ThemeCommand,
   theme_flags_default
-} from "../chunk-R6OUDM2D.js";
+} from "../chunk-R2T36YUM.js";
 
 // src/commands/check/index.ts
 import { Flags } from "@oclif/core";

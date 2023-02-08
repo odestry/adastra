@@ -3,11 +3,12 @@ import {
   ThemeCommand,
   customLogger,
   getThemeVars,
+  logInitiateSequence,
   startDevMessage,
   theme_flags_default
-} from "../chunk-R2T36YUM.js";
+} from "../chunk-BNM4GVQT.js";
 
-// src/commands/dev/index.ts
+// src/commands/dev/dev.ts
 import { globalFlags } from "@shopify/cli-kit/node/cli";
 import { execCLI2 } from "@shopify/cli-kit/node/ruby";
 import { AbortController } from "@shopify/cli-kit/node/abort";
@@ -17,7 +18,7 @@ import {
 } from "@shopify/cli-kit/node/session";
 import { sleep } from "@shopify/cli-kit/node/system";
 import { Flags } from "@oclif/core";
-import { createServer, loadConfigFromFile } from "vite";
+import { createServer } from "vite";
 var _Dev = class extends ThemeCommand {
   constructor() {
     super(...arguments);
@@ -38,6 +39,7 @@ var _Dev = class extends ThemeCommand {
       theme: theme.id.toString(),
       "overwrite-json": Boolean(flags["theme-editor-sync"]) && theme.createdAtRuntime
     };
+    console.log(theme);
     const flagsToPass = this.passThroughFlags(flags, {
       allowedFlags: _Dev.cli2Flags
     });
@@ -52,6 +54,9 @@ var _Dev = class extends ThemeCommand {
       ...flagsToPass
     ];
     let controller = new AbortController();
+    const server = await createServer({
+      customLogger: customLogger(store)
+    });
     setInterval(() => {
       console.log(
         "Refreshing theme session token and restarting theme server..."
@@ -60,18 +65,9 @@ var _Dev = class extends ThemeCommand {
       controller = new AbortController();
       this.execute(adminSession, password, command, controller);
     }, this.ThemeRefreshTimeoutInMs);
-    const configEnv = {
-      command: "serve",
-      mode: flags.mode
-    };
-    const config = await loadConfigFromFile(configEnv);
-    if (config) {
-      const server = await createServer({
-        customLogger: customLogger()
-      });
-      await server.listen();
-    }
-    startDevMessage(store, theme.id.toString());
+    logInitiateSequence(store);
+    startDevMessage(store);
+    await server.listen();
     this.execute(adminSession, password, command, controller);
   }
   async execute(adminSession, password, command, controller) {

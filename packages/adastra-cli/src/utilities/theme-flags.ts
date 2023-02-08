@@ -8,7 +8,7 @@ const themeFlags = {
   path: Flags.string({
     hidden: false,
     description: 'The path to your theme directory.',
-    parse: async (input, _) => await Promise.resolve(resolvePath(input)),
+    parse: (input, _) => Promise.resolve(resolvePath(input)),
     env: 'SHOPIFY_FLAG_PATH',
     default: '.'
   }),
@@ -23,7 +23,7 @@ const themeFlags = {
       'Store URL. It can be the store prefix (johns-apparel)' +
       ' or the full myshopify.com URL (johns-apparel.myshopify.com, https://johns-apparel.myshopify.com).',
     env: 'SHOPIFY_FLAG_STORE',
-    parse: async (input, _) => await Promise.resolve(normalizeStoreFqdn(input))
+    parse: (input, _) => Promise.resolve(normalizeStoreFqdn(input))
   })
 }
 
