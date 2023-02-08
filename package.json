@@ -4,7 +4,7 @@
   "author": "You Astronaut",
   "private": true,
   "scripts": {
-    "dev": "adastra dev -s blanklob-app",
+    "dev": "adastra dev",
     "build": "adastra build",
     "check": "adastra check"
   },
