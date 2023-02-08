@@ -4,12 +4,10 @@
   "author": "You Astronaut",
   "private": true,
   "scripts": {
-    "dev": "adastra dev",
+    "dev": "adastra dev -s blanklob-app",
     "build": "adastra build",
-    "check": "adastra check",
-    "sync": "adastra sync"
+    "check": "adastra check"
   },
-  "dependencies": {},
   "devDependencies": {
     "adastra-plugin": "latest",
     "adastra-cli": "latest",
