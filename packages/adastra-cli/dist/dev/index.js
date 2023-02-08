@@ -5,7 +5,7 @@ import {
   getThemeVars,
   startDevMessage,
   theme_flags_default
-} from "../chunk-R2T36YUM.js";
+} from "../chunk-DZRLVMZ6.js";
 
 // src/commands/dev/index.ts
 import { globalFlags } from "@shopify/cli-kit/node/cli";

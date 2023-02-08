@@ -153,7 +153,7 @@ var DevelopmentThemeManager = class extends ThemeManager {
 import moment from "moment";
 import color from "chalk";
 import { createLogger } from "vite";
-import { brand, label } from "adastra-cli-kit";
+import { brand } from "adastra-cli-kit";
 var logger = createLogger();
 var log = (logLevel, msg, logger2 = console) => {
   const message = (currentColor = brand.colors.yellowgreen) => `${color.white(moment().format("hh:mm:ss"))} ${color.hex(currentColor).bold(`[adastra]`)} ${msg}`;
@@ -170,6 +170,17 @@ var log = (logLevel, msg, logger2 = console) => {
   } else {
     logger2.info(message());
   }
+};
+var startDevMessage = (store, themeId, clearScreen = console.clear) => {
+  clearScreen();
+  log(
+    "info",
+    `Initiating launch sequence for ${store.replace(
+      ".myshopify.com",
+      ""
+    )} store
+ ${themeId ? `using theme with id: ${themeId}` : ""}`
+  );
 };
 var customLogger = () => ({
   ...logger,
@@ -193,5 +204,6 @@ export {
   ThemeCommand,
   DevelopmentThemeManager,
   log,
+  startDevMessage,
   customLogger
 };

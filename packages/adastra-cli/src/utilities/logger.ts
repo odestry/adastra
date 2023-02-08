@@ -1,15 +1,11 @@
 import moment from 'moment'
 import color from 'chalk'
 import { createLogger, LogOptions, Logger } from 'vite'
-import { brand, label } from 'adastra-cli-kit'
+import { brand } from 'adastra-cli-kit'
 
 const logger = createLogger()
 
-export const log = (
-  logLevel: 'info' | 'warn' | 'error',
-  msg: string,
-  logger = console
-): void => {
+export const log = (logLevel: 'info' | 'warn' | 'error', msg: string): void => {
   const message = (currentColor: string = brand.colors.yellowgreen): string =>
     `${color.white(moment().format('hh:mm:ss'))} ${color
       .hex(currentColor)
@@ -24,28 +20,7 @@ export const log = (
       break
   }
 
-  if (logger.log !== undefined) {
-    logger.log(message())
-  } else {
-    logger.info(message())
-  }
-}
-
-export const startDevMessage = (
-  store: string,
-  themeId?: string,
-  logger = console.log,
-  clearScreen: () => void = console.clear
-): void => {
-  clearScreen()
-  logger(
-    `${' '.repeat(2)}${label('Adastra')} ${color.hex(brand.colors.yellowgreen)(
-      `Initiating launch sequence for ${store.replace(
-        '.myshopify.com',
-        ''
-      )} store\n ${themeId ? `using theme with id: ${themeId}` : ''}`
-    )}`
-  )
+  logger.info(message())
 }
 
 export const customLogger = (): Logger => ({
@@ -63,3 +38,16 @@ export const customLogger = (): Logger => ({
     log('error', msg)
   }
 })
+
+export const startDevMessage = (store: string, themeId?: string): void => {
+  logger.clearScreen('info')
+  log(
+    'info',
+    color.hex(brand.colors.yellowgreen)(
+      `Initiating launch sequence for ${store.replace(
+        '.myshopify.com',
+        ''
+      )} store\n ${themeId ? `using theme with id: ${themeId}` : ''}`
+    )
+  )
+}

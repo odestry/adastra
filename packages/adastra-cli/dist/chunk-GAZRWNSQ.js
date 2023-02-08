@@ -153,42 +153,44 @@ var DevelopmentThemeManager = class extends ThemeManager {
 import moment from "moment";
 import color from "chalk";
 import { createLogger } from "vite";
-import { brand, label } from "adastra-cli-kit";
+import { brand } from "adastra-cli-kit";
 var logger = createLogger();
-var log = (logLevel, msg, logger2 = console) => {
-  const message = (currentColor = brand.colors.yellowgreen) => `${color.white(moment().format("hh:mm:ss"))} ${color.hex(currentColor).bold(`[adastra]`)} ${msg}`;
+var log = (logLevel, msg) => {
+  const message = (currentColor = brand.colors.yellowgreen) => `${color.white(moment().format("hh:mm:ss"))} ${color.hex(currentColor).bold(`[adastra]`)} ${color.hex(currentColor)(msg)}`;
   switch (logLevel) {
     case "warn":
-      logger2.warn(message(brand.colors.warn));
+      logger.warn(message(brand.colors.warn));
       break;
     case "error":
-      logger2.error(message(brand.colors.error));
+      logger.error(message(brand.colors.error));
       break;
   }
-  if (logger2.log !== void 0) {
-    logger2.log(message());
-  } else {
-    logger2.info(message());
+  logger.info(message());
+};
+var customLogger = () => ({
+  ...logger,
+  info: (msg, options) => {
+    logger.clearScreen("info");
+    log("info", msg);
+  },
+  warn: (msg, options) => {
+    logger.clearScreen("warn");
+    log("warn", msg);
+  },
+  error: (msg, options) => {
+    logger.clearScreen("error");
+    log("error", msg);
   }
-};
-var logInitiateSequence = (baseUrl, logger2 = console.log) => {
-  logger2(
-    `${" ".repeat(3)}${label("Adastra")} ${color.hex(brand.colors.yellowgreen)(
-      `Initiating launch sequence for ${baseUrl} 
-`
-    )}`
-  );
-};
-var startDevMessage = (baseUrl, logger2 = console.log, clearScreen = console.clear) => {
-  clearScreen();
-  logger2(
-    `${" ".repeat(2)}${label("Adastra")} ${color.hex(brand.colors.yellowgreen)(
-      `Initiating launch sequence for ${baseUrl.replace(
-        ".myshopify.com",
-        ""
-      )} store
-`
-    )}`
+});
+var startDevMessage = (store, themeId) => {
+  logger.clearScreen("info");
+  log(
+    "info",
+    `Initiating launch sequence for ${store.replace(
+      ".myshopify.com",
+      ""
+    )} store
+ ${themeId ? `using theme with id: ${themeId}` : ""}`
   );
 };
 
@@ -198,6 +200,6 @@ export {
   ThemeCommand,
   DevelopmentThemeManager,
   log,
-  logInitiateSequence,
+  customLogger,
   startDevMessage
 };
