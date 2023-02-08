@@ -9,6 +9,7 @@ pnpm-lock.yaml
 .vscode/*
 !.vscode/extensions.json
 .idea
+!.github/assets
 .editorconfig
 
 # Misc
