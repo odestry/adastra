@@ -8,6 +8,8 @@
   <br/>
 </p>
 
+[![CI][ci-badge]][ci-url]
+
 ## Key Features
 
 - **Flexible** Can seamlessly be integrated with existing workflows and Shopify themes.
@@ -76,13 +78,13 @@ By default **Adastra 🌟** watches changes in this folder, so you dont need to 
 
 Also **Adastra 🌟** automaticely upon launching the dev server creates a snippet, to add all required Liquid code for Vite to work properly. No need to remove or the change this snippet located `snippets/adastra.liquid`
 
-## Roadmap
-
-👉 You can find the roadmap [here](https://github.com/users/blanklob/projects/5).
-
 ## Documentation
 
 Currently documentation is under construction 🚧 this is project is still under development, however expect [upcoming documentation](https://docs.blanklob.com/) soon in the days to come.
+
+## Roadmap
+
+👉 You can find the roadmap [here](https://github.com/users/blanklob/projects/5).
 
 ## Support
 
