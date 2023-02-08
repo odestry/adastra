@@ -8,8 +8,6 @@
   <br/>
 </p>
 
-[![CI][ci-badge]][ci-url]
-
 ## Key Features
 
 - **Flexible** Can seamlessly be integrated with existing workflows and Shopify themes.
@@ -88,13 +86,13 @@ Currently documentation is under construction 🚧 this is project is still unde
 
 ## Support
 
-Having trouble? Get help in the official [Discord](https://chat.blanklob.com).
+Having trouble? Get help in the official [Discord](https://help.blanklob.com).
 
 ## Contributing
 
 **New contributors welcome!** Check out our [Contributors Guide](CONTRIBUTING.md) for help getting started.
 
-Join us on [Discord](https://chat.blanklob.com) to meet other Shopify developers. We'll help you with your Shopify project in no time!
+Join us on [Discord](https://help.blanklob.com) to meet other Shopify developers. We'll help you with your Shopify project in no time!
 
 ## Useful Links
 
