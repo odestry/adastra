@@ -1,6 +1,7 @@
 import getThemeVars from './theme-vars.js'
 import ThemeCommand from './theme-command.js'
 import themeFlags from './theme-flags.js'
+import ensureThemeStore from './theme-store.js'
 import {
   removeDevelopmentTheme,
   setDevelopmentTheme,
@@ -21,5 +22,6 @@ export {
   getDevelopmentTheme,
   setDevelopmentTheme,
   removeDevelopmentTheme,
-  DevelopmentThemeManager
+  DevelopmentThemeManager,
+  ensureThemeStore
 }

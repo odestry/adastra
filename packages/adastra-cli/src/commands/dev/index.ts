@@ -20,7 +20,8 @@ import {
   getThemeVars,
   DevelopmentThemeManager,
   customLogger,
-  startDevMessage
+  startDevMessage,
+  ensureThemeStore
 } from '../../utilities'
 
 export default class Dev extends ThemeCommand {
@@ -40,7 +41,7 @@ export default class Dev extends ThemeCommand {
 - hot-reload Hot reloads local changes to CSS and sections (default)
 - full-page  Always refreshes the entire page
 - off        Deactivate live reload`,
-      default: 'hot-reload',
+      default: 'full-page',
       options: ['hot-reload', 'full-page', 'off'],
       env: 'SHOPIFY_FLAG_LIVE_RELOAD'
     }),
@@ -130,10 +131,11 @@ export default class Dev extends ThemeCommand {
   async run(): Promise<void> {
     // @ts-expect-error
     let { flags } = await this.parse(Dev)
-    const { store, password, port } = getThemeVars(flags)
+    // const { store, password, port } = getThemeVars(flags)
+    const store = ensureThemeStore(flags)
     const adminSession = await ensureAuthenticatedThemes(
       store,
-      password,
+      flags.password,
       [],
       true
     )
@@ -157,8 +159,6 @@ export default class Dev extends ThemeCommand {
       flags.path,
       '--ignore',
       ...Dev.ignoredFiles,
-      '--port',
-      port,
       ...flagsToPass
     ]
 
@@ -171,7 +171,7 @@ export default class Dev extends ThemeCommand {
       controller.abort()
       controller = new AbortController()
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      this.execute(adminSession, password, command, controller)
+      this.execute(adminSession, flags.password, command, controller)
     }, this.ThemeRefreshTimeoutInMs)
 
     const configEnv: ConfigEnv = {
@@ -191,7 +191,7 @@ export default class Dev extends ThemeCommand {
     startDevMessage(store, theme.id.toString())
 
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    this.execute(adminSession, password, command, controller)
+    this.execute(adminSession, flags.password, command, controller)
   }
 
   async execute(
@@ -200,7 +200,7 @@ export default class Dev extends ThemeCommand {
     command: string[],
     controller: AbortController
   ) {
-    await sleep(2)
+    await sleep(3)
     const storefrontToken = await ensureAuthenticatedStorefront([], password)
     return execCLI2(command, {
       adminSession,

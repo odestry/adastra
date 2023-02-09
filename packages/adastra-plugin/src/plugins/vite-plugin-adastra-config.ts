@@ -78,9 +78,6 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
           port,
           origin,
           strictPort: true,
-          watch: {
-            ignored: [`${options.root}/**/*.{liquid,json}`]
-          },
           hmr: {
             host: host as string,
             port,

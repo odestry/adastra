@@ -67,9 +67,6 @@
     ],
     "topicSeparator": " ",
     "topics": {
-      "create": {
-        "description": "Scafold a new adastra project"
-      },
       "dev": {
         "description": "Launch theme dev server"
       },

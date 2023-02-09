@@ -1,6 +1,6 @@
 import {
   log
-} from "../chunk-DZRLVMZ6.js";
+} from "../chunk-AG4S67C3.js";
 
 // src/commands/build/index.ts
 import { Command, Flags } from "@oclif/core";

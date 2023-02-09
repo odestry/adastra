@@ -2,10 +2,10 @@ import {
   DevelopmentThemeManager,
   ThemeCommand,
   customLogger,
-  getThemeVars,
+  ensureThemeStore,
   startDevMessage,
   theme_flags_default
-} from "../chunk-DZRLVMZ6.js";
+} from "../chunk-AG4S67C3.js";
 
 // src/commands/dev/index.ts
 import { globalFlags } from "@shopify/cli-kit/node/cli";
@@ -25,10 +25,10 @@ var _Dev = class extends ThemeCommand {
   }
   async run() {
     let { flags } = await this.parse(_Dev);
-    const { store, password, port } = getThemeVars(flags);
+    const store = ensureThemeStore(flags);
     const adminSession = await ensureAuthenticatedThemes(
       store,
-      password,
+      flags.password,
       [],
       true
     );
@@ -47,8 +47,6 @@ var _Dev = class extends ThemeCommand {
       flags.path,
       "--ignore",
       ..._Dev.ignoredFiles,
-      "--port",
-      port,
       ...flagsToPass
     ];
     let controller = new AbortController();
@@ -58,7 +56,7 @@ var _Dev = class extends ThemeCommand {
       );
       controller.abort();
       controller = new AbortController();
-      this.execute(adminSession, password, command, controller);
+      this.execute(adminSession, flags.password, command, controller);
     }, this.ThemeRefreshTimeoutInMs);
     const configEnv = {
       command: "serve",
@@ -72,10 +70,10 @@ var _Dev = class extends ThemeCommand {
       await server.listen();
     }
     startDevMessage(store, theme.id.toString());
-    this.execute(adminSession, password, command, controller);
+    this.execute(adminSession, flags.password, command, controller);
   }
   async execute(adminSession, password, command, controller) {
-    await sleep(2);
+    await sleep(3);
     const storefrontToken = await ensureAuthenticatedStorefront([], password);
     return execCLI2(command, {
       adminSession,
@@ -98,7 +96,7 @@ Dev.flags = {
 - hot-reload Hot reloads local changes to CSS and sections (default)
 - full-page  Always refreshes the entire page
 - off        Deactivate live reload`,
-    default: "hot-reload",
+    default: "full-page",
     options: ["hot-reload", "full-page", "off"],
     env: "SHOPIFY_FLAG_LIVE_RELOAD"
   }),
