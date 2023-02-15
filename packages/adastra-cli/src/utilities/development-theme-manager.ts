@@ -10,7 +10,7 @@ import {
   getDevelopmentTheme,
   setDevelopmentTheme,
   removeDevelopmentTheme
-} from './theme-conf.js'
+} from './local-storage.js'
 
 export const DEVELOPMENT_THEME_NOT_FOUND = (themeId: string) =>
   `Development theme #${themeId} could not be found. Please create a new development theme.`

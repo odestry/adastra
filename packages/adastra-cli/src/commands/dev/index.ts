@@ -17,7 +17,6 @@ import { createServer, loadConfigFromFile, ConfigEnv } from 'vite'
 import {
   themeFlags,
   ThemeCommand,
-  getThemeVars,
   DevelopmentThemeManager,
   customLogger,
   startDevMessage,
@@ -94,7 +93,7 @@ export default class Dev extends ThemeCommand {
     mode: Flags.string({
       char: 'm',
       description: 'Load environment variables from specific env files.',
-      env: 'NODE_ENV'
+      env: 'SHOPIFY_FLAG_MODE'
     })
   }
 
@@ -103,7 +102,6 @@ export default class Dev extends ThemeCommand {
     'jsconfig.*',
     'tsconfig.*',
     'src/',
-    '.vscode',
     'node_modules'
   ]
 
@@ -139,14 +137,18 @@ export default class Dev extends ThemeCommand {
       [],
       true
     )
-    // @ts-expect-error
-    const theme = await new DevelopmentThemeManager(adminSession).findOrCreate()
 
-    flags = {
-      ...flags,
-      theme: theme.id.toString(),
-      'overwrite-json':
-        Boolean(flags['theme-editor-sync']) && theme.createdAtRuntime
+    if (!flags.theme) {
+      const theme = await new DevelopmentThemeManager(
+        adminSession
+        // @ts-expect-error
+      ).findOrCreate()
+      flags = {
+        ...flags,
+        theme: theme.id.toString(),
+        'overwrite-json':
+          Boolean(flags['theme-editor-sync']) && theme.createdAtRuntime
+      }
     }
 
     const flagsToPass = this.passThroughFlags(flags, {
@@ -186,9 +188,10 @@ export default class Dev extends ThemeCommand {
         customLogger: customLogger()
       })
       await server.listen()
+      startDevMessage(store, flags.theme)
+    } else {
+      startDevMessage(store, flags.theme)
     }
-
-    startDevMessage(store, theme.id.toString())
 
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     this.execute(adminSession, flags.password, command, controller)
@@ -200,7 +203,7 @@ export default class Dev extends ThemeCommand {
     command: string[],
     controller: AbortController
   ) {
-    await sleep(3)
+    await sleep(2)
     const storefrontToken = await ensureAuthenticatedStorefront([], password)
     return execCLI2(command, {
       adminSession,

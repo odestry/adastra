@@ -1,5 +1,5 @@
 import themeFlags from './theme-flags'
-import { getThemeStore, setThemeStore } from './theme-conf'
+import { getThemeStore, setThemeStore } from './local-storage'
 // @ts-expect-error
 import { AbortError } from '@shopify/cli-kit/node/error'
 // @ts-expect-error
