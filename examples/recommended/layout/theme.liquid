@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="generator" content="adastra@0.1.0">
+    <meta name="generator" content="adastra">
 
     <link rel="canonical" href="{{ canonical_url }}">
 
@@ -37,10 +37,12 @@
     <!-- shopify/apps -->
     {{ content_for_header }}
 
-    {% comment %} Always add entrypoint below content_for_header {% endcomment %}
     {% liquid
+      # Always add entrypoints below content_for_header
+      # theme-check-disable
       render 'adastra' with 'base.css'
       render 'adastra' with 'index.js'
+      # theme-check-enable
     %}
   </head>
   <body class="template-{{ request.page_type | handle }}">

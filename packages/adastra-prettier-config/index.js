@@ -4,6 +4,7 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'none',
   arrowParens: 'avoid',
+  bracketSameLine: true,
   overrides: [
     {
       files: '*.liquid',

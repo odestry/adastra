@@ -68,13 +68,13 @@
     "topicSeparator": " ",
     "topics": {
       "dev": {
-        "description": "Launch theme dev server"
+        "description": "Launch both Shopify theme dev and Vite servers."
       },
       "build": {
-        "description": "Build files for production"
+        "description": "Build static files for production into teh assets folder."
       },
       "check": {
-        "description": "Run theme check"
+        "description": "Validate the theme using theme check same as shopify theme check."
       }
     }
   }

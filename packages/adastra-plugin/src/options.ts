@@ -9,7 +9,7 @@ export const resolveOptions = (
   options: PluginAdastraOptions
 ): ResolvedAdastraPluginOptions => {
   const root =
-    typeof options.root !== 'undefined' ? path.normalize(options.root) : './'
+    typeof options.root !== 'undefined' ? path.normalize(options.root) : '.'
   const sourceDir =
     typeof options.sourceDir !== 'undefined'
       ? path.normalize(options.sourceDir)
