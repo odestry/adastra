@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="generator" content="adastra@0.1.0">
+    <meta name="generator" content="adastra">
 
     <link rel="canonical" href="{{ canonical_url }}">
 
@@ -42,6 +42,7 @@
     {{ content_for_header }}
 
     {% liquid
+      # Always add entrypoint below content_for_header
       render 'adastra' with 'base.css'
     %}
   </head>

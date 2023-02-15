@@ -1,11 +1,11 @@
 {
-  "name": "example-basic",
-  "version": "0.1.0",
+  "name": "template-recommended",
   "author": "You Astronaut",
   "private": true,
   "scripts": {
     "dev": "adastra dev",
     "build": "adastra build",
+    "preview": "adastra preview",
     "check": "adastra check"
   },
   "devDependencies": {
