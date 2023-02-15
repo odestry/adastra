@@ -1,5 +1,6 @@
 import readline from 'node:readline'
 import color from 'chalk'
+import moment from 'moment'
 import logUpdate from 'log-update'
 import { random, randomBetween, sleep, enableAscii } from './utils.js'
 import { action } from './util/action.js'
@@ -109,3 +110,13 @@ export const label = (
   c = color.bgHex(brand.colors.yellowgreen),
   t = color.white
 ): string => c(` ${t(text)} `)
+
+export const colored = (
+  text: string,
+  c = color.hex(brand.colors.yellowgreen)
+): string => c(text)
+
+export const prefixed = (text: string, c = brand.colors.yellowgreen): string =>
+  `${color.white(moment().format('hh:mm:ss'))} ${color
+    .hex(c)
+    .bold(`[${brand.adastra}]`)} ${text}`
