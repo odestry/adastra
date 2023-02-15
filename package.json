@@ -6,13 +6,13 @@
   "license": "MIT",
   "workspaces": [
     "packages/*",
-    "examples/*"
+    "templates/*"
   ],
   "scripts": {
     "dev": "turbo run dev --filter=adastra-* --parallel",
-    "dev:example": "turbo run dev --filter=example-* --parallel",
+    "dev:tmp": "turbo run dev --filter=template-* --parallel",
     "build": "turbo run build --filter=adastra-*",
-    "build:example": "turbo run build --filter=example-*",
+    "build:tmp": "turbo run build --filter=template-*",
     "lint": "turbo run lint",
     "test": "turbo run test --filter=adastra-*",
     "test:watch": "turbo run test:watch --filter=adastra-*",

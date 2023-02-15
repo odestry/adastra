@@ -21,9 +21,8 @@ A poweful, flexibile framework for building unique and custom Shopify themes at 
 
 ## Templates
 
-- [recommended](./examples/recommended)
-- [basic](./examples/basic)
-- [pro](./examples/pro)
+- [recommended](./templates/recommended)
+- [minimal](./templates/minimal)
 
 ### Styling
 
