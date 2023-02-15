@@ -51,6 +51,7 @@ importers:
       execa: ^6.1.0
       moment: ^2.29.4
       oclif: ^3
+      open: ^8.4.0
       vite: ^4.0.4
     dependencies:
       '@oclif/core': 2.0.9
@@ -60,6 +61,7 @@ importers:
       chalk: 5.2.0
       execa: 6.1.0
       moment: 2.29.4
+      open: 8.4.0
       vite: 4.1.1
     devDependencies:
       adastra-tsconfig: link:../tsconfig

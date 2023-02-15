@@ -1,11 +1,11 @@
 import { Command, Flags } from '@oclif/core'
+import { execa } from 'execa'
 import { createServer, loadConfigFromFile, ConfigEnv } from 'vite'
-import { themeFlags, customLogger, startDevMessage } from '../../utilities'
+import { log, customLogger, startDevMessage } from '../../utilities/logger'
+import { globalFlags, themeFlags } from '../../utilities/flags'
+import BaseCommand from '../../utilities/command'
 
-// @ts-expect-error
-import { globalFlags } from '@shopify/cli-kit/node/cli'
-
-export default class Dev extends Command {
+export default class Dev extends BaseCommand {
   static description =
     'Lauches a Vite development server and uploads the current theme as a development theme to the connected store, While running, changes will push to the store in real time.'
 
@@ -87,39 +87,15 @@ export default class Dev extends Command {
     'node_modules'
   ]
 
-  static cli2Flags = [
-    'host',
-    'live-reload',
-    'poll',
-    'theme-editor-sync',
-    'overwrite-json',
-    'port',
-    'theme',
-    'only',
-    'ignore',
-    'stable',
-    'force'
-  ]
-
-  // Tokens are valid for 120m, better to be safe and refresh every 110min
-  ThemeRefreshTimeoutInMs = 110 * 60 * 1000
-
-  /**
-   * Executes the theme serve command.
-   * Every 110 minutes, it will refresh the session token and restart the server.
-   */
   async run(): Promise<void> {
     let { flags } = await this.parse(Dev)
 
-    const command = [
-      'theme',
-      'serve',
-      flags.path,
-      '--ignore',
-      ...Dev.ignoredFiles
-    ]
-
-    let controller = new AbortController()
+    if (!flags.ignore) {
+      flags = {
+        ...flags,
+        ignore: Dev.ignoredFiles
+      }
+    }
 
     const configEnv: ConfigEnv = {
       command: 'serve',
@@ -127,15 +103,21 @@ export default class Dev extends Command {
     }
 
     const config = await loadConfigFromFile(configEnv)
+    const command = ['theme', 'dev', ...this.passThroughFlags(flags)]
 
-    if (config) {
-      const server = await createServer({
-        customLogger: customLogger()
-      })
-      await server.listen()
-      startDevMessage('test', flags.theme)
-    } else {
-      startDevMessage('test', flags.theme)
+    try {
+      startDevMessage()
+      if (config) {
+        const server = await createServer({
+          customLogger: customLogger()
+        })
+        await server.listen()
+      }
+
+      // @ts-expect-error
+      execa('shopify', command).stdout.pipe(process.stdout)
+    } catch (error) {
+      log('error', error as string)
     }
   }
 }

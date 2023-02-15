@@ -1,10 +1,11 @@
-import { Command, Flags } from '@oclif/core'
-import { themeFlags } from '../../utilities'
+import { Flags } from '@oclif/core'
+import { execa } from 'execa'
 
-// @ts-expect-error
-import { globalFlags } from '@shopify/cli-kit/node/cli'
+import { log } from '../../utilities/logger'
+import { globalFlags, themeFlags } from '../../utilities/flags'
+import BaseCommand from '../../utilities/command'
 
-export default class Check extends Command {
+export default class Check extends BaseCommand {
   static description =
     'Validate the theme using theme check same as shopify theme check.'
 
@@ -75,32 +76,16 @@ Excludes checks matching any category when specified more than once`,
     })
   }
 
-  static cli2Flags = [
-    'auto-correct',
-    'category',
-    'config',
-    'exclude-category',
-    'fail-level',
-    'init',
-    'list',
-    'output',
-    'print',
-    'version'
-  ]
-
   async run(): Promise<void> {
     const { flags } = await this.parse(Check)
-    console.log('Build', flags)
-    // await execCLI2(
-    //   [
-    //     'theme',
-    //     'check',
-    //     flags.path,
-    //     ...this.passThroughFlags(flags, { allowedFlags: Check.cli2Flags })
-    //   ],
-    //   {
-    //     directory: flags.path
-    //   }
-    // )
+    const command = ['theme', 'check', ...this.passThroughFlags(flags)]
+
+    try {
+      log('info', 'Running theme check...')
+      const { stdout } = await execa('shopify', command)
+      log('info', stdout)
+    } catch (error) {
+      log('error', error as string)
+    }
   }
 }

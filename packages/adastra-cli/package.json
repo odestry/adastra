@@ -19,8 +19,8 @@
   "scripts": {
     "start": "./bin/run.js",
     "dev": "npm run watch -- --sourcemap",
-    "build": "tsup src/**/**/*.ts --dts --format esm",
-    "watch": "tsup src/**/**/*.ts --dts --format esm --watch",
+    "build": "tsup src/**/**/**/*.ts --dts --format esm --clean",
+    "watch": "tsup src/**/**/**/*.ts --dts --format esm --watch",
     "prepack": "oclif manifest",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
@@ -37,6 +37,7 @@
     "chalk": "^5.0.1",
     "execa": "^6.1.0",
     "moment": "^2.29.4",
+    "open": "^8.4.0",
     "vite": "^4.0.4"
   },
   "devDependencies": {
@@ -66,21 +67,9 @@
   "oclif": {
     "bin": "adastra",
     "dirname": "adastra",
-    "commands": "./dist",
+    "commands": "./dist/commands",
     "plugins": [
       "@oclif/plugin-help"
-    ],
-    "topicSeparator": " ",
-    "topics": {
-      "dev": {
-        "description": "Launch theme dev server"
-      },
-      "build": {
-        "description": "Build files for production"
-      },
-      "check": {
-        "description": "Run theme check"
-      }
-    }
+    ]
   }
 }

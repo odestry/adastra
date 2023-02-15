@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "adastra dev -s blanklob-app",
+    "preview": "adastra preview",
     "build": "adastra build",
     "check": "adastra check"
   },
   "devDependencies": {
-    "adastra-plugin": "workspace:*",
     "adastra-cli": "workspace:*",
-    "vite": "^4.0.4",
-    "tailwindcss": "^3.1.8",
+    "adastra-plugin": "workspace:*",
     "autoprefixer": "^10.4.8",
-    "postcss": "^8.4.16"
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8",
+    "vite": "^4.0.4"
   }
 }

@@ -39,15 +39,10 @@ export const customLogger = (): Logger => ({
   }
 })
 
-export const startDevMessage = (store: string, themeId?: string): void => {
+export const startDevMessage = (): void => {
   logger.clearScreen('info')
   log(
     'info',
-    color.hex(brand.colors.yellowgreen)(
-      `Initiating launch sequence for ${store.replace(
-        '.myshopify.com',
-        ''
-      )} store\n ${themeId ? `using theme with id: ${themeId}` : ''}`
-    )
+    color.hex(brand.colors.yellowgreen)(`Initiating launch sequence...`)
   )
 }

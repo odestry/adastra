@@ -4,7 +4,20 @@ import { normalizeStoreFqdn } from '@shopify/cli-kit/node/context/fqdn'
 // @ts-expect-error
 import { resolvePath } from '@shopify/cli-kit/node/path'
 
-const themeFlags = {
+export const globalFlags = {
+  environment: Flags.string({
+    hidden: true,
+    description: 'The environment to apply to the current command.',
+    env: 'SHOPIFY_FLAG_ENVIRONMENT'
+  }),
+  verbose: Flags.boolean({
+    hidden: false,
+    description: 'Increase the verbosity of the logs.',
+    env: 'SHOPIFY_FLAG_VERBOSE'
+  })
+}
+
+export const themeFlags = {
   path: Flags.string({
     hidden: false,
     description: 'The path to your theme directory.',
@@ -26,5 +39,3 @@ const themeFlags = {
     parse: (input, _) => Promise.resolve(normalizeStoreFqdn(input))
   })
 }
-
-export default themeFlags
