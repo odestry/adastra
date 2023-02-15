@@ -31,7 +31,7 @@
             {% form 'product', featured_product, class: 'grid w-full', novalidate: 'novalidate' %}
               <input type="hidden" name="id" value="{{ featured_product.selected_or_first_available_variant.id }}" disabled>
               <input type="text" name="quantity" min="1" value="1" hidden>
-              <button type="submit" name="add" class="group bg-contrast text-primary mt-2">
+              <button type="submit" name="add" class="button-primary group mt-2">
                 <span class="block group-[.loading]:hidden">{{ 'products.product.add_to_cart' | t }}</span>
                 {% comment %}
                   Hint ✦ 1 In-comment this code

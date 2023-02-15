@@ -30,7 +30,7 @@ class ProductForm extends HTMLElement {
       .then(response => response.json())
       .then(response => {
         if (response.status) return
-        // We redirect to checkout
+        // We redirect to checkout @todo improve it
         window.location = window.shopUrl + '/checkout'
       })
       .catch(error => {

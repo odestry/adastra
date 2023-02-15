@@ -1,21 +1,19 @@
 {
-  "name": "example-basic",
-  "version": "0.1.0",
+  "name": "template-recommended",
   "author": "You Astronaut",
   "private": true,
   "scripts": {
     "dev": "adastra dev",
     "build": "adastra build",
-    "check": "adastra check",
-    "sync": "adastra sync"
+    "preview": "adastra preview",
+    "check": "adastra check"
   },
-  "dependencies": {},
   "devDependencies": {
-    "adastra-plugin": "latest",
     "adastra-cli": "latest",
-    "vite": "^4.0.4",
-    "tailwindcss": "^3.1.8",
+    "adastra-plugin": "latest",
     "autoprefixer": "^10.4.8",
-    "postcss": "^8.4.16"
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8",
+    "vite": "^4.0.4"
   }
 }
