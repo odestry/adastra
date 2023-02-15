@@ -20,7 +20,7 @@ describe('adastra-plugin:config', () => {
     })
 
     expect(config.base).toBe('./')
-    expect(config.publicDir).toEqual(false)
+    expect(config.publicDir).toEqual('src/public')
     expect(config.build.outDir).toBe('assets')
     expect(config.build.assetsDir).toBe('')
     expect(config.build.rollupOptions.input).toEqual(['src/app.js'])
@@ -66,8 +66,8 @@ describe('resolve Adastra Options ', () => {
   it('handles a default options configuration', () => {
     const options = resolveOptions(emptyAdastraConfig)
 
-    expect(options.themeRoot).toBe('./')
-    expect(options.sourceCodeDir).toBe('src')
+    expect(options.root).toBe('./')
+    expect(options.sourceDir).toBe('src')
     expect(options.entrypointsDir).toBe('src')
     expect(options.additionalEntrypoints).toEqual([])
     expect(options.hash).toBe(false)
@@ -76,12 +76,12 @@ describe('resolve Adastra Options ', () => {
 
   it('accepts a partial options configuration with src dir', () => {
     const options = resolveOptions({
-      themeRoot: 'shopify',
-      sourceCodeDir: 'src'
+      root: 'shopify',
+      sourceDir: 'src'
     })
 
-    expect(options.themeRoot).toBe('shopify')
-    expect(options.sourceCodeDir).toBe('src')
+    expect(options.root).toBe('shopify')
+    expect(options.sourceDir).toBe('src')
     expect(options.entrypointsDir).toBe('src')
     expect(options.additionalEntrypoints).toEqual([])
     expect(options.hash).toBe(false)
@@ -90,13 +90,13 @@ describe('resolve Adastra Options ', () => {
 
   it('accepts a partial configuration with entrypoints', () => {
     const options = resolveOptions({
-      themeRoot: 'shopify',
-      sourceCodeDir: 'src',
+      root: 'shopify',
+      sourceDir: 'src',
       entrypointsDir: 'src/entries'
     })
 
-    expect(options.themeRoot).toBe('shopify')
-    expect(options.sourceCodeDir).toBe('src')
+    expect(options.root).toBe('shopify')
+    expect(options.sourceDir).toBe('src')
     expect(options.entrypointsDir).toBe('src/entries')
     expect(options.additionalEntrypoints).toEqual([])
     expect(options.hash).toBe(false)
@@ -109,8 +109,8 @@ describe('resolve Adastra Options ', () => {
       minify: false
     })
 
-    expect(options.themeRoot).toBe('./')
-    expect(options.sourceCodeDir).toBe('src')
+    expect(options.root).toBe('./')
+    expect(options.sourceDir).toBe('src')
     expect(options.entrypointsDir).toBe('src')
     expect(options.additionalEntrypoints).toEqual([])
     expect(options.hash).toBe(true)

@@ -6,14 +6,14 @@ import { build } from 'vite'
 import adastra from '../src'
 
 describe('adastra:build', () => {
-  const themeRoot = path.join('test', '__fixtures__')
+  const root = path.join('test', '__fixtures__')
   it('builds out adastra.liquid snippet file for production', async () => {
     await build({
       logLevel: 'silent',
       plugins: [
         adastra({
-          themeRoot,
-          sourceCodeDir: path.join(themeRoot, 'src')
+          root,
+          sourceDir: path.join(root, 'src')
         })
       ]
     })
@@ -30,8 +30,8 @@ describe('adastra:build', () => {
       logLevel: 'silent',
       plugins: [
         adastra({
-          themeRoot,
-          sourceCodeDir: path.join(themeRoot, 'src'),
+          root,
+          sourceDir: path.join(root, 'src'),
           hash: true,
           minify: false
         })

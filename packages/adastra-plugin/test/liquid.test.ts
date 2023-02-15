@@ -7,13 +7,13 @@ import { resolveOptions } from '../src/options'
 
 describe('adastra:liquid-plugin', () => {
   it('builds out .liquid files for development', async () => {
-    const themeRoot = path.join('test', '__fixtures__')
+    const root = path.join('test', '__fixtures__')
     const options = resolveOptions({
-      themeRoot,
-      sourceCodeDir: path.join(themeRoot, 'src')
+      root,
+      sourceDir: path.join(root, 'src')
     })
 
-    console.log(path.join(themeRoot, 'src'))
+    console.log(path.join(root, 'src'))
 
     const { configureServer } = adastraLiquidPlugin(options)
 
