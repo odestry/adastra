@@ -1,9 +1,10 @@
 import { Command, Flags } from '@oclif/core'
 import { execa } from 'execa'
 import { createServer, loadConfigFromFile, ConfigEnv } from 'vite'
-import { log, customLogger, startDevMessage } from '../../utilities/logger'
+import { log, customLogger } from '../../utilities/logger'
 import { globalFlags, themeFlags } from '../../utilities/flags'
 import BaseCommand from '../../utilities/command'
+import { loadWithRocketGradient, prefixed, sleep } from 'adastra-cli-kit'
 
 export default class Dev extends BaseCommand {
   static description =
@@ -106,7 +107,9 @@ export default class Dev extends BaseCommand {
     const command = ['theme', 'dev', ...this.passThroughFlags(flags)]
 
     try {
-      startDevMessage()
+      const launch = await loadWithRocketGradient(
+        'Initiating launch sequence...'
+      )
       if (config) {
         const server = await createServer({
           customLogger: customLogger()
@@ -116,6 +119,11 @@ export default class Dev extends BaseCommand {
 
       // @ts-expect-error
       execa('shopify', command).stdout.pipe(process.stdout)
+
+      // Imitating time to launch dev server
+      await sleep(4000)
+      launch.text = prefixed('Server launched, wish you good dev!')
+      launch.succeed()
     } catch (error) {
       log('error', error as string)
     }

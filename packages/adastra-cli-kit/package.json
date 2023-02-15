@@ -26,13 +26,15 @@
     "chalk": "^5.0.1",
     "gradient-string": "^2.0.2",
     "log-update": "^5.0.1",
+    "moment": "^2.29.4",
+    "ora": "^6.1.0",
     "sisteransi": "^1.0.5"
   },
   "devDependencies": {
+    "@types/gradient-string": "^1.1.2",
     "adastra-tsconfig": "workspace:*",
-    "eslint-config-adastra": "workspace:*",
     "eslint": "^7.32.0",
-    "@types/gradient-string": "^1.1.2"
+    "eslint-config-adastra": "workspace:*"
   },
   "repository": {
     "type": "git",

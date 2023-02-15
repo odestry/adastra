@@ -1,6 +1,8 @@
 import { Command, Flags } from '@oclif/core'
 import { build } from 'vite'
+
 import { log } from '../../utilities/logger'
+import { loadWithRocketGradient, prefixed, sleep } from 'adastra-cli-kit'
 
 export default class Build extends Command {
   static description = 'Builds all static files into the theme assets folder.'
@@ -33,7 +35,8 @@ export default class Build extends Command {
   async run(): Promise<void> {
     const { flags } = await this.parse(Build)
     try {
-      log('info', 'Building files for production...')
+      const building = await loadWithRocketGradient('Building for production..')
+      await sleep(1000)
       await build({
         // @ts-expect-error
         logLevel: flags['log-level'],
@@ -42,7 +45,8 @@ export default class Build extends Command {
           sourcemap: flags.sourcemap
         }
       })
-      log('info', 'Building files for production complete')
+      building.text = prefixed('Building files for production complete')
+      building.succeed()
     } catch (error) {
       log('error', error as string)
     }

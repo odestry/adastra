@@ -7,7 +7,7 @@ export {
   spinner
 } from './spinner.js'
 
-export { say, label } from './messages.js'
+export { say, label, colored, prefixed } from './messages.js'
 
 export { generateProjectName } from './project/index.js'
 
@@ -24,3 +24,4 @@ export {
 } from './utils.js'
 
 export { brand } from './brand.js'
+export { loadWithRocketGradient } from './gradient.js'

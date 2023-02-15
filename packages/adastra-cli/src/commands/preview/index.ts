@@ -6,7 +6,12 @@ import open from 'open'
 import { log } from '../../utilities/logger'
 import { globalFlags, themeFlags } from '../../utilities/flags'
 import BaseCommand from '../../utilities/command'
-import { brand } from 'adastra-cli-kit'
+import {
+  brand,
+  colored,
+  loadWithRocketGradient,
+  prefixed
+} from 'adastra-cli-kit'
 import detectURL from '../../utilities/detect-url'
 
 export default class Preview extends BaseCommand {
@@ -45,11 +50,12 @@ export default class Preview extends BaseCommand {
     const command = ['theme', 'open', ...this.passThroughFlags(flags)]
 
     try {
-      log('info', 'Opening a theme preview...')
+      const opening = await loadWithRocketGradient('Opening a theme preview...')
       const { stdout } = await execa('shopify', command)
-      log('info', color.hex(brand.colors.yellowgreen)(stdout))
       const url = detectURL(stdout)![0]
       if (url) await open(url)
+      opening.text = prefixed(colored(stdout))
+      opening.succeed()
     } catch (error) {
       log('error', error as string)
     }

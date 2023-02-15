@@ -4,6 +4,7 @@ import { execa } from 'execa'
 import { log } from '../../utilities/logger'
 import { globalFlags, themeFlags } from '../../utilities/flags'
 import BaseCommand from '../../utilities/command'
+import { loadWithRocketGradient, prefixed } from 'adastra-cli-kit'
 
 export default class Check extends BaseCommand {
   static description =
@@ -81,9 +82,10 @@ Excludes checks matching any category when specified more than once`,
     const command = ['theme', 'check', ...this.passThroughFlags(flags)]
 
     try {
-      log('info', 'Running theme check...')
+      const themeCheck = await loadWithRocketGradient('Running theme check...')
       const { stdout } = await execa('shopify', command)
-      log('info', stdout)
+      themeCheck.text = prefixed(stdout)
+      themeCheck.succeed()
     } catch (error) {
       log('error', error as string)
     }

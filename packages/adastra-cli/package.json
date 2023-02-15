@@ -36,8 +36,8 @@
     "adastra-cli-kit": "workspace:*",
     "chalk": "^5.0.1",
     "execa": "^6.1.0",
-    "moment": "^2.29.4",
     "open": "^8.4.0",
+    "ora": "^6.1.0",
     "vite": "^4.0.4"
   },
   "devDependencies": {

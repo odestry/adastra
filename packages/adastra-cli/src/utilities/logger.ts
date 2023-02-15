@@ -1,26 +1,19 @@
-import moment from 'moment'
-import color from 'chalk'
 import { createLogger, LogOptions, Logger } from 'vite'
-import { brand } from 'adastra-cli-kit'
+import { brand, prefixed } from 'adastra-cli-kit'
 
 const logger = createLogger()
 
 export const log = (logLevel: 'info' | 'warn' | 'error', msg: string): void => {
-  const message = (currentColor: string = brand.colors.yellowgreen): string =>
-    `${color.white(moment().format('hh:mm:ss'))} ${color
-      .hex(currentColor)
-      .bold(`[adastra]`)} ${msg}`
-
   switch (logLevel) {
     case 'warn':
-      logger.warn(message(brand.colors.warn))
+      logger.warn(prefixed(brand.colors.warn, msg))
       break
     case 'error':
-      logger.error(message(brand.colors.error))
+      logger.error(prefixed(brand.colors.error, msg))
       break
   }
 
-  logger.info(message())
+  logger.info(prefixed(msg))
 }
 
 export const customLogger = (): Logger => ({
@@ -38,11 +31,3 @@ export const customLogger = (): Logger => ({
     log('error', msg)
   }
 })
-
-export const startDevMessage = (): void => {
-  logger.clearScreen('info')
-  log(
-    'info',
-    color.hex(brand.colors.yellowgreen)(`Initiating launch sequence...`)
-  )
-}
