@@ -1,13 +1,10 @@
-import { Flags } from '@oclif/core'
+import { Command, Flags } from '@oclif/core'
+import { themeFlags } from '../../utilities'
 
-// @ts-expect-error
-import { execCLI2 } from '@shopify/cli-kit/node/ruby'
 // @ts-expect-error
 import { globalFlags } from '@shopify/cli-kit/node/cli'
 
-import { themeFlags, ThemeCommand } from '../../utilities'
-
-export default class Check extends ThemeCommand {
+export default class Check extends Command {
   static description =
     'Validate the theme using theme check same as shopify theme check.'
 
@@ -92,18 +89,18 @@ Excludes checks matching any category when specified more than once`,
   ]
 
   async run(): Promise<void> {
-    // @ts-expect-error
     const { flags } = await this.parse(Check)
-    await execCLI2(
-      [
-        'theme',
-        'check',
-        flags.path,
-        ...this.passThroughFlags(flags, { allowedFlags: Check.cli2Flags })
-      ],
-      {
-        directory: flags.path
-      }
-    )
+    console.log('Build', flags)
+    // await execCLI2(
+    //   [
+    //     'theme',
+    //     'check',
+    //     flags.path,
+    //     ...this.passThroughFlags(flags, { allowedFlags: Check.cli2Flags })
+    //   ],
+    //   {
+    //     directory: flags.path
+    //   }
+    // )
   }
 }

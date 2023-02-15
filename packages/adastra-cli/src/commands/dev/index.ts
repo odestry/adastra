@@ -1,29 +1,11 @@
+import { Command, Flags } from '@oclif/core'
+import { createServer, loadConfigFromFile, ConfigEnv } from 'vite'
+import { themeFlags, customLogger, startDevMessage } from '../../utilities'
+
 // @ts-expect-error
 import { globalFlags } from '@shopify/cli-kit/node/cli'
-// @ts-expect-error
-import { execCLI2 } from '@shopify/cli-kit/node/ruby'
-// @ts-expect-error
-import { AbortController } from '@shopify/cli-kit/node/abort'
-import {
-  AdminSession,
-  ensureAuthenticatedStorefront,
-  ensureAuthenticatedThemes
-  // @ts-expect-error
-} from '@shopify/cli-kit/node/session'
-// @ts-expect-error
-import { sleep } from '@shopify/cli-kit/node/system'
-import { Flags } from '@oclif/core'
-import { createServer, loadConfigFromFile, ConfigEnv } from 'vite'
-import {
-  themeFlags,
-  ThemeCommand,
-  DevelopmentThemeManager,
-  customLogger,
-  startDevMessage,
-  ensureThemeStore
-} from '../../utilities'
 
-export default class Dev extends ThemeCommand {
+export default class Dev extends Command {
   static description =
     'Lauches a Vite development server and uploads the current theme as a development theme to the connected store, While running, changes will push to the store in real time.'
 
@@ -127,54 +109,17 @@ export default class Dev extends ThemeCommand {
    * Every 110 minutes, it will refresh the session token and restart the server.
    */
   async run(): Promise<void> {
-    // @ts-expect-error
     let { flags } = await this.parse(Dev)
-    // const { store, password, port } = getThemeVars(flags)
-    const store = ensureThemeStore(flags)
-    const adminSession = await ensureAuthenticatedThemes(
-      store,
-      flags.password,
-      [],
-      true
-    )
-
-    if (!flags.theme) {
-      const theme = await new DevelopmentThemeManager(
-        adminSession
-        // @ts-expect-error
-      ).findOrCreate()
-      flags = {
-        ...flags,
-        theme: theme.id.toString(),
-        'overwrite-json':
-          Boolean(flags['theme-editor-sync']) && theme.createdAtRuntime
-      }
-    }
-
-    const flagsToPass = this.passThroughFlags(flags, {
-      allowedFlags: Dev.cli2Flags
-    })
 
     const command = [
       'theme',
       'serve',
       flags.path,
       '--ignore',
-      ...Dev.ignoredFiles,
-      ...flagsToPass
+      ...Dev.ignoredFiles
     ]
 
     let controller = new AbortController()
-
-    setInterval(() => {
-      console.log(
-        'Refreshing theme session token and restarting theme server...'
-      )
-      controller.abort()
-      controller = new AbortController()
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      this.execute(adminSession, flags.password, command, controller)
-    }, this.ThemeRefreshTimeoutInMs)
 
     const configEnv: ConfigEnv = {
       command: 'serve',
@@ -188,27 +133,9 @@ export default class Dev extends ThemeCommand {
         customLogger: customLogger()
       })
       await server.listen()
-      startDevMessage(store, flags.theme)
+      startDevMessage('test', flags.theme)
     } else {
-      startDevMessage(store, flags.theme)
+      startDevMessage('test', flags.theme)
     }
-
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    this.execute(adminSession, flags.password, command, controller)
-  }
-
-  async execute(
-    adminSession: AdminSession,
-    password: string | undefined,
-    command: string[],
-    controller: AbortController
-  ) {
-    await sleep(2)
-    const storefrontToken = await ensureAuthenticatedStorefront([], password)
-    return execCLI2(command, {
-      adminSession,
-      storefrontToken,
-      signal: controller.signal
-    })
   }
 }

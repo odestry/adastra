@@ -42,21 +42,23 @@ importers:
     specifiers:
       '@oclif/core': ^2
       '@oclif/plugin-help': ^5
-      '@shopify/cli-kit': ^3.40.2
+      '@shopify/cli-kit': ^3.43.0
       adastra-cli-kit: workspace:*
       adastra-tsconfig: workspace:*
       chalk: ^5.0.1
       eslint: ^7.32.0
       eslint-config-adastra: workspace:*
+      execa: ^6.1.0
       moment: ^2.29.4
       oclif: ^3
       vite: ^4.0.4
     dependencies:
       '@oclif/core': 2.0.9
       '@oclif/plugin-help': 5.2.4
-      '@shopify/cli-kit': 3.40.2
+      '@shopify/cli-kit': 3.43.0
       adastra-cli-kit: link:../adastra-cli-kit
       chalk: 5.2.0
+      execa: 6.1.0
       moment: 2.29.4
       vite: 4.1.1
     devDependencies:
@@ -1166,8 +1168,8 @@ packages:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: false
 
-  /@shopify/cli-kit/3.40.2:
-    resolution: {integrity: sha512-9N9ZOLCHaGvwNcXrmiG2rGlhn2e1YEU08+CbzakovLed1DCrRjKcK/jhhQpCjfShIOBQINRFAfa7F5p+19GCQg==}
+  /@shopify/cli-kit/3.43.0:
+    resolution: {integrity: sha512-33iGO0C8Idu6o54GZNYKgEdsbId7VCdfAAZnQdRZBH+nAwNdKADclYfDFJAX38fp5rBMqRuLT5i4NfNWNpG4EQ==}
     engines: {node: '>=14.17.0'}
     os: [darwin, linux, win32]
     dependencies:
