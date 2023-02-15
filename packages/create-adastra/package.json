@@ -1,6 +1,6 @@
 {
   "name": "create-adastra",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Blanklob",
   "license": "MIT",
   "type": "module",
@@ -19,9 +19,7 @@
     "watch": "tsup src/*.ts --dts --format esm --watch",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "lint:types": "tsc --noEmit",
-    "test": "vitest run",
-    "coverage": "vitest run --coverage"
+    "lint:types": "tsc --noEmit"
   },
   "dependencies": {
     "adastra-cli-kit": "workspace:*",
