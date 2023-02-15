@@ -41,7 +41,7 @@ export const randomBetween = (min: number, max: number): number =>
 export const getAdastraVersion = async (): Promise<string> =>
   await new Promise<string>(resolve => {
     if (v.length > 0) return resolve(v)
-    get('https://registry.npmjs.org/asdastra-plugin/latest', res => {
+    get('https://registry.npmjs.org/adastra-plugin/latest', res => {
       let body = ''
       // eslint-disable-next-line
       res.on('data', chunk => (body += chunk))
