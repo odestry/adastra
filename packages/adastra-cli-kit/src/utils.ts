@@ -38,10 +38,10 @@ export const random = (...arr: any[]): any => {
 export const randomBetween = (min: number, max: number): number =>
   Math.floor(Math.random() * (max - min + 1) + min)
 
-export const getAstroVersion = async (): Promise<string> =>
+export const getAdastraVersion = async (): Promise<string> =>
   await new Promise<string>(resolve => {
     if (v.length > 0) return resolve(v)
-    get('https://registry.npmjs.org/astro/latest', res => {
+    get('https://registry.npmjs.org/asdastra-plugin/latest', res => {
       let body = ''
       // eslint-disable-next-line
       res.on('data', chunk => (body += chunk))

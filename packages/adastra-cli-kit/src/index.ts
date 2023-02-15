@@ -15,7 +15,7 @@ export {
   enableAscii,
   hookExit,
   randomBetween,
-  getAstroVersion,
+  getAdastraVersion,
   getUserName,
   align,
   random,
