@@ -22,7 +22,7 @@ class ProductForm extends HTMLElement {
     })
 
     const config = fetchConfig()
-    // We get the data from the product form its self
+    // We get the data from the product form it self
     config.body = new FormData(this.form)
 
     // We send a request to Ajax Cart API

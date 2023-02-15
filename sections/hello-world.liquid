@@ -1,16 +1,16 @@
 {% comment %}
-  First, Thanks for chosing Adastra ✦ for your Shopify theme project.
-  Adastra is pretty straight forward, if you know basic Shopify
+  First, Thanks for choosing Adastra ✦ for your Shopify theme project.
+  Adastra is pretty straight forward, if you know basic Shopify theme dev
   you wont need to learn nothing else to work or adopte Adastra :)
 
-  Let take for example this sample section, we have:
-  - Some section settings like heading
-  - Some card snippet and blocks each block represents a card
-  - And a product form using <product-form> element
+  Let take for example this section, we have:
+  - Some section settings like a heading
+  - A card snippet and blocks each block is mapped to a card
+  - And a product form using <product-form> custom element
 
   The <product-form> element wraps the liquid form, to enhance it
-  with Ajax, if you remove the element the javascript wont be used,
-  and the form will still work!
+  with Ajax, if you remove the element the Javascript wont be used,
+  and the form will still submit to Shopify cart!
 {% endcomment %}
 
 <section class="mx-auto max-w-2xl py-6 md:py-10 px-6">
@@ -54,7 +54,8 @@
   <ul class="grid grid-cols-1 md:grid-cols-2 gap-4" role="list">
     {% for block in section.blocks %}
       <li class="list-none">
-        {% render 'card', heading: block.settings.heading,
+        {% render 'card'
+          heading: block.settings.heading,
           description: block.settings.description,
           link: block.settings.link
         %}
@@ -116,11 +117,6 @@
     {
       "name": "Hello World"
     }
-  ],
-  "enabled_on": {
-    "templates": [
-      "*"
-    ]
-  }
+  ]
 }
 {% endschema %}
