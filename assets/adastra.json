@@ -1,0 +1,12 @@
+{
+  "src\/base.css": {
+    "file": "base.css",
+    "isEntry": true,
+    "src": "src\/base.css"
+  },
+  "src\/index.js": {
+    "file": "index.js",
+    "isEntry": true,
+    "src": "src\/index.js"
+  }
+}
