@@ -27,7 +27,8 @@
 %}
 
 {% if image != blank %}
-  {{ image
+  {{
+    image
     | image_url: width: 500
     | image_tag:
       alt: image_alt,

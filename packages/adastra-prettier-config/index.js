@@ -9,9 +9,11 @@ module.exports = {
     {
       files: '*.liquid',
       options: {
+        printWidth: 180,
         singleQuote: false,
         singleLineLinkTags: true,
-        liquidSingleQuote: false,
+        liquidSingleQuote: true,
+        bracketSameLine: true,
         plugins: [
           require('@shopify/prettier-plugin-liquid'),
           require('prettier-plugin-tailwindcss')

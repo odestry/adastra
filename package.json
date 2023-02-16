@@ -6,16 +6,17 @@
   "license": "MIT",
   "workspaces": [
     "packages/*",
-    "templates/*"
+    "templates/*",
+    "examples/*"
   ],
   "scripts": {
-    "dev": "turbo run dev --filter=adastra-* --parallel",
+    "dev": "turbo run dev --filter=*adastra* --parallel",
     "dev:tmp": "turbo run dev --filter=template-* --parallel",
-    "build": "turbo run build --filter=adastra-*",
+    "build": "turbo run build --filter=*adastra*",
     "build:tmp": "turbo run build --filter=template-*",
     "lint": "turbo run lint",
-    "test": "turbo run test --filter=adastra-*",
-    "test:watch": "turbo run test:watch --filter=adastra-*",
+    "test": "turbo run test --filter=*adastra*",
+    "test:watch": "turbo run test:watch --filter=*adastra*",
     "change:add": "changeset add",
     "change:version": "changeset version",
     "change:release": "turbo run build lint test && changeset version && changeset publish",

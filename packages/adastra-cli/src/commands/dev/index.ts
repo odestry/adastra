@@ -1,4 +1,4 @@
-import { Command, Flags } from '@oclif/core'
+import { Flags } from '@oclif/core'
 import { execa } from 'execa'
 import { createServer, loadConfigFromFile, ConfigEnv } from 'vite'
 import { log, customLogger } from '../../utilities/logger'
@@ -82,6 +82,7 @@ export default class Dev extends BaseCommand {
 
   static ignoredFiles = [
     'package.json',
+    'package-lock.json',
     'jsconfig.*',
     'tsconfig.*',
     'src/',

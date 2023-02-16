@@ -185,15 +185,19 @@ importers:
     specifiers:
       adastra-cli: workspace:*
       adastra-plugin: workspace:*
+      adastra-prettier-config: workspace:*
       autoprefixer: ^10.4.8
       postcss: ^8.4.16
+      prettier: ^2.8.4
       tailwindcss: ^3.1.8
       vite: ^4.0.4
     devDependencies:
       adastra-cli: link:../../packages/adastra-cli
       adastra-plugin: link:../../packages/adastra-plugin
+      adastra-prettier-config: link:../../packages/adastra-prettier-config
       autoprefixer: 10.4.13_postcss@8.4.21
       postcss: 8.4.21
+      prettier: 2.8.4
       tailwindcss: 3.2.4_postcss@8.4.21
       vite: 4.1.1
 
