@@ -62,7 +62,7 @@ describe('adastra-plugin:config', () => {
   })
 })
 
-describe('resolve Adastra Options ', () => {
+describe('resolve Adastra Options', () => {
   it('handles a default options configuration', () => {
     const options = resolveOptions(emptyAdastraConfig)
 
