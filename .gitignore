@@ -2,8 +2,9 @@
 
 # Dependencies
 node_modules
-.pnpm-debug.log
 pnpm-lock.yaml
+package-lock.json
+yarn.lock
 
 # Editor directories and files
 .vscode/*
