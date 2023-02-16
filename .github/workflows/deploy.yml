@@ -6,7 +6,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -21,4 +21,4 @@ jobs:
           SHOPIFY_FLAG_STORE: ${{ secrets.SHOP_STORE }}
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOP_ACCESS_TOKEN }}
           SHOPIFY_FLAG_THEME_ID: ${{ secrets.SHOP_THEME_ID }}
-        run: shopify theme push -t
+        run: shopify theme push -t -x package.json
