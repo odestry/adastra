@@ -72,7 +72,7 @@ If the command deosn't work, its propably because you are not logged in to a sto
 
 In nutshell, all Shopify theme folder remain the same, except for one folder, the `assets` folder is replaced with a new folder in the root of the project called `src` all static files (Javascript, styles, fonts, etc..) need to be inside this folder instead of the assets folder.
 
-By default **Adastra 🌟** watches changes in this folder, so you dont need to build files during development, the only time you build files is when  you are ready to ship to production. Thats why `assets` folder is added in `.gitignore` by default.
+By default **Adastra 🌟** watches changes in this folder, so you dont need to build files during development, the only time you build files is when you are ready to ship to production. Thats why `assets` folder is added in `.gitignore` by default.
 
 Also **Adastra 🌟** automaticely upon launching the dev server creates a snippet, to add all required Liquid code for Vite to work properly. No need to remove or the change this snippet located `snippets/adastra.liquid`
 
@@ -104,5 +104,6 @@ Learn more about theme development principals and native web capabilities:
 - [Progressive enhancement](https://css-tricks.com/embrace-the-platform)
 
 <!-- Markdown links & img dfn's -->
+
 [ci-url]: https://github.com/blanklob/adastra/actions/workflows/ci.yml
 [ci-badge]: https://github.com/blanklob/adastra/actions/workflows/ci.yml/badge.svg

@@ -34,8 +34,8 @@
     %}
 
     <script>
-      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-      window.addEventListener('load', () => document.documentElement.classList.add('ready'));
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js')
+      window.addEventListener('load', () => document.documentElement.classList.add('ready'))
     </script>
 
     <!-- shopify/apps -->
@@ -46,10 +46,10 @@
       render 'adastra' with 'base.css'
     %}
   </head>
-  <body class="min-h-full grid grid-rows-[auto_1fr_auto] grid-cols-[100%] font-body font-body-weight">
+  <body class="font-body-weight grid min-h-full grid-cols-[100%] grid-rows-[auto_1fr_auto] font-body">
     <header class="pt-12 pb-6 text-center">
-      <span class="max-w-md w-full text-2xl md:text-4xl font-heading font-heading-weight">{{ shop.name }}</span>
-      <h1 class="text-lg font-heading font-heading-weight mt-8">{{ 'gift_cards.issued.subtext' | t }}</h1>
+      <span class="font-heading-weight w-full max-w-md font-heading text-2xl md:text-4xl">{{ shop.name }}</span>
+      <h1 class="font-heading-weight mt-8 font-heading text-lg">{{ 'gift_cards.issued.subtext' | t }}</h1>
       <div class="block">
         <p>
           {% if settings.currency_code_enabled %}
@@ -74,31 +74,28 @@
     </header>
 
     <main class="pb-10">
-      <div class="flex items-center justify-center sm:max-w-sm mx-auto">
+      <div class="mx-auto flex items-center justify-center sm:max-w-sm">
         <img
           src="{{ 'gift-card/card.svg' | shopify_asset_url }}"
           alt="Giftcard"
           class="w-full"
           height="{{ 570 | divided_by: 1.5 }}"
           width="570"
-          loading="lazy"
-        >
+          loading="lazy">
       </div>
       <div
-        class="gift-card__qr-code mt-10 [&_img]:block [&_img]:mx-auto"
-        data-identifier="{{ gift_card.qr_identifier }}"
-      ></div>
+        class="gift-card__qr-code mt-10 [&_img]:mx-auto [&_img]:block"
+        data-identifier="{{ gift_card.qr_identifier }}"></div>
       <div class="mt-8 text-center">
         <input
           type="text"
-          class="gift-card__number bg-transparent text-primary text-lg border-none p-0"
+          class="gift-card__number border-none bg-transparent p-0 text-lg text-primary"
           value="{{ gift_card.code | format_code }}"
           aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
-          readonly
-        >
+          readonly>
         <div class="block">
-          <button class="gift-card__copy-link text-lg mt-4 underline">{{ 'gift_cards.issued.copy_code' | t }}</button>
-          <span class="gift-card__copy-success flex items-center justify-center gap-2 mt-2" role="status"></span>
+          <button class="gift-card__copy-link mt-4 text-lg underline">{{ 'gift_cards.issued.copy_code' | t }}</button>
+          <span class="gift-card__copy-success mt-2 flex items-center justify-center gap-2" role="status"></span>
           <template>
             {{ 'gift_cards.issued.copy_code_success' | t }}
           </template>
@@ -116,15 +113,15 @@
         <div class="mt-4">
           <a
             href="{{ shop.url }}"
-            class="button bg-primary text-contrast block w-full max-w-[250px] mx-auto"
+            class="button mx-auto block w-full max-w-[250px] bg-primary text-contrast"
             target="_blank"
             rel="noopener"
             aria-describedby="a11y-new-window-message">
             {{ 'gift_cards.issued.shop_link' | t }}
           </a>
           <button
-            class="button border border-primary/10 bg-contrast text-primary block w-full max-w-[250px] mt-4 mx-auto"
-            onclick="window.print();" >
+            class="button mx-auto mt-4 block w-full max-w-[250px] border border-primary/10 bg-contrast text-primary"
+            onclick="window.print();">
             {{ 'gift_cards.issued.print_gift_card' | t }}
           </button>
         </div>
