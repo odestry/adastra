@@ -17,6 +17,7 @@
   },
   "accessibility": {
     "skip_to_text": "Skip to content",
+    "loading": "Loading",
     "close": "Close",
     "link_messages": {
       "new_window": "Opens in a new window."

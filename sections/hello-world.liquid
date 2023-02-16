@@ -25,7 +25,12 @@
         <p class="text-xl leading-relaxed font-medium col-span-1 md:col-span-3">{{ section.settings.instruction_2 }}</p>
 
         <div class="flex flex-col p-4 rounded-xl bg-surface border border-primary/5 col-span-1 md:col-span-2">
-          <h2 class="text-2xl font-bold tracking-tight mb-2">{{ featured_product.title }}</h2>
+          <h2 class="text-2xl font-bold tracking-tight">{{ featured_product.title }}</h2>
+          {% if featured_product.featured_media != blank %}
+            <div class="aspect-square my-2">
+              {% render 'media' media: featured_product.featured_media %}
+            </div>
+          {% endif %}
           {% render 'price', product: featured_product %}
           <product-form>
             {% form 'product', featured_product, class: 'grid w-full', novalidate: 'novalidate' %}
@@ -33,13 +38,11 @@
               <input type="text" name="quantity" min="1" value="1" hidden>
               <button type="submit" name="add" class="button-primary group mt-2">
                 <span class="block group-[.loading]:hidden">{{ 'products.product.add_to_cart' | t }}</span>
-                {% comment %}
-                  Hint ✦ 1 In-comment this code
-                  <div class="hidden group-[.loading]:block" role="status">
+                  {% comment %} Hint ✦ 1 Change this code {% endcomment %}
+                  <div class="hidden group-[.loading]:hidden" role="status">
                     {% render 'icon' with 'spinner' %}
                     <span class="sr-only">{{ 'accessibility.loading' | t }}</span>
                   </div>
-                {% endcomment %}
               </button>
             {% endform %}
           </product-form>
