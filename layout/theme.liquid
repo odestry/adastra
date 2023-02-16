@@ -39,8 +39,10 @@
 
     {% liquid
       # Always add entrypoint below content_for_header
+      # theme-check-disable
       render 'adastra' with 'base.css'
       render 'adastra' with 'index.js'
+      # theme-check-enable
     %}
   </head>
   <body class="template-{{ request.page_type | handle }}">
