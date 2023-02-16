@@ -14,8 +14,15 @@ jobs:
         with:
           ruby-version: 3.1
           bundler: "latest"
-      - name: Setup
+      - name: Install Shopify CLI
         run: npm install -g @shopify/cli @shopify/theme
+
+      - name: Setup
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
       - name: Deploy
         env:
           SHOPIFY_FLAG_STORE: ${{ secrets.SHOP_STORE }}
