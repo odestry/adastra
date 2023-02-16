@@ -1,5 +1,6 @@
 name: Deploy
 on: [push]
+
 jobs:
   deploy:
     name: Deploy

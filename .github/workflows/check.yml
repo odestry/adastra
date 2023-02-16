@@ -1,7 +1,6 @@
-# For more info check: https://shopify.dev/themes/tools/theme-check
-
 name: Theme Check
 on: [push]
+
 jobs:
   theme-check:
     name: Theme Check
