@@ -8,34 +8,29 @@ class ProductForm extends HTMLElement {
     this.form.addEventListener('submit', this.submitHandler.bind(this))
   }
 
-  submitHandler(event) {
+  async submitHandler(event) {
     event.preventDefault()
     // Hint ✦ 2 change this ;)
-    this.button.classList.add('animate-pulse')
+    this.button.classList.add('loading')
 
-    const fetchConfig = (type = 'javascript') => ({
+    const config = (type = 'javascript') => ({
       method: 'POST',
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
         Accept: `application/${type}`
-      }
+      },
+      // We get the data from the product form it self
+      body: new FormData(this.form)
     })
 
-    const config = fetchConfig()
-    // We get the data from the product form it self
-    config.body = new FormData(this.form)
-
-    // We send a request to Ajax Cart API
-    fetch(`${routes.cart_add_url}`, config)
-      .then(response => response.json())
-      .then(response => {
-        if (response.status) return
-        // We redirect to checkout @todo improve it
-        window.location = window.shopUrl + '/checkout'
-      })
-      .catch(error => {
-        console.error(error)
-      })
+    // We send a request to the ajax Cart API
+    try {
+      await fetch(`${routes.cart_add_url}`, config())
+      // We redirect to checkout
+      window.location = window.shopUrl + '/checkout'
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 
