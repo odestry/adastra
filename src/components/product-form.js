@@ -11,7 +11,7 @@ class ProductForm extends HTMLElement {
   async submitHandler(event) {
     event.preventDefault()
     // Hint ✦ 2 change this ;)
-    this.button.classList.add('loading')
+    this.button.classList.add('animate-pulse')
 
     const config = (type = 'javascript') => ({
       method: 'POST',

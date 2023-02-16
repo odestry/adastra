@@ -37,12 +37,12 @@
               <input type="hidden" name="id" value="{{ featured_product.selected_or_first_available_variant.id }}" disabled>
               <input type="text" name="quantity" min="1" value="1" hidden>
               <button type="submit" name="add" class="button-primary group mt-2">
+                {% comment %} Hint ✦ 1 Change this code {% endcomment %}
                 <span class="block group-[.loading]:hidden">{{ 'products.product.add_to_cart' | t }}</span>
-                  {% comment %} Hint ✦ 1 Change this code {% endcomment %}
-                  <div class="hidden group-[.loading]:hidden" role="status">
-                    {% render 'icon' with 'spinner' %}
-                    <span class="sr-only">{{ 'accessibility.loading' | t }}</span>
-                  </div>
+                <div class="hidden group-[.loading]:hidden" role="status">
+                  {% render 'icon' with 'spinner' %}
+                  <span class="sr-only">{{ 'accessibility.loading' | t }}</span>
+                </div>
               </button>
             {% endform %}
           </product-form>
