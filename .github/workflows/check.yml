@@ -1,0 +1,14 @@
+# For more info check: https://shopify.dev/themes/tools/theme-check
+
+name: Theme Check
+on: [push]
+jobs:
+  theme-check:
+    name: Theme Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Theme Check
+        uses: shopify/theme-check-action@v1
+        with:
+          token: ${{ github.token }}
