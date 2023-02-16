@@ -30,8 +30,8 @@
     %}
 
     <script>
-      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-      window.addEventListener('load', () => document.documentElement.classList.add('ready'));
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js')
+      window.addEventListener('load', () => document.documentElement.classList.add('ready'))
     </script>
 
     <!-- shopify/apps -->
@@ -39,10 +39,8 @@
 
     {% liquid
       # Always add entrypoint below content_for_header
-      # theme-check-disable
       render 'adastra' with 'base.css'
       render 'adastra' with 'index.js'
-      # theme-check-enable
     %}
   </head>
   <body class="template-{{ request.page_type | handle }}">
@@ -53,7 +51,7 @@
     </main>
 
     <script>
-      window.shopUrl = '{{ request.origin }}';
+      window.shopUrl = '{{ request.origin }}'
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
         cart_change_url: '{{ routes.cart_change_url }}',
@@ -61,7 +59,7 @@
         cart_url: '{{ routes.cart_url }}',
         predictive_search_url: '{{ routes.predictive_search_url }}',
         product_recommendations_url: '{{ routes.product_recommendations_url }}',
-      };
+      }
     </script>
   </body>
 </html>
