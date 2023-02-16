@@ -9,7 +9,7 @@ pnpm-lock.yaml
 .vscode/*
 !.vscode/extensions.json
 .idea
-!.github/assets
+dist
 .editorconfig
 
 # Misc
@@ -18,8 +18,9 @@ pnpm-lock.yaml
 ._*
 Thumbs.db
 logs
+*.log
 .env
 
 # Adastra
-/assets
-snippets/adastra.*
+assets/*
+!assets/.gitkeep
