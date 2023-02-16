@@ -1,5 +1,11 @@
 # `adastra-cli`
 
+## 0.2.1
+
+### Patch Changes
+
+- Fixed issue when user not connected to CLI
+
 ## 0.2.0
 
 ### Minor Changes

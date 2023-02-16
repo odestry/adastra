@@ -7,12 +7,12 @@ export default class Build extends Command {
   static description = 'Builds all static files into the theme assets folder.'
 
   static flags = {
-    minify: Flags.boolean({
+    unminify: Flags.boolean({
       required: false,
-      char: 'm',
+      char: 'u',
       description:
         'Minifies static files for production using Esbuild, then outputs them in the theme assets folder',
-      env: 'ADASTRA_FLAG_MINIFY',
+      env: 'ADASTRA_FLAG_UNMINIFY',
       default: false
     }),
     sourcemap: Flags.boolean({
@@ -38,7 +38,7 @@ export default class Build extends Command {
         // @ts-expect-error
         logLevel: flags['log-level'],
         build: {
-          minify: flags.minify ? 'esbuild' : false,
+          minify: flags.unminify ? false : 'esbuild',
           sourcemap: flags.sourcemap
         }
       })

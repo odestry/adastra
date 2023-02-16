@@ -4,7 +4,7 @@ import { createServer, loadConfigFromFile, ConfigEnv } from 'vite'
 import { log, customLogger } from '../../utilities/logger'
 import { globalFlags, themeFlags } from '../../utilities/flags'
 import BaseCommand from '../../utilities/command'
-import { loadWithRocketGradient, prefixed, sleep } from 'adastra-cli-kit'
+import { loadWithRocketGradient } from 'adastra-cli-kit'
 
 export default class Dev extends BaseCommand {
   static description =
@@ -116,15 +116,13 @@ export default class Dev extends BaseCommand {
           customLogger: customLogger()
         })
         await server.listen()
+        launch.text = 'Vite server launched, wait for Shopify server to launch!'
+        launch.succeed()
       }
 
-      // @ts-expect-error
-      execa('shopify', command).stdout.pipe(process.stdout)
-
-      // Imitating time to launch dev server
-      await sleep(4000)
-      launch.text = prefixed('Server launched, wish you good dev!')
-      launch.succeed()
+      await execa('shopify', command, {
+        stdio: 'inherit'
+      })
     } catch (error) {
       log('error', error as string)
     }
