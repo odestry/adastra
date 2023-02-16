@@ -14,7 +14,7 @@ jobs:
         with:
           ruby-version: 3.1
           bundler: "latest"
-      - name: Install Shopify CLI
+      - name: Setup
         run: npm install -g @shopify/cli @shopify/theme
       - name: Deploy
         env:
