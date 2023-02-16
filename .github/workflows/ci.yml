@@ -11,7 +11,7 @@ jobs:
         uses: shopify/lighthouse-ci-action@v1
         with:
           store: ${{ secrets.SHOP_STORE }}
-          password: ${{ secrets.SHOP_PASSWORD }}
+          # password: ${{ secrets.SHOP_PASSWORD }}
           access_token: ${{ secrets.SHOP_ACCESS_TOKEN }}
           lhci_github_app_token: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           collection_handle: all
