@@ -23,4 +23,4 @@ jobs:
           SHOPIFY_FLAG_THEME_ID: ${{ secrets.SHOP_THEME_ID }}
           SHOPIFY_FLAG_IGNORE: package.json
 
-        run: shopify theme push -t
+        run: shopify theme push
