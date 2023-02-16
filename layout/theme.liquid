@@ -43,7 +43,7 @@
       render 'adastra' with 'index.js'
     %}
   </head>
-  <body class="template-{{ request.page_type | handle }}">
+  <body>
     <main
       id="MainContent"
       tabindex="-1">
@@ -58,7 +58,7 @@
         cart_update_url: '{{ routes.cart_update_url }}',
         cart_url: '{{ routes.cart_url }}',
         predictive_search_url: '{{ routes.predictive_search_url }}',
-        product_recommendations_url: '{{ routes.product_recommendations_url }}',
+        product_recommendations_url: '{{ routes.product_recommendations_url }}'
       }
     </script>
   </body>

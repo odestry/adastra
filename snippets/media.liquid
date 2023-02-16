@@ -16,12 +16,12 @@
 <div class="flex" data-media-id="{{ media.id }}">
   {% case media.media_type %}
     {% when 'image' %}
-      {% render 'image' image: media.preview_image %}
+      {% render 'image', image: media.preview_image %}
 
     {% when 'video', 'external_video' %}
-      {% render 'video' video: media %}
+      {% render 'video', video: media %}
 
     {% when 'model' %}
-      {{ media | media_tag: image_size: "2048x", toggleable: true }}
+      {{ media | media_tag: image_size: '2048x', toggleable: true }}
   {% endcase %}
 </div>
