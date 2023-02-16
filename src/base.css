@@ -7,6 +7,11 @@
     @apply h-full antialiased font-body text-base text-accent bg-surface;
   }
 
+  model-viewer::part(default-progress-mask),
+  model-viewer::part(default-progress-bar) {
+    @apply hidden;
+  }
+
   h1,
   h2 {
     @apply font-heading font-semibold;

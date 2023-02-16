@@ -1,6 +1,7 @@
 {
   "name": "template-recommended",
   "author": "You Astronaut",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "adastra dev",
