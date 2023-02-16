@@ -26,17 +26,16 @@
   endif
 %}
 
-{% if image != blank %}
-  {{
-    image
-    | image_url: width: 500
-    | image_tag:
-      alt: image_alt,
+<picture>
+  {% if image != blank %}
+    {{ image
+      | image_url: width: 500
+      | image_tag: alt: image_alt,
       class: 'w-full h-full object-cover object-center',
       widths: '165, 360, 500, 720, 960, 1066, 1280, 1500, 1800',
-      loading: lazyload,
-      preload: preload
-  }}
-{% else %}
-  {{ 'image' | placeholder_svg_tag: 'w-full h-full' }}
-{% endif %}
+      loading: lazyload, preload: preload
+    }}
+  {% else %}
+    {{ 'image' | placeholder_svg_tag: 'w-full h-full' }}
+  {% endif %}
+</picture>

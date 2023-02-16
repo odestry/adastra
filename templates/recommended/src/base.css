@@ -7,20 +7,33 @@
     @apply h-full antialiased font-body text-base text-accent bg-surface;
   }
 
+  model-viewer {
+    @apply h-full;
+  }
+
+  model-viewer::part(default-progress-mask),
+  model-viewer::part(default-progress-bar) {
+    @apply hidden;
+  }
+
   h1,
   h2 {
     @apply font-heading font-semibold;
   }
 
   p > span {
-    @apply font-mono text-lg font-semibold bg-secondary/10 text-secondary/90 py-1 px-2 rounded;
+    @apply font-mono text-lg font-semibold bg-secondary/20 text-secondary py-1 px-2 rounded;
   }
 }
 
 @layer components {
   .button,
   button {
-    @apply inline-flex items-center justify-center text-center align-middle py-3 px-6 appearance-none select-none no-underline rounded-lg font-semibold tracking-tight shadow-sm hover:shadow-md transition-shadow;
+    @apply inline-flex items-center justify-center text-center align-middle py-3 px-6 appearance-none select-none no-underline rounded-lg font-bold tracking-tight shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .button-primary {
+    @apply button bg-contrast text-primary;
   }
 
   .card {

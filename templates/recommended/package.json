@@ -1,23 +1,20 @@
 {
   "name": "template-recommended",
   "author": "You Astronaut",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "adastra dev",
     "build": "adastra build",
-    "sync": "adastra sync",
-    "check": "adastra check",
-    "format": "prettier ./snippets/card.liquid --write"
+    "preview": "adastra preview",
+    "check": "adastra check"
   },
   "devDependencies": {
     "adastra-cli": "workspace:*",
     "adastra-plugin": "workspace:*",
-    "adastra-prettier-config": "workspace:*",
-    "autoprefixer": "^10.4.8",
-    "postcss": "^8.4.16",
-    "prettier": "^2.8.4",
-    "tailwindcss": "^3.1.8",
-    "vite": "^4.0.4"
-  },
-  "prettier": "adastra-prettier-config"
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.6",
+    "vite": "^4.1.1"
+  }
 }

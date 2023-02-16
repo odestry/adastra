@@ -1,0 +1,33 @@
+name: Deploy
+on: [push]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler: "latest"
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli @shopify/theme
+
+      - name: Setup
+        run: npm install
+
+      - name: Build
+        run: npm run build -- --minify
+
+      - name: Deploy
+        env:
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOP_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOP_ACCESS_TOKEN }}
+          SHOPIFY_FLAG_THEME_ID: ${{ secrets.SHOP_THEME_ID }}
+          SHOPIFY_FLAG_IGNORE: package*
+
+        run: shopify theme push -a
