@@ -1,5 +1,9 @@
 name: CI
-on: [push]
+on:
+  workflow_run:
+    workflows: ["Deploy"]
+    types:
+      - completed
 
 jobs:
   lhci:
