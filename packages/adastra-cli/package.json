@@ -70,22 +70,6 @@
     "commands": "./dist/commands",
     "plugins": [
       "@oclif/plugin-help"
-<<<<<<< HEAD
-    ],
-    "topicSeparator": " ",
-    "topics": {
-      "dev": {
-        "description": "Launch both Shopify theme dev and Vite servers."
-      },
-      "build": {
-        "description": "Build static files for production into teh assets folder."
-      },
-      "check": {
-        "description": "Validate the theme using theme check same as shopify theme check."
-      }
-    }
-=======
     ]
->>>>>>> 8455707c5858bdca34face57a6c0e638a4429d12
   }
 }
