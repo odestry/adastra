@@ -23,7 +23,8 @@ class ProductForm extends HTMLElement {
       body: new FormData(this.form)
     })
 
-    // We send a request to the ajax Cart API
+    // We send a request to the ajax API
+    // More here https://shopify.dev/docs/api/ajax
     try {
       await fetch(`${routes.cart_add_url}`, config())
       // We redirect to checkout

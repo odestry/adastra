@@ -11,10 +11,6 @@
     "name": "Brand",
     "settings": [
       {
-        "type": "paragraph",
-        "content": "Use brand assets."
-      },
-      {
         "type": "header",
         "content": "Assets"
       },
@@ -133,7 +129,7 @@
       {
         "type": "header",
         "content": "Secondary colors",
-        "info": "Use it to derive roles for key components such as prominent buttons."
+        "info": "Use it to derive roles for less prominent components in the UI."
       },
       {
         "type": "color",

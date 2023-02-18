@@ -17,7 +17,7 @@
   endif
 %}
 
-<div class="flex gap-x-3 text-base font-normal">
+<div class="flex gap-x-3 text-base">
   {% if target.compare_at_price > target.price %}
     <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
     <span>{{ target.price | money_without_trailing_zeros }}</span>

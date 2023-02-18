@@ -13,7 +13,7 @@
     {% render 'media' media: product.featured_media %}
 {% endcomment %}
 
-<div class="flex" data-media-id="{{ media.id }}">
+<div class="flex aspect-square" data-media-id="{{ media.id }}">
   {% case media.media_type %}
     {% when 'image' %}
       {% render 'image', image: media.preview_image %}

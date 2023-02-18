@@ -8,12 +8,7 @@
   }
 
   model-viewer {
-    @apply h-fit aspect-square;;
-  }
-
-  model-viewer::part(default-progress-mask),
-  model-viewer::part(default-progress-bar) {
-    @apply hidden;
+    @apply h-fit aspect-square;
   }
 
   h1,
@@ -38,9 +33,9 @@
 
   .card {
     background-image: var(--gradient);
-    background-size: 400%;
+    background-size: 500%;
     background-position: 100%;
-    transition: background-position 2s;
+    transition: background-position 3s;
     @apply ease-wiggle;
   }
 
