@@ -1,4 +1,4 @@
-import { COLORS, BRAND, adjectives, nouns } from './config'
+import { COLORS, BRAND, adjectives, nouns, welcome } from './config'
 import renderBrandingUI from './ui'
 
-export { COLORS, BRAND, adjectives, nouns, renderBrandingUI }
+export { COLORS, BRAND, adjectives, nouns, welcome, renderBrandingUI }

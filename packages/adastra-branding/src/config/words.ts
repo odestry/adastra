@@ -222,3 +222,23 @@ export const adjectives = [
   'zany',
   'zapping'
 ]
+
+export const welcome = [
+  "Let's claim your online store on Shopify.",
+  "I'll be your assistant today.",
+  "Let's build something awesome!",
+  "Let's build something great!",
+  "Let's build something fast!",
+  "Let's make merchants some money!",
+  "Let's make the web a better place!",
+  "Let's create a new project!",
+  "Let's create something unique!",
+  'Time to build a new storefront.',
+  'Time to build a faster storefront.',
+  'Time to build a sweet new store.',
+  "We're glad to have you on board.",
+  'Keeping the internet weird since 2023.',
+  'Initiating launch sequence...',
+  'Initiating launch sequence... right... now!',
+  'Awaiting further instructions.'
+]

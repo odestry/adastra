@@ -1,5 +1,5 @@
 import { BRAND } from './brand'
 import { COLORS } from './colors'
-import { nouns, adjectives } from './words'
+import { nouns, adjectives, welcome } from './words'
 
-export { BRAND, COLORS, nouns, adjectives }
+export { BRAND, COLORS, nouns, adjectives, welcome }

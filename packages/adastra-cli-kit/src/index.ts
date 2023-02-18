@@ -1,11 +1,3 @@
-// export {
-//   getGradientAnimFrames,
-//   frame,
-//   FULL_FRAMES,
-//   gradient,
-//   spinner
-// } from './spinner.js'
-
 export {
   enableAscii,
   hookExit,

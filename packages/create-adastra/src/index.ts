@@ -19,15 +19,14 @@ import {
   rocketAscii,
   random
 } from 'adastra-cli-kit'
-import { logger } from './logger.js'
+import { welcome } from 'adastra-branding'
 import {
   banner,
   getName,
   getVersion,
   info,
   nextSteps,
-  typescriptByDefault,
-  welcome
+  typescriptByDefault
 } from './messages.js'
 import { TEMPLATES } from './templates.js'
 
@@ -98,7 +97,6 @@ export async function main(): Promise<void> {
   const pkgManager = detectPackageManager()?.name || 'npm'
   const [username, version] = await Promise.all([getName(), getVersion()])
 
-  logger.debug('Verbose logging turned on')
   // eslint-disable-next-line
   if (!args.skipTars) {
     await say([
