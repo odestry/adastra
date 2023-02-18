@@ -6,10 +6,9 @@ import yargs from 'yargs-parser'
 import ora from 'ora'
 import color from 'chalk'
 
-import { assign, parse, stringify } from 'comment-json'
 import { execa, execaCommand } from 'execa'
 import { downloadTemplate } from 'giget'
-import { bold, dim, green, reset, yellow } from 'kleur/colors'
+import { bold, dim, green, reset } from 'kleur/colors'
 import { platform } from 'os'
 import {
   generateProjectName,
@@ -20,14 +19,7 @@ import {
   random
 } from 'adastra-cli-kit'
 import { welcome } from 'adastra-branding'
-import {
-  banner,
-  getName,
-  getVersion,
-  info,
-  nextSteps,
-  typescriptByDefault
-} from './messages.js'
+import { banner, getName, getVersion, info, nextSteps } from './messages.js'
 import { TEMPLATES } from './templates.js'
 
 // NOTE: In the v7.x version of npm, the default behavior of `npm init` was changed
@@ -36,18 +28,9 @@ import { TEMPLATES } from './templates.js'
 // fixes the issue so that create-adastra now works on all npm version.
 const cleanArgv = process.argv.filter(arg => arg !== '--')
 const args = yargs(cleanArgv, { boolean: ['fancy', 'y'], alias: { y: 'yes' } })
-// Always skip Houston on Windows (for now)
+// Always skip Tars on Windows (for now)
 if (platform() === 'win32') args.skipTars = true
 prompts.override(args)
-
-const mkdirp = (dir: string): void => {
-  try {
-    fs.mkdirSync(dir, { recursive: true })
-  } catch (e: any) {
-    if (e.code === 'EEXIST') return
-    throw e
-  }
-}
 
 // Some existing files and directories can be safely ignored when checking if a directory is a valid project directory.
 // https://github.com/facebook/create-react-app/blob/d960b9e38c062584ff6cfb1a70e1512509a966e7/packages/create-react-app/createReactApp.js#L907-L934
@@ -97,7 +80,6 @@ export async function main(): Promise<void> {
   const pkgManager = detectPackageManager()?.name || 'npm'
   const [username, version] = await Promise.all([getName(), getVersion()])
 
-  // eslint-disable-next-line
   if (!args.skipTars) {
     await say([
       [
@@ -136,7 +118,8 @@ export async function main(): Promise<void> {
       {
         type: 'text',
         name: 'directory',
-        message: 'Where would you like to create your new Shopify project?',
+        message:
+          'Where would you like to create your new Shopify theme project?',
         initial: generateProjectName(),
         validate(value) {
           if (!isValidProjectDirectory(value)) return notEmptyMsg(value)
@@ -162,7 +145,7 @@ export async function main(): Promise<void> {
       {
         type: 'select',
         name: 'template',
-        message: 'How would you like to setup your theme project?',
+        message: 'How would you like to setup your Shopify theme project?',
         choices: TEMPLATES
       }
     ],
@@ -178,8 +161,6 @@ export async function main(): Promise<void> {
     process.exit(1)
   }
 
-  // await open(`https://blanklob.com?template=${options.template}`)
-
   const templateSpinner = await loadWithRocketGradient(
     'Copying theme files and folders...'
   )
@@ -193,7 +174,6 @@ export async function main(): Promise<void> {
     : // eslint-disable-next-line
       `withastro/astro/examples/${options.template}#latest`
 
-  // Copy
   // eslint-disable-next-line
   if (!args.dryRun) {
     try {
@@ -357,89 +337,6 @@ export async function main(): Promise<void> {
         ' later.'
       )}`
     )
-  }
-
-  // eslint-disable-next-line
-  if (args.y && !args.typescript) {
-    ora().warn(dim('--typescript <choice> missing. Defaulting to "strict"'))
-    args.typescript = 'strict'
-  }
-
-  // eslint-disable-next-line
-  let tsResponse =
-    args.typescript ||
-    (
-      await prompts(
-        {
-          type: 'select',
-          name: 'typescript',
-          message: 'How would you like to setup TypeScript?',
-          choices: [
-            { value: 'strict', title: 'Strict', description: '(recommended)' },
-            { value: 'strictest', title: 'Strictest' },
-            { value: 'base', title: 'Relaxed' },
-            { value: 'unsure', title: 'Help me choose' }
-          ]
-        },
-        {
-          onCancel: () => {
-            ora().info(
-              dim(
-                'Operation cancelled. Your project folder has been created but no TypeScript configuration file was created.'
-              )
-            )
-            process.exit(1)
-          }
-        }
-      )
-    ).typescript
-
-  if (tsResponse === 'unsure') {
-    await typescriptByDefault()
-    tsResponse = 'base'
-  }
-
-  // eslint-disable-next-line
-  if (args.dryRun) {
-    ora().info(dim('--dry-run enabled, skipping.'))
-    // eslint-disable-next-line
-  } else if (tsResponse) {
-    const templateTSConfigPath = path.join(cwd, 'tsconfig.json')
-    fs.readFile(templateTSConfigPath, (err, data) => {
-      if (err != null && err.code === 'ENOENT') {
-        // If the template doesn't have a tsconfig.json, let's add one instead
-        fs.writeFileSync(
-          templateTSConfigPath,
-          // eslint-disable-next-line
-          stringify(
-            { extends: `astro/tsconfigs/${tsResponse ?? 'base'}` },
-            null,
-            2
-          )
-        )
-
-        return
-      }
-
-      const templateTSConfig = parse(data.toString())
-
-      // eslint-disable-next-line
-      if (templateTSConfig && typeof templateTSConfig === 'object') {
-        const result = assign(templateTSConfig, {
-          // eslint-disable-next-line
-          extends: `astro/tsconfigs/${tsResponse ?? 'base'}`
-        })
-
-        fs.writeFileSync(templateTSConfigPath, stringify(result, null, 2))
-      } else {
-        console.log(
-          yellow(
-            "There was an error applying the requested TypeScript settings. This could be because the template's tsconfig.json is malformed"
-          )
-        )
-      }
-    })
-    ora().succeed('TypeScript settings applied!')
   }
 
   const projectDir = path.relative(process.cwd(), cwd)

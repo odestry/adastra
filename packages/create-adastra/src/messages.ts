@@ -54,11 +54,17 @@ export const banner = async (version: string): Promise<void> => {
 export const info = async (prefix: string, text: string): Promise<void> => {
   await sleep(100)
   if (process.stdout.columns < 80) {
-    console.log(`${color.cyan('◼')}  ${color.cyan(prefix)}`)
+    console.log(
+      `${color.hex(COLORS.yellowGreen)('◼')}  ${color.hex(COLORS.yellowGreen)(
+        prefix
+      )}`
+    )
     console.log(`${' '.repeat(3)}${color.dim(text)}\n`)
   } else {
     console.log(
-      `${color.cyan('◼')}  ${color.cyan(prefix)} ${color.dim(text)}\n`
+      `${color.hex(COLORS.yellowGreen)('◼')}  ${color.hex(COLORS.yellowGreen)(
+        prefix
+      )} ${color.dim(text)}\n`
     )
   }
 }
@@ -76,19 +82,6 @@ export async function error(prefix: string, text: string): Promise<void> {
   }
 }
 
-export async function typescriptByDefault(): Promise<void> {
-  await info(
-    'Cool!',
-    'Adastra comes with TypeScript support enabled by default.'
-  )
-  console.log(
-    `${' '.repeat(3)}${color.dim(
-      "We'll default to the most relaxed settings for you."
-    )}`
-  )
-  await sleep(300)
-}
-
 export async function nextSteps({
   projectDir,
   devCmd
@@ -100,35 +93,39 @@ export async function nextSteps({
   const prefix = max < 80 ? ' ' : ' '.repeat(9)
   await sleep(200)
   console.log(
-    `\n ${color.bgCyan(` ${color.black('next')} `)}  ${color.bold(
-      'Liftoff confirmed. Explore your theme!'
-    )}`
+    `\n ${color.bgHex(COLORS.yellowGreen)(
+      ` ${color.white('next')} `
+    )}  ${color.bold('Liftoff confirmed. Explore your Shopify theme!')}`
   )
 
   await sleep(100)
   if (projectDir !== '') {
     const enter = [
       `\n${prefix}Enter your theme directory using`,
-      color.cyan(`cd ./${projectDir}`, '')
+      color.hex(COLORS.yellowGreen)(`cd ./${projectDir}`, '')
     ]
     const len = enter[0].length + stripAnsi(enter[1]).length
     console.log(enter.join(len > max ? '\n' + prefix : ' '))
   }
   console.log(
-    `${prefix}Run ${color.cyan(devCmd)} to start the dev server. ${color.cyan(
+    `${prefix}Run ${color.hex(COLORS.yellowGreen)(
+      devCmd
+    )} to start the dev server. ${color.hex(COLORS.yellowGreen)(
       'CTRL+C'
     )} to stop.`
   )
   await sleep(100)
   console.log(
-    `${prefix}Add frameworks like ${color.cyan('preact')} or ${color.cyan(
-      'tailwind'
-    )} by checking ${color.cyan('adastra examples')}.`
+    `${prefix}Add frameworks like ${color.hex(COLORS.yellowGreen)(
+      'React'
+    )} or ${color.hex(COLORS.yellowGreen)('Tailwind')} by checking ${color.hex(
+      COLORS.yellowGreen
+    )('adastra examples')}.`
   )
   await sleep(100)
   console.log(
-    `\n${prefix}Stuck? Join us at ${color.cyan(
-      'https://support.adastra.build/'
+    `\n${prefix}Stuck? Join us at ${color.hex(COLORS.yellowGreen)(
+      'https://help.blanklob.com'
     )}`
   )
   await sleep(200)
