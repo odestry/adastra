@@ -22,6 +22,6 @@ logs
 *.log
 .env
 
-# Adastra
+# Comment these to use Shopify GitHub integration
 assets/*
 !assets/.gitkeep
