@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "adastra-cli-kit": "workspace:*",
+    "adastra-branding": "workspace:*",
     "chalk": "^5.0.1",
     "comment-json": "^4.2.3",
     "execa": "^6.1.0",

@@ -1,5 +1,5 @@
 import { nouns, adjectives } from 'adastra-branding'
-import { random } from '../utils.js'
+import { random } from './utils/index.js'
 
 export const generateProjectName = (): string => {
   const adjective = random(adjectives) as string

@@ -1,15 +1,16 @@
 import { createLogger, LogOptions, Logger } from 'vite'
-import { brand, prefixed } from 'adastra-cli-kit'
+import { prefixed } from 'adastra-cli-kit'
+import { COLORS } from 'adastra-branding'
 
 const logger = createLogger()
 
 export const log = (logLevel: 'info' | 'warn' | 'error', msg: string): void => {
   switch (logLevel) {
     case 'warn':
-      logger.warn(prefixed(brand.colors.warn, msg))
+      logger.warn(prefixed(COLORS.warn, msg))
       break
     case 'error':
-      logger.error(prefixed(brand.colors.error, msg))
+      logger.error(prefixed(COLORS.error, msg))
       break
   }
 

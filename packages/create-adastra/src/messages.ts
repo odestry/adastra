@@ -1,10 +1,9 @@
-/* eslint no-console: 'off' */
-import { label, brand } from 'adastra-cli-kit'
 import { exec } from 'node:child_process'
 import { get } from 'node:https'
 import stripAnsi from 'strip-ansi'
 import color from 'chalk'
-import { sleep } from './utils.js'
+import { COLORS } from 'adastra-branding'
+import { label, sleep } from 'adastra-cli-kit'
 
 export const welcome = [
   "Let's claim your online store on Shopify.",
@@ -65,7 +64,7 @@ export const getVersion = async (): Promise<string> => {
 export const banner = async (version: string): Promise<void> => {
   return console.log(
     `\n${label('adastra')}  ${color
-      .hex(brand.colors.yellowgreen)
+      .hex(COLORS.yellowGreen)
       .bold(`v${version}`)} ${color.bold(
       'Launch sequence initiated. 3, 2, 1 Liftoff!'
     )}\n`

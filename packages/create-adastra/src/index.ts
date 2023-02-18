@@ -11,9 +11,14 @@ import { execa, execaCommand } from 'execa'
 import { downloadTemplate } from 'giget'
 import { bold, dim, green, reset, yellow } from 'kleur/colors'
 import { platform } from 'os'
-import { brand, generateProjectName, label, say } from 'adastra-cli-kit'
-
-import { loadWithRocketGradient, rocketAscii } from './gradient.js'
+import {
+  generateProjectName,
+  label,
+  say,
+  loadWithRocketGradient,
+  rocketAscii,
+  random
+} from 'adastra-cli-kit'
 import { logger } from './logger.js'
 import {
   banner,
@@ -24,7 +29,6 @@ import {
   typescriptByDefault,
   welcome
 } from './messages.js'
-import { random } from './utils.js'
 import { TEMPLATES } from './templates.js'
 
 // NOTE: In the v7.x version of npm, the default behavior of `npm init` was changed
@@ -102,7 +106,7 @@ export async function main(): Promise<void> {
         'Welcome',
         'to',
         label('adastra'),
-        color.hex(brand.colors.yellowgreen)(`v${version}`) + ',',
+        color.white(`v${version}`) + ',',
         `${username}!`
       ],
       random(welcome)

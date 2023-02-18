@@ -6,13 +6,16 @@ export const COLORS = {
   warn: '#EED202',
   error: '#FF5C57',
   gradient: [
-    '#1E5DFF',
-    '#103AA4',
-    '#1089A4',
-    '#85E8FE',
-    '#089A16',
-    '#3CF34E',
-    '#C5F059',
-    '#CEF141'
+    '#79E7FF',
+    '#88E9F7',
+    '#93EADB',
+    '#9CEBC3',
+    '#A2ECB5',
+    '#ABED9C',
+    '#B5EE82',
+    '#BEEF6C',
+    '#C8F153',
+    '#CAF14C',
+    '#CFF242'
   ]
 }

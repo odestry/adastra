@@ -1,13 +1,5 @@
 {
   "extends": "adastra-tsconfig/base.json",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "declaration": true,
-    "allowJs": true
-  },
   "include": ["src"],
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+  "exclude": ["dist", "node_modules"]
 }

@@ -2,30 +2,31 @@ import readline from 'node:readline'
 import chalk from 'chalk'
 import logUpdate from 'log-update'
 import { erase, cursor } from 'sisteransi'
-import { sleep } from './utils.js'
-
-export const COLORS = [
-  '#1E5DFF',
-  '#103AA4',
-  '#1089A4',
-  '#85E8FE',
-  '#089A16',
-  '#3CF34E',
-  '#C5F059',
-  '#CEF141'
-].reverse()
+import { sleep } from './utils/index.js'
+import { COLORS } from 'adastra-branding'
 
 export const FULL_FRAMES = [
-  ...Array.from({ length: COLORS.length - 1 }, () => COLORS[0]),
-  ...COLORS,
-  ...Array.from({ length: COLORS.length - 1 }, () => COLORS[COLORS.length - 1]),
-  ...[...COLORS].reverse()
+  ...Array.from(
+    { length: COLORS.gradient.length - 1 },
+    () => COLORS.gradient[0]
+  ),
+  ...COLORS.gradient,
+  ...Array.from(
+    { length: COLORS.gradient.length - 1 },
+    () => COLORS.gradient[COLORS.gradient.length - 1]
+  ),
+  ...[...COLORS.gradient].reverse()
 ]
 
 export const frame = (offset = 0): string[] => {
-  const frames = FULL_FRAMES.slice(offset, offset + (COLORS.length - 2))
-  if (frames.length < COLORS.length - 2) {
-    const filled = new Array(COLORS.length - frames.length - 2).fill(COLORS[0])
+  const frames = FULL_FRAMES.slice(
+    offset,
+    offset + (COLORS.gradient.length - 2)
+  )
+  if (frames.length < COLORS.gradient.length - 2) {
+    const filled = new Array(COLORS.gradient.length - frames.length - 2).fill(
+      COLORS.gradient[0]
+    )
     frames.push(...filled)
   }
   return frames

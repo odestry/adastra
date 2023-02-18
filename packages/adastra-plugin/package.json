@@ -23,6 +23,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "adastra-branding": "workspace:*",
     "debug": "^4.3.4",
     "fast-glob": "^3.2.11"
   },

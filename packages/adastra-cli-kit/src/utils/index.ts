@@ -2,7 +2,7 @@ import color from 'chalk'
 import { get } from 'node:https'
 import { exec } from 'node:child_process'
 import { platform } from 'node:os'
-import { strip } from './util/clear.js'
+import { strip } from './clear.js'
 
 const unicode = { enabled: platform() !== 'win32' }
 let v: string

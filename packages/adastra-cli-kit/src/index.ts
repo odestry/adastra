@@ -1,15 +1,10 @@
-export {
-  COLORS,
-  getGradientAnimFrames,
-  frame,
-  FULL_FRAMES,
-  gradient,
-  spinner
-} from './spinner.js'
-
-export { say, label, colored, prefixed } from './messages.js'
-
-export { generateProjectName } from './project/index.js'
+// export {
+//   getGradientAnimFrames,
+//   frame,
+//   FULL_FRAMES,
+//   gradient,
+//   spinner
+// } from './spinner.js'
 
 export {
   enableAscii,
@@ -21,7 +16,8 @@ export {
   random,
   forceUnicode,
   sleep
-} from './utils.js'
+} from './utils'
 
-export { brand } from './brand.js'
-export { loadWithRocketGradient } from './gradient.js'
+export { loadWithRocketGradient, rocketAscii } from './gradient.js'
+export { say, label, colored, prefixed } from './messages.js'
+export { generateProjectName } from './project.js'

@@ -1,17 +1,12 @@
 import { Flags } from '@oclif/core'
 import { execa } from 'execa'
-import color from 'chalk'
 import open from 'open'
 
 import { log } from '../../utilities/logger'
 import { globalFlags, themeFlags } from '../../utilities/flags'
 import BaseCommand from '../../utilities/command'
-import {
-  brand,
-  colored,
-  loadWithRocketGradient,
-  prefixed
-} from 'adastra-cli-kit'
+import { colored, loadWithRocketGradient, prefixed } from 'adastra-cli-kit'
+
 import detectURL from '../../utilities/detect-url'
 
 export default class Preview extends BaseCommand {
