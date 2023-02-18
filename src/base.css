@@ -8,7 +8,7 @@
   }
 
   model-viewer {
-    @apply h-full;
+    @apply h-fit aspect-square;;
   }
 
   model-viewer::part(default-progress-mask),
