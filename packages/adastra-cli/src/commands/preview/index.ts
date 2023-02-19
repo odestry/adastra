@@ -1,6 +1,7 @@
 import { Flags } from '@oclif/core'
 import { execa } from 'execa'
 import open from 'open'
+import { build } from 'vite'
 
 import { log } from '../../utilities/logger'
 import { globalFlags, themeFlags } from '../../utilities/flags'
@@ -10,7 +11,7 @@ import { colored, loadWithRocketGradient, prefixed } from 'adastra-cli-kit'
 import detectURL from '../../utilities/detect-url'
 
 export default class Preview extends BaseCommand {
-  static description = 'Opens the preview of your remote theme.'
+  static description = 'Opens a preview of your remote development theme.'
 
   static flags = {
     ...globalFlags,
@@ -46,6 +47,7 @@ export default class Preview extends BaseCommand {
 
     try {
       const opening = await loadWithRocketGradient('Opening a theme preview...')
+      // await build({ logLevel: 'silent' })
       const { stdout } = await execa('shopify', command)
       const url = detectURL(stdout)![0]
       if (url) await open(url)
