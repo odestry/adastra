@@ -58,7 +58,7 @@
 
   <ul class="grid grid-cols-1 gap-4 md:grid-cols-2" role="list">
     {% for block in section.blocks %}
-      <li class="list-none">
+      <li class="list-none" {{ block.shopify_attributes }}>
         {% render 'card'
           heading: block.settings.heading,
           description: block.settings.description,

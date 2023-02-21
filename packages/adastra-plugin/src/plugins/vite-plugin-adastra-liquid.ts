@@ -72,7 +72,10 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
       fs.writeFileSync(adastraTagSnippetPath, adastraTagSnippetContent)
     },
     closeBundle() {
-      const manifestFilePath = path.resolve(options.root, `assets/adastra.json`)
+      const manifestFilePath = path.resolve(
+        options.root,
+        `assets/adastra.manifest.json`
+      )
 
       if (!fs.existsSync(manifestFilePath)) {
         return

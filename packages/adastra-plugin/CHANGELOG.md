@@ -1,5 +1,11 @@
 # `adastra-plugin`
 
+## 0.1.3
+
+### Patch Changes
+
+- Improve Vite watch mode #4
+
 ## 0.1.2
 
 ### Patch Changes

@@ -85,7 +85,9 @@ export default class Dev extends BaseCommand {
     'package-lock.json',
     'jsconfig.*',
     'tsconfig.*',
+    './*.config.*',
     'src/',
+    'test/',
     'node_modules'
   ]
 
@@ -112,9 +114,7 @@ export default class Dev extends BaseCommand {
         'Initiating launch sequence...'
       )
       if (config) {
-        const server = await createServer({
-          customLogger: customLogger()
-        })
+        const server = await createServer()
         await server.listen()
         launch.text = 'Vite server launched, wait for Shopify server to launch!'
         launch.succeed()

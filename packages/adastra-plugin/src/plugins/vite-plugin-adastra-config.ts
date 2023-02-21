@@ -35,9 +35,9 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
       // const entryFileNames = path.join(options.root, `[name]${options.hash ? '-[hash]' : ''}.js`)
       // const assetFileNames = path.join(options.root, `[name]${options.hash ? '-[hash]' : ''}.[ext]`)
       const output = {
-        chunkFileNames: `[name]${options.hash ? '-[hash]' : ''}.js`,
-        entryFileNames: `[name]${options.hash ? '-[hash]' : ''}.js`,
-        assetFileNames: `[name]${options.hash ? '-[hash]' : ''}.[ext]`
+        chunkFileNames: `[name]${options.hash ? '.[hash]' : ''}.js`,
+        entryFileNames: `[name]${options.hash ? '.[hash]' : ''}.js`,
+        assetFileNames: `[name]${options.hash ? '.[hash]' : ''}.[ext]`
       }
 
       const generatedConfig: UserConfig = {
@@ -62,7 +62,7 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
             output
           },
           // Output manifest file for backend integration
-          manifest: `adastra.json`,
+          manifest: `adastra.manifest.json`,
           minify: options.minify
         },
         resolve: {
@@ -82,6 +82,9 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
             host: host as string,
             port,
             protocol: socketProtocol
+          },
+          watch: {
+            ignored: ['assets/*', 'snippets/adastra.liquid']
           }
         }
       }

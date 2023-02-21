@@ -11,46 +11,55 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set node
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+
+      - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 16
+          cache: 'pnpm'
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
-      - name: Install
-        run: nci
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
 
       - name: Lint
-        run: nr lint
+        run: pnpm lint
 
   test:
-    name: Test (${{matrix.os}})
-    runs-on: ${{ matrix.os }}
+    name: Build and Test on ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     strategy:
       matrix:
-        node: [14.x, 16.x, 18.x]
+        node-version: [18]
         os: [ubuntu-latest, windows-latest, macos-latest]
-      fail-fast: false
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use node ${{ matrix.node }}
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+
+      - name: Use Node.js ${{matrix.node-version}}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{matrix.node-version}}
           cache: pnpm
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
-      - name: Install
-        run: nci
+      - name: Install Dependencies
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build
-        run: nr build
+        run: pnpm build
 
       - name: Test
-        run: nr test
+        run: pnpm test

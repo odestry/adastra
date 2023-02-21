@@ -3,3 +3,4 @@ dist/
 pnpm-lock.yaml
 .changeset/*.md
 templates
+examples

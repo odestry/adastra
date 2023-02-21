@@ -1,5 +1,11 @@
 # `adastra-cli`
 
+## 0.2.2
+
+### Patch Changes
+
+- Improve Vite watch mode #4
+
 ## 0.2.1
 
 ### Patch Changes

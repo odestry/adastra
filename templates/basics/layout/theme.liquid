@@ -34,14 +34,14 @@
       window.addEventListener('load', () => document.documentElement.classList.add('ready'))
     </script>
 
-    <!-- shopify/apps -->
-    {{ content_for_header }}
-
     {% liquid
       # Always add entrypoint below content_for_header
       render 'adastra' with 'base.css'
       render 'adastra' with 'index.js'
     %}
+
+    <!-- shopify/apps -->
+    {{ content_for_header }}
   </head>
   <body>
     <main

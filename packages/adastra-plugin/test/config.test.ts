@@ -24,7 +24,7 @@ describe('adastra-plugin:config', () => {
     expect(config.build.outDir).toBe('assets')
     expect(config.build.assetsDir).toBe('')
     expect(config.build.rollupOptions.input).toEqual(['src/app.js'])
-    expect(config.build.manifest).toBe('adastra.json')
+    expect(config.build.manifest).toBe('adastra.manifest.json')
     expect(config.resolve.alias['~']).toMatch(path.resolve('src'))
     expect(config.resolve.alias['@']).toMatch(path.resolve('src'))
     expect(config.server.host).toBe('localhost')

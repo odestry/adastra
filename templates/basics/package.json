@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "adastra dev",
+    "vite": "vite",
     "build": "adastra build",
+    "watch": "vite build --watch",
     "preview": "adastra preview",
     "check": "adastra check"
   },
