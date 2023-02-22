@@ -1,5 +1,5 @@
-class ProductForm extends HTMLElement {
-  constructor() {
+class ProductForm extends window.HTMLElement {
+  constructor () {
     super()
 
     this.form = this.querySelector('form')
@@ -8,7 +8,7 @@ class ProductForm extends HTMLElement {
     this.form.addEventListener('submit', this.submitHandler.bind(this))
   }
 
-  async submitHandler(event) {
+  async submitHandler (event) {
     event.preventDefault()
     // Hint ✦ 2 change this ;)
     this.button.classList.add('animate-pulse')
@@ -26,7 +26,7 @@ class ProductForm extends HTMLElement {
     // We send a request to the ajax API
     // More here https://shopify.dev/docs/api/ajax
     try {
-      await fetch(`${routes.cart_add_url}`, config())
+      await fetch(`${window.routes.cart_add_url}`, config())
       // We redirect to checkout
       window.location = window.shopUrl + '/checkout'
     } catch (error) {
@@ -35,4 +35,4 @@ class ProductForm extends HTMLElement {
   }
 }
 
-customElements.define('product-form', ProductForm)
+window.customElements.define('product-form', ProductForm)

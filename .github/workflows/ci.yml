@@ -33,12 +33,12 @@ jobs:
         run: pnpm lint
 
   test:
-    name: Build and Test on ${{ matrix.os }}
+    name: Test on ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [14, 16, 18]
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
@@ -49,7 +49,7 @@ jobs:
         with:
           version: 7
 
-      - name: Use Node.js ${{matrix.node-version}}
+      - name: Use NodeJS ${{matrix.node-version}}
         uses: actions/setup-node@v3
         with:
           node-version: ${{matrix.node-version}}

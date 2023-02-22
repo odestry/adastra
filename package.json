@@ -11,29 +11,29 @@
   ],
   "scripts": {
     "dev": "turbo run dev --filter=*adastra* --parallel",
-    "dev:tmp": "turbo run dev --filter=template-* --parallel",
-    "build": "turbo run build --filter=*adastra*",
-    "build:tmp": "turbo run build --filter=template-*",
+    "dev:templates": "turbo run dev --filter=template-* --parallel",
+    "build": "turbo run build --filter=*adastra* --filter=template-*",
     "lint": "turbo run lint",
+    "check": "turbo run check",
     "test": "turbo run test --filter=*adastra*",
     "test:watch": "turbo run test:watch --filter=*adastra*",
     "change:add": "changeset add",
     "change:version": "changeset version",
-    "change:release": "turbo run build lint test && changeset version && changeset publish",
+    "change:release": "turbo run lint test && changeset version && changeset publish",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
-    "@types/node": "^18.11.18",
-    "@vitest/coverage-c8": "^0.28.4",
+    "@types/node": "^18.14.0",
+    "@vitest/coverage-c8": "^0.28.5",
+    "adastra-prettier-config": "workspace:*",
     "eslint": "^7.32.0",
     "eslint-config-adastra": "workspace:*",
     "prettier": "latest",
-    "adastra-prettier-config": "workspace:*",
-    "tsup": "^6.5.0",
+    "tsup": "^6.6.3",
     "turbo": "latest",
     "typescript": "^4.9.5",
-    "vitest": "^0.28.4"
+    "vitest": "^0.28.5"
   },
   "packageManager": "pnpm@7.26.1",
   "engines": {

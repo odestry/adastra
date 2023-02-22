@@ -1,14 +1,14 @@
-# Adastra Basics Starter Template ✨
+# Adastra Minimal Starter Template ✨
 
 ```shell
-npm create adastra@latest -- --template basics
+npm create adastra@latest -- --template minimal
 ```
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=594116672)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=603560480)
 
 > 🧑‍🚀 **Hey astronaut?** Have fun building Shopify themes with Adastra!
 
-![basics](https://raw.githubusercontent.com/blanklob/adastra/main/.github/assets/basics-template-banner.png)
+![minimal](https://raw.githubusercontent.com/blanklob/adastra/main/.github/assets/minimal-template-banner.png)
 
 ## Theme Structure
 
@@ -29,11 +29,10 @@ Inside of your Adastra theme project, you'll see the following folders and files
 ├── sections/
 │   └── hello-world.liquid
 ├── snippets/
-│   ├── colors.liquid
-│   └── image.liquid
+│   └── colors.liquid
 ├── src/
 │   ├── components/
-│   │   └── product-form.js
+│   │   └── hello-world.js
 │   ├── index.js
 │   └── base.css
 ├── templates

@@ -24,10 +24,10 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.devcontainer/devcontainer.env
 
 # turbo
 .turbo
 
 # code editor
-.devcontainer
 .vscode

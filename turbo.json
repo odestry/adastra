@@ -22,6 +22,10 @@
     "clean": {
       "cache": false
     },
-    "lint": {}
+    "lint": {},
+    "check": {
+      "dependsOn": ["build"],
+      "outputMode": "full"
+    }
   }
 }

@@ -1,0 +1,34 @@
+{
+  "name": "adastra-devcontainer",
+  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/NicoVIII/devcontainer-features/pnpm:1": {},
+    "ghcr.io/devcontainers/features/ruby:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers-contrib/features/act-asdf:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "editorconfig.editorconfig",
+        "dbaeumer.vscode-eslint",
+        "shopify.theme-check-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  },
+  "forwardPorts": [9292, 5173],
+  "portsAttributes": {
+    "9292": {
+      "label": "Shopify"
+    },
+    "5173": {
+      "label": "Vite"
+    }
+  },
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "gem install bundler && npm i -g @shopify/cli @shopify/theme && npm i",
+  "postAttachCommand": "gh codespace ports visibility 9292:public 5173:public -c $CODESPACE_NAME && exit",
+  "runArgs": ["--env-file", ".devcontainer/devcontainer.env"]
+}
