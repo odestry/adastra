@@ -1,5 +1,16 @@
 # `adastra-plugin`
 
+## 0.2.0
+
+### Minor Changes
+
+- Fixed issues and added an entrypoint pattern
+
+### Patch Changes
+
+- Updated dependencies
+  - adastra-branding@0.1.1
+
 ## 0.1.3
 
 ### Patch Changes

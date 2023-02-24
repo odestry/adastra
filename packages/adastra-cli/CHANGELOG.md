@@ -1,5 +1,17 @@
 # `adastra-cli`
 
+## 0.3.0
+
+### Minor Changes
+
+- Fixed issues and added an entrypoint pattern
+
+### Patch Changes
+
+- Updated dependencies
+  - adastra-branding@0.1.1
+  - adastra-cli-kit@0.1.2
+
 ## 0.2.2
 
 ### Patch Changes

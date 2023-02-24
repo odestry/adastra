@@ -19,7 +19,7 @@
     "test:watch": "turbo run test:watch --filter=*adastra*",
     "change:add": "changeset add",
     "change:version": "changeset version",
-    "change:release": "turbo run lint test && changeset version && changeset publish",
+    "change:release": "turbo run lint build test && changeset publish",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
   },
   "devDependencies": {

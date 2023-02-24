@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-adastra",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Blanklob",
   "license": "MIT",
   "main": "index.js",
