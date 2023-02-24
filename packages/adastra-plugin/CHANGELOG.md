@@ -1,5 +1,11 @@
 # `adastra-plugin`
 
+## 0.2.1
+
+### Patch Changes
+
+- Fixed some minor issues with performance
+
 ## 0.2.0
 
 ### Minor Changes

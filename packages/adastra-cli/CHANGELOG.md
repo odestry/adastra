@@ -1,5 +1,11 @@
 # `adastra-cli`
 
+## 0.3.1
+
+### Patch Changes
+
+- Fixed some minor issues with performance
+
 ## 0.3.0
 
 ### Minor Changes

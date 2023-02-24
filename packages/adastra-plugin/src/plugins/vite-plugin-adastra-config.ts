@@ -71,10 +71,7 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
             protocol: socketProtocol
           },
           watch: {
-            ignored: [
-              path.join(options.root, 'assets/*'),
-              path.join(options.root, `snippets/adastra.liquid`)
-            ]
+            ignored: ['assets/*', 'snippets/adastra.liquid']
           }
         }
       }

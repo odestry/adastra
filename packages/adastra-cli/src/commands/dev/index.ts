@@ -76,7 +76,7 @@ export default class Dev extends BaseCommand {
   }
 
   static ignoredFiles = [
-    'adastra.manifest.json',
+    'assets/adastra.manifest.json',
     'package.json',
     'package-lock.json',
     'jsconfig.*',
