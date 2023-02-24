@@ -18,7 +18,7 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
       const origin = `${protocol}//${host as string}:${port}`
       const socketProtocol = https === true ? 'wss' : 'ws'
 
-      let input = glob.sync(
+      const input = glob.sync(
         normalizePath(path.join(options.entrypointsDir, '**/*')),
         { onlyFiles: true }
       )

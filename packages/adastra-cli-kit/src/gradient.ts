@@ -18,6 +18,7 @@ const referenceGradient = [
 ]
 
 // async-friendly setTimeout
+// eslint-disable-next-line
 const sleep = async (time: number): Promise<any> =>
   await new Promise(resolve => {
     setTimeout(resolve, time)

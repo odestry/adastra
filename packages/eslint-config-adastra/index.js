@@ -1,4 +1,14 @@
 module.exports = {
-  extends: ['next', 'turbo', 'prettier'],
-  ignorePatterns: ['dist']
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier'
+  ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  ignorePatterns: ['dist', 'node_modules'],
+  env: {
+    browser: true,
+    node: true
+  }
 }

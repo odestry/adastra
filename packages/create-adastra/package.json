@@ -17,8 +17,8 @@
     "dev": "npm run build -- --watch",
     "build": "tsup src/*.ts --dts --format esm",
     "watch": "tsup src/*.ts --dts --format esm --watch",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit"
   },
   "dependencies": {

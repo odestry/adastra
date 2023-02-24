@@ -40,6 +40,7 @@ export const say = async (
       done()
       return process.exit(0)
     }
+    // eslint-disable-next-line
     if (['up', 'down', 'left', 'right'].includes(k as any)) return
     done()
   })

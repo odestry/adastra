@@ -14,10 +14,10 @@ export const adastraTagDisclaimer =
 
 // Generate liquid variable with resolved path by replacing aliases
 export const adastraTagEntryPath = (
-  resolveAlias: Array<{ find: string | RegExp; replacement: string }>,
+  resolveAlias: { find: string | RegExp; replacement: string }[],
   entrypointsDir: string
 ): string => {
-  const replacements: Array<[string, string]> = []
+  const replacements: [string, string][] = []
 
   resolveAlias.forEach(alias => {
     if (typeof alias.find === 'string') {

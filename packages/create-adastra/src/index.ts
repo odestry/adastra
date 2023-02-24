@@ -96,7 +96,6 @@ export async function main(): Promise<void> {
 
   let cwd = args._[2] as string
 
-  // eslint-disable-next-line
   if (cwd && isValidProjectDirectory(cwd)) {
     const acknowledgeProjectDir = ora({
       color: 'yellow',
@@ -105,7 +104,6 @@ export async function main(): Promise<void> {
     acknowledgeProjectDir.succeed()
   }
 
-  // eslint-disable-next-line
   if (!cwd || !isValidProjectDirectory(cwd)) {
     const notEmptyMsg = (dirPath: string): string =>
       `"${bold(dirPath)}" is not empty!`
@@ -134,7 +132,6 @@ export async function main(): Promise<void> {
     cwd = dirResponse.directory
   }
 
-  // eslint-disable-next-line
   if (!cwd) {
     ora().info(dim('No directory provided. See you later, astronaut!'))
     process.exit(1)
@@ -155,7 +152,6 @@ export async function main(): Promise<void> {
     }
   )
 
-  // eslint-disable-next-line
   if (!options.template || options.template === true) {
     ora().info(dim('No template provided. See you later, astronaut!'))
     process.exit(1)
@@ -171,23 +167,19 @@ export async function main(): Promise<void> {
   const isThirdParty = options.template.includes('/') as boolean
   const templateTarget = isThirdParty
     ? options.template
-    : // eslint-disable-next-line
-      `blanklob/adastra/templates/${options.template}#latest`
+    : `gh:blanklob/adastra/templates/${options.template}`
 
-  // eslint-disable-next-line
   if (!args.dryRun) {
     try {
-      // eslint-disable-next-line
-      await downloadTemplate(`${templateTarget}${hash}`, {
+      await downloadTemplate(templateTarget, {
         force: true,
-        provider: 'github',
         cwd,
         dir: '.'
       })
-    } catch (err: any) {
-      fs.rmdirSync(cwd)
       // eslint-disable-next-line
-      if (err.message.includes('404')) {
+    } catch (error: any) {
+      fs.rmdirSync(cwd)
+      if (error.message.includes('404')) {
         console.error(
           `Could not find template ${color.underline(options.template)}!`
         )
@@ -196,22 +188,18 @@ export async function main(): Promise<void> {
           if (hasBranch) {
             console.error('Are you sure this GitHub repo and branch exist?')
           } else {
-            // eslint-disable-next-line
             console.error(
               'Are you sure this GitHub repo exists?' +
-                // eslint-disable-next-line
                 `This command uses the ${color.bold(
                   'main'
                 )} branch by default.\n` +
-                // eslint-disable-next-line
                 "If the repo doesn't have a main branch, specify a custom branch name:\n" +
-                // eslint-disable-next-line
                 color.underline(options.template + color.bold('#branch-name'))
             )
           }
         }
       } else {
-        console.error(err.message)
+        console.error(error.message)
       }
       process.exit(1)
     }
@@ -230,7 +218,6 @@ export async function main(): Promise<void> {
   templateSpinner.text = green('Theme copied!')
   templateSpinner.succeed()
 
-  // eslint-disable-next-line
   const install = args.y
     ? true
     : (
@@ -256,10 +243,8 @@ export async function main(): Promise<void> {
         )
       ).install
 
-  // eslint-disable-next-line
   if (args.dryRun) {
     ora().info(dim('--dry-run enabled, skipping installing dependencies.'))
-    // eslint-disable-next-line
   } else if (install) {
     const installExec = execa(pkgManager, ['install'], { cwd })
     const installingPackagesMsg = `Installing packages${emojiWithFallback(
@@ -273,9 +258,7 @@ export async function main(): Promise<void> {
           `[${pkgManager}]`
         )} ${data}`
       })
-      // eslint-disable-next-line
       installExec.on('error', error => reject(error))
-      // eslint-disable-next-line
       installExec.on('close', () => resolve())
     })
     installSpinner.text = green('Packages installed!')
@@ -287,7 +270,6 @@ export async function main(): Promise<void> {
     )
   }
 
-  // eslint-disable-next-line
   const gitResponse = args.y
     ? true
     : (
@@ -313,10 +295,8 @@ export async function main(): Promise<void> {
         )
       ).git
 
-  // eslint-disable-next-line
   if (args.dryRun) {
     ora().info(dim('--dry-run enabled, skipping.'))
-    // eslint-disable-next-line
   } else if (gitResponse) {
     // Add a check to see if there is already a .git directory and skip 'git init' if yes (with msg to output)
     const gitDir = './.git'
@@ -343,7 +323,6 @@ export async function main(): Promise<void> {
   const devCmd = pkgManager === 'npm' ? 'npm run dev' : `${pkgManager} dev`
   await nextSteps({ projectDir, devCmd })
 
-  // eslint-disable-next-line
   if (!args.skipTars) {
     await say(['Good luck out there, astronaut!'])
   }

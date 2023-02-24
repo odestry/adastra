@@ -1,7 +1,7 @@
 import { Flags } from '@oclif/core'
-// @ts-expect-error
+// @ts-expect-error @todo
 import { normalizeStoreFqdn } from '@shopify/cli-kit/node/context/fqdn'
-// @ts-expect-error
+// @ts-expect-error @todo
 import { resolvePath } from '@shopify/cli-kit/node/path'
 
 export const globalFlags = {
@@ -21,6 +21,7 @@ export const themeFlags = {
   path: Flags.string({
     hidden: false,
     description: 'The path to your theme directory.',
+    // eslint-disable-next-line
     parse: (input, _) => Promise.resolve(resolvePath(input)),
     env: 'SHOPIFY_FLAG_PATH',
     default: '.'
@@ -36,6 +37,7 @@ export const themeFlags = {
       'Store URL. It can be the store prefix (johns-apparel)' +
       ' or the full myshopify.com URL (johns-apparel.myshopify.com, https://johns-apparel.myshopify.com).',
     env: 'SHOPIFY_FLAG_STORE',
+    // eslint-disable-next-line
     parse: (input, _) => Promise.resolve(normalizeStoreFqdn(input))
   })
 }

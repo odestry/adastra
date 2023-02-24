@@ -1,4 +1,4 @@
-import { createLogger, LogOptions, Logger } from 'vite'
+import { createLogger, Logger } from 'vite'
 import { prefixed } from 'adastra-cli-kit'
 import { COLORS } from 'adastra-branding'
 
@@ -19,15 +19,15 @@ export const log = (logLevel: 'info' | 'warn' | 'error', msg: string): void => {
 
 export const customLogger = (): Logger => ({
   ...logger,
-  info: (msg: string, options?: LogOptions) => {
+  info: (msg: string) => {
     logger.clearScreen('info')
     log('info', msg)
   },
-  warn: (msg: string, options?: LogOptions) => {
+  warn: (msg: string) => {
     logger.clearScreen('warn')
     log('warn', msg)
   },
-  error: (msg: string, options?: LogOptions) => {
+  error: (msg: string) => {
     logger.clearScreen('error')
     log('error', msg)
   }

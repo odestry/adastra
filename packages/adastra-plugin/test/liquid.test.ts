@@ -15,7 +15,7 @@ describe('adastra-plugin:liquid', () => {
 
     const { configureServer } = adastraLiquidPlugin(options)
 
-    // @ts-expect-error
+    // @ts-expect-error @todo fix typescript error
     configureServer({
       config: {
         resolve: {

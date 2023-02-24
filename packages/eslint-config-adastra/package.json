@@ -7,6 +7,7 @@
   "dependencies": {
     "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-config-turbo": "latest"
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0"
   }
 }

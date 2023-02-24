@@ -30,6 +30,7 @@ export const hookExit = (): (() => NodeJS.Process) => {
 export const sleep = async (ms: number): Promise<number> =>
   await new Promise(resolve => setTimeout(resolve, ms))
 
+// eslint-disable-next-line
 export const random = (...arr: any[]): any => {
   arr = arr.flat(1)
   return arr[Math.floor(arr.length * Math.random())]
@@ -55,22 +56,16 @@ export const getAdastraVersion = async (): Promise<string> =>
 
 export const getUserName = async (): Promise<string> =>
   await new Promise<string>(resolve => {
-    exec(
-      'git config user.name',
-      { encoding: 'utf-8' },
-      (_err, stdout, stderr) => {
+    exec('git config user.name', { encoding: 'utf-8' }, (_err, stdout) => {
+      if (stdout.trim().length > 0) return resolve(stdout.split(' ')[0].trim())
+
+      exec('whoami', { encoding: 'utf-8' }, (_err, stdout) => {
         if (stdout.trim().length > 0)
           return resolve(stdout.split(' ')[0].trim())
 
-        exec('whoami', { encoding: 'utf-8' }, (_err, stdout, stderr) => {
-          if (stdout.trim().length > 0)
-            return resolve(stdout.split(' ')[0].trim())
-
-          // eslint-disable-next-line
-          return resolve('astronaut')
-        })
-      }
-    )
+        return resolve('astronaut')
+      })
+    })
   })
 
 export const align = (

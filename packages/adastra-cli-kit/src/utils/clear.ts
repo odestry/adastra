@@ -86,7 +86,6 @@ export const lines = (msg: string, perLine: number): number => {
   return lines.map(l => Math.ceil(l.length / perLine)).reduce((a, b) => a + b)
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default function (prompt: string, perLine: number): string {
   if (!perLine) return erase.line + cursor.to(0)
 

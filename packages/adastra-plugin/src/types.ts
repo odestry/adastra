@@ -1,4 +1,4 @@
-export type PluginAdastraOptions = {
+export interface PluginAdastraOptions {
   root?: string
   sourceDir?: string
   entrypointsDir?: string

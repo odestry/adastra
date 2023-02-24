@@ -7,13 +7,11 @@ import { label, sleep } from 'adastra-cli-kit'
 
 export const getName = async (): Promise<string> => {
   return await new Promise(resolve => {
-    exec('git config user.name', { encoding: 'utf-8' }, (_1, gitName, _2) => {
-      // eslint-disable-next-line
+    exec('git config user.name', { encoding: 'utf-8' }, (_1, gitName) => {
       if (gitName.trim()) {
         return resolve(gitName.split(' ')[0].trim())
       }
-      exec('whoami', { encoding: 'utf-8' }, (_3, whoami, _4) => {
-        // eslint-disable-next-line
+      exec('whoami', { encoding: 'utf-8' }, (_3, whoami) => {
         if (whoami.trim()) {
           return resolve(whoami.split(' ')[0].trim())
         }

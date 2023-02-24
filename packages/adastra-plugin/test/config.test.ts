@@ -13,7 +13,7 @@ describe('adastra-plugin:config', () => {
   it('handles a default configuration', () => {
     const options = resolveOptions(emptyAdastraConfig)
     const userConfig = adastraConfigPlugin(options)
-    // @ts-expect-error
+    // @ts-expect-error @todo fix typescript error
     const config = userConfig.config(
       {},
       { command: 'serve', mode: 'development' }
@@ -47,7 +47,7 @@ describe('adastra-plugin:config', () => {
       entrypointsDir: 'entries'
     })
     const userConfig = adastraConfigPlugin(options)
-    // @ts-expect-error
+    // @ts-expect-error @todo fix typescript error
     const config = userConfig.config(
       {
         server: {
@@ -74,7 +74,7 @@ describe('adastra-plugin:config', () => {
     })
 
     const userConfig = adastraConfigPlugin(options)
-    // @ts-expect-error
+    // @ts-expect-error @todo fix typescript error
     const config = userConfig.config(
       {
         publicDir: 'public',
@@ -99,7 +99,7 @@ describe('adastra-plugin:config', () => {
     })
 
     const userConfig = adastraConfigPlugin(options)
-    // @ts-expect-error
+    // @ts-expect-error @todo fix typescript error
     const config = userConfig.config(
       {
         publicDir: 'public',

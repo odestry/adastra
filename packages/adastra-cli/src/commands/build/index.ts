@@ -1,5 +1,4 @@
 import { Command, Flags } from '@oclif/core'
-import { loadWithRocketGradient, prefixed, sleep } from 'adastra-cli-kit'
 import { build } from 'vite'
 
 import { log } from '../../utilities/logger'
@@ -29,7 +28,7 @@ export default class Build extends Command {
     const { flags } = await this.parse(Build)
     try {
       await build({
-        // @ts-expect-error
+        // @ts-expect-error @todo
         logLevel: flags['log-level'],
         build: {
           minify: flags['no-minify'] ? false : 'esbuild'
