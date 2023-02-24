@@ -172,7 +172,7 @@ export async function main(): Promise<void> {
   const templateTarget = isThirdParty
     ? options.template
     : // eslint-disable-next-line
-      `withastro/astro/examples/${options.template}#latest`
+      `blanklob/adastra/templates/${options.template}#latest`
 
   // eslint-disable-next-line
   if (!args.dryRun) {

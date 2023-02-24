@@ -57,9 +57,8 @@ export const stylesheetTag = (fileName: string): string =>
 
 // Generate adastra tag snippet for development
 export const adastraTagSnippetDev = (
-  assetHost = 'http://localhost:5173',
-  entrypointsDir = 'src',
-  modulesPath = ''
+  assetHost: string,
+  entrypointsDir: string
 ): string =>
   `{% liquid
   assign path_prefix = path | slice: 0
@@ -88,8 +87,7 @@ export const adastraTagSnippetDev = (
     assign is_jsx = true
   endif
 
-  assign modules_path = '${modulesPath}'
-  if file_extension == blank and modules_path != blank and file_url contains modules_path
+  if file_extension == blank
     assign file_url = file_url | append: '/' | append: file_name
   endif
 %}

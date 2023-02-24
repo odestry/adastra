@@ -5,15 +5,13 @@ import fs from 'fs/promises'
 import adastraLiquidPlugin from '../src/plugins/vite-plugin-adastra-liquid'
 import { resolveOptions } from '../src/options'
 
-describe('adastra:liquid-plugin', () => {
+describe('adastra-plugin:liquid', () => {
   it('builds out .liquid files for development', async () => {
     const root = path.join('test', '__fixtures__')
     const options = resolveOptions({
       root,
       sourceDir: path.join(root, 'src')
     })
-
-    console.log(path.join(root, 'src'))
 
     const { configureServer } = adastraLiquidPlugin(options)
 

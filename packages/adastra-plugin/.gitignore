@@ -9,8 +9,6 @@
 /coverage
 
 # adastra
-assets/
-snippets/adastra.*
 dist
 
 # misc

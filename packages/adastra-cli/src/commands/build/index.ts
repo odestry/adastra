@@ -1,4 +1,5 @@
 import { Command, Flags } from '@oclif/core'
+import { loadWithRocketGradient, prefixed, sleep } from 'adastra-cli-kit'
 import { build } from 'vite'
 
 import { log } from '../../utilities/logger'
@@ -7,19 +8,12 @@ export default class Build extends Command {
   static description = 'Builds all static files into the theme assets folder.'
 
   static flags = {
-    unminify: Flags.boolean({
+    'no-minify': Flags.boolean({
       required: false,
       char: 'u',
       description:
-        'Minifies static files for production using Esbuild, then outputs them in the theme assets folder',
-      env: 'ADASTRA_FLAG_UNMINIFY',
-      default: false
-    }),
-    sourcemap: Flags.boolean({
-      required: false,
-      description:
-        'Generate production source maps, the sourcemap will be appended to the resulting output file as a data URI.',
-      env: 'ADASTRA_FLAG_SOURCEMAP',
+        'Removes static files minification, then outputs them in the theme assets folder',
+      env: 'ADASTRA_FLAG_NO_MINIFY',
       default: false
     }),
     'log-level': Flags.string({
@@ -38,13 +32,13 @@ export default class Build extends Command {
         // @ts-expect-error
         logLevel: flags['log-level'],
         build: {
-          minify: flags.unminify ? false : 'esbuild',
-          sourcemap: flags.sourcemap
+          minify: flags['no-minify'] ? false : 'esbuild'
         }
       })
       log('info', 'Building files for production complete')
     } catch (error) {
       log('error', error as string)
+      this.exit(1)
     }
   }
 }

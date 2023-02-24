@@ -16,35 +16,23 @@ import {
 import { CSS_EXTENSIONS_REGEX } from '../constants'
 import type { ResolvedAdastraPluginOptions } from '../types'
 
-const debug = createDebugger('adastra:liquid')
+const debug = createDebugger(`adastra-plugin:liquid`)
 
 // Plugin for generating adastra tag liquid theme snippet with entry points for JS and CSS assets
 export default (options: ResolvedAdastraPluginOptions): Plugin => {
   let config: ResolvedConfig
-  let modulesPath = ''
 
-  const adastraTagSnippetPath = path.resolve(
+  const adastraSnippetPath = path.resolve(
     options.root,
     `snippets/adastra.liquid`
   )
 
   return {
-    name: `adastra:liquid`,
+    name: `adastra-plugin-liquid`,
     enforce: 'post',
     configResolved(resolvedConfig) {
       // Store reference to resolved config
       config = resolvedConfig
-
-      const modulesAlias = config.resolve.alias.find(
-        value => value.find === '@modules'
-      )
-
-      if (modulesAlias != null) {
-        // Store relative path to modules directory
-        modulesPath = normalizePath(
-          path.relative(options.entrypointsDir, modulesAlias.replacement)
-        )
-      }
     },
     configureServer({ config }) {
       const protocol = config.server?.https === true ? 'https:' : 'http:'
@@ -66,10 +54,10 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
         disableThemeCheckTag +
         adastraTagDisclaimer +
         adastraTagEntryPath(config.resolve.alias, options.entrypointsDir) +
-        adastraTagSnippetDev(assetHost, options.entrypointsDir, modulesPath)
+        adastraTagSnippetDev(assetHost, options.entrypointsDir)
 
       // Write adastra tag snippet for development server
-      fs.writeFileSync(adastraTagSnippetPath, adastraTagSnippetContent)
+      fs.writeFileSync(adastraSnippetPath, adastraTagSnippetContent)
     },
     closeBundle() {
       const manifestFilePath = path.resolve(
@@ -131,14 +119,6 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
                 }
               })
             }
-
-            // Add shorthand path for theme module entries
-            if (
-              modulesPath !== '' &&
-              !path.relative(modulesPath, entryName).includes('..')
-            ) {
-              entryPaths.push(path.dirname(entryName))
-            }
           }
 
           assetTags.push(
@@ -164,7 +144,7 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
         '\n{% endif %}\n'
 
       // Write adastra tag snippet for production build
-      fs.writeFileSync(adastraTagSnippetPath, adastraTagSnippetContent)
+      fs.writeFileSync(adastraSnippetPath, adastraTagSnippetContent)
     }
   }
 }

@@ -7,9 +7,9 @@ export const KNOWN_CSS_EXTENSIONS = [
   'stylus',
   'pcss',
   'postcss'
-] as const
+]
 
-export const KNOWN_JSX_EXTENSIONS = ['jsx', 'tsx'] as const
+export const KNOWN_JSX_EXTENSIONS = ['jsx', 'tsx']
 
 export const CSS_EXTENSIONS_REGEX = new RegExp(
   `\\.(${KNOWN_CSS_EXTENSIONS.join('|')})(\\?.+)?$`

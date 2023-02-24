@@ -1,6 +1,6 @@
-const detectURL = (string: string) => {
+const detectURLs = (string: string) => {
   const urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g
   return string.match(urlRegex)
 }
 
-export default detectURL
+export default detectURLs

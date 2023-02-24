@@ -88,6 +88,7 @@ Excludes checks matching any category when specified more than once`,
       themeCheck.succeed()
     } catch (error) {
       log('error', error as string)
+      this.exit(1)
     }
   }
 }

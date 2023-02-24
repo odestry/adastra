@@ -7,14 +7,14 @@ const logger = createLogger()
 export const log = (logLevel: 'info' | 'warn' | 'error', msg: string): void => {
   switch (logLevel) {
     case 'warn':
-      logger.warn(prefixed(COLORS.warn, msg))
+      logger.warn(prefixed(msg, COLORS.warn))
       break
     case 'error':
-      logger.error(prefixed(COLORS.error, msg))
+      logger.error(prefixed(msg, COLORS.error))
       break
+    default:
+      logger.info(prefixed(msg))
   }
-
-  logger.info(prefixed(msg))
 }
 
 export const customLogger = (): Logger => ({

@@ -6,9 +6,9 @@ import { build } from 'vite'
 import { log } from '../../utilities/logger'
 import { globalFlags, themeFlags } from '../../utilities/flags'
 import BaseCommand from '../../utilities/command'
-import { colored, loadWithRocketGradient, prefixed } from 'adastra-cli-kit'
+import { colored, loadWithRocketGradient } from 'adastra-cli-kit'
 
-import detectURL from '../../utilities/detect-url'
+import detectURLs from '../../utilities/detect-urls'
 
 export default class Preview extends BaseCommand {
   static description = 'Opens a preview of your remote development theme.'
@@ -47,14 +47,15 @@ export default class Preview extends BaseCommand {
 
     try {
       const opening = await loadWithRocketGradient('Opening a theme preview...')
-      // await build({ logLevel: 'silent' })
+      await build({ logLevel: 'silent' })
       const { stdout } = await execa('shopify', command)
-      const url = detectURL(stdout)![0]
-      if (url) await open(url)
-      opening.text = prefixed(colored(stdout))
+      const [, , previewURL] = detectURLs(stdout) as string[]
+      if (previewURL) await open(previewURL)
+      opening.text = colored(stdout)
       opening.succeed()
     } catch (error) {
       log('error', error as string)
+      this.exit(1)
     }
   }
 }

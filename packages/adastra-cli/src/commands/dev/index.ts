@@ -1,6 +1,6 @@
 import { Flags } from '@oclif/core'
 import { execa } from 'execa'
-import { createServer, loadConfigFromFile, ConfigEnv } from 'vite'
+import { createServer, loadConfigFromFile, ConfigEnv, loadEnv } from 'vite'
 import { log, customLogger } from '../../utilities/logger'
 import { globalFlags, themeFlags } from '../../utilities/flags'
 import BaseCommand from '../../utilities/command'
@@ -72,15 +72,11 @@ export default class Dev extends BaseCommand {
         'Proceed without confirmation, if current directory does not seem to be theme directory.',
       env: 'SHOPIFY_FLAG_FORCE'
     }),
-    password: themeFlags.password,
-    mode: Flags.string({
-      char: 'm',
-      description: 'Load environment variables from specific env files.',
-      env: 'SHOPIFY_FLAG_MODE'
-    })
+    password: themeFlags.password
   }
 
   static ignoredFiles = [
+    'adastra.manifest.json',
     'package.json',
     'package-lock.json',
     'jsconfig.*',
@@ -103,7 +99,7 @@ export default class Dev extends BaseCommand {
 
     const configEnv: ConfigEnv = {
       command: 'serve',
-      mode: flags.mode as string
+      mode: 'development'
     }
 
     const config = await loadConfigFromFile(configEnv)
@@ -111,13 +107,18 @@ export default class Dev extends BaseCommand {
 
     try {
       const launch = await loadWithRocketGradient(
-        'Initiating launch sequence...'
+        'Initiating server launch sequence...'
       )
+
       if (config) {
         const server = await createServer()
         await server.listen()
         launch.text = 'Vite server launched, wait for Shopify server to launch!'
         launch.succeed()
+      } else {
+        launch.text = 'Wait for Shopify server to launch!'
+        launch.succeed()
+        log('warn', 'No vite config was found in the root folder.')
       }
 
       await execa('shopify', command, {
@@ -125,6 +126,7 @@ export default class Dev extends BaseCommand {
       })
     } catch (error) {
       log('error', error as string)
+      this.exit(1)
     }
   }
 }

@@ -2,15 +2,15 @@ import path from 'path'
 import glob from 'fast-glob'
 import createDebugger from 'debug'
 
-import { Plugin, UserConfig, mergeConfig, normalizePath, ConfigEnv } from 'vite'
+import { Plugin, UserConfig, mergeConfig, normalizePath } from 'vite'
 import type { ResolvedAdastraPluginOptions } from '../types'
 
-const debug = createDebugger('adastra:config')
+const debug = createDebugger(`adastra-plugin:config`)
 
 export default (options: ResolvedAdastraPluginOptions): Plugin => {
   return {
-    name: `adastra:config`,
-    config(config: UserConfig, _env: ConfigEnv): UserConfig {
+    name: `adastra-plugin-config`,
+    config(config: UserConfig): UserConfig {
       const host = config.server?.host ?? 'localhost'
       const port = config.server?.port ?? 5173
       const https = config.server?.https
@@ -19,35 +19,15 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
       const socketProtocol = https === true ? 'wss' : 'ws'
 
       let input = glob.sync(
-        normalizePath(
-          path.join(
-            options.entrypointsDir,
-            options.entrypointsDir === 'src' ? '/*' : '**/*'
-          )
-        ),
+        normalizePath(path.join(options.entrypointsDir, '**/*')),
         { onlyFiles: true }
       )
-
-      options.additionalEntrypoints.forEach(globPattern => {
-        input = input.concat(glob.sync(globPattern, { onlyFiles: true }))
-      })
-
-      // const entryFileNames = path.join(options.root, `[name]${options.hash ? '-[hash]' : ''}.js`)
-      // const assetFileNames = path.join(options.root, `[name]${options.hash ? '-[hash]' : ''}.[ext]`)
-      const output = {
-        chunkFileNames: `[name]${options.hash ? '.[hash]' : ''}.js`,
-        entryFileNames: `[name]${options.hash ? '.[hash]' : ''}.js`,
-        assetFileNames: `[name]${options.hash ? '.[hash]' : ''}.[ext]`
-      }
 
       const generatedConfig: UserConfig = {
         // Use relative base path so to load imported assets from Shopify CDN
         base: './',
-        envPrefix: ['VITE_', 'PUBLIC_'],
-        css: {
-          devSourcemap: options.sourcemap
-        },
-        publicDir: path.join(options.sourceDir, 'public'),
+        envPrefix: ['VITE_', 'PUBLIC_', 'ADASTRA_'],
+        publicDir: false,
         build: {
           // Output files to "assets" directory
           outDir: path.join(options.root, 'assets'),
@@ -59,7 +39,14 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
           // Configure bundle entry points
           rollupOptions: {
             input,
-            output
+            output: {
+              chunkFileNames: `[name]${options.hash ? '.[hash]' : ''}.js`,
+              entryFileNames: chunkInfo =>
+                `${chunkInfo.name.replace('entry.', '')}${
+                  options.hash ? '.[hash]' : ''
+                }.js`,
+              assetFileNames: `[name]${options.hash ? '.[hash]' : ''}.[ext]`
+            }
           },
           // Output manifest file for backend integration
           manifest: `adastra.manifest.json`,
@@ -84,11 +71,15 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
             protocol: socketProtocol
           },
           watch: {
-            ignored: ['assets/*', 'snippets/adastra.liquid']
+            ignored: [
+              path.join(options.root, 'assets/*'),
+              path.join(options.root, `snippets/adastra.liquid`)
+            ]
           }
         }
       }
       debug(generatedConfig)
+
       return mergeConfig(generatedConfig, config)
     }
   }
