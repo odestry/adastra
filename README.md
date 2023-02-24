@@ -1,99 +1,109 @@
-# Adastra
+![The Adastra logo.](.github/assets/banner.png 'The Adastra logo.')
 
-A poweful, flexibile framework for building unique and custom Shopify themes at scale.
+<p align="center">
+  <br/>
+  Adastra ✨ is a powerful and flexible framework for building custom and unique &mdash;
+  <br/>
+  Shopify online stores and themes with next-gen frontend tooling.
+  <br/>
+</p>
 
-## Packages
+## Key Features
 
-### Public
+- **Flexible** Can seamlessly be integrated with existing workflows and Shopify themes.
+- **Outstanding DX** Support Hot Reload out of the box and has custom CLI built on top of the Shopify CLI.
+- **Fast, by default** Supports JS code splitting and lazyloading static files.
+- **UI-agnostic** Supports React, Preact, Svelte, Vue, Solid, Lit and more. (examples coming soon)
+- **Customizable** Tailwind, React, Vue, and many other frameworks to choose from.
 
-- [adastra](./packages/adastra)
-- [create-adastra](./packages/create-adastra)
-- [adastra-plugin](./packages/adastra-plugin)
-- [adastra-cli](./packages/adastra-cli)
-- [adastra-cli-kit](./packages/adastra-cli-kit)
-- [adastra-branding](./packages/adastra-branding)
+## Build in public
 
-### Configs
+This project is maintained, and I'm currently building it in public. You can follow the progress on Twitter [@blanklob](https://twitter.com/blanklob).
 
-- [adastra-tsconfig](./packages/tsconfig)
-- [adastra-prettier-config](./packages/prettier-config)
-- [eslint-config-adastra](./packages/eslint-config-adastra)
+> **Warning**
+> This is work in progress. This repository is only a Theme demo for Shopify developers to try **Adastra** and send feedback or report issues, its not yet a production ready framework 🙂
 
-## Templates
+Once we hit a stable version, I will release the full packages and repository under and MIT Licence 💚
 
-- [basics](./templates/basics)
-- [minimal](./templates/minimal)
+## Start your first theme project
 
-### Styling
+To start a project, its the same steps you would usually do in a standard Shopify theme project, the only extra step is to **install dependencies**.
 
-#### CSS in Liquid
+### Requirements
 
-- [with-tailwind](./examples/with-tailwind)
-- [with-unocss](./examples/with-unocss)
+Before getting started with **Adastra** 🌟 make sure you have at least Node v14 installed, I recommend having LTS version to make sure the Adastra CLI works properly with no issues.
 
-#### CSS Preprocessors
+Check your node version with
 
-- [with-sass](./examples/with-sass)
-- [with-less](./examples/with-less)
+```bash
+node --version
+```
 
-#### CSS-in-JS
+> If not, then check how to update Node on your local machine [here](https://nodejs.org/en/download).
 
-- [with-vanilla-extract](./examples/with-vanilla-extract)
-- [with-stitches](./examples/with-stitches)
-- [with-css-modules](./examples/with-css-modules)
+### Installation
 
-### Tools
+After cloning the repository, the first thing you should do is install dependencies using
 
-- [with-typescript](./examples/with-typescript)
-- [with-eslint](./examples/with-eslint)
-- [with-prettier](./examples/with-prettier)
-- [with-stylelint](./examples/with-stylelint)
+```bash
+npm install # yarn or pnpm install
+```
 
-### Frameworks
+### Lauching the development server
 
-- [with-web-components](./examples/with-web-components)
-- [with-react](./examples/with-react)
-- [with-vue](./examples/with-vue)
-- [with-alpine](./examples/with-alpine)
-- [with-svelte](./examples/with-svelte)
-- [with-preact](./examples/with-preact)
-- [with-solid](./examples/with-solid)
-- [with-lit](./examples/with-lit)
+To launch the development server you don't need Shopify CLI for that, **Adastra** 🌟 comes with its custom CLI, which is a <mark>wrapper over the Shopify CLI</mark>, the **Adastra CLI** command is an enhanced Shopify CLI command. To get started.
 
-### CI/CD
+```bash
+npm run dev # yarn or pnpm dev
+```
 
-- [with-lighhouse-ci](./examples/with-lighhouse-ci)
-- [with-github-actions](./examples/with-github-actions)
-- [with-changeset](./examples/with-changeset)
+If the command deosn't work, its propably because you are not logged in to a store yet, you can do so by either changing the command in `package.json` or login with Shopify CLI.
 
-### Testing
+```json
+"scripts": {
+  - "dev": "adastra dev",
+  "dev": "adastra dev -s example-store.myshopify.com",
+}
+```
 
-- [with-vitest](./examples/with-vitest)
-- [with-playwright](./examples/with-playwright)
+> The command will launch two development servers, one for Shopify, and the other for Vite.
 
-### Platforms
+## How it works?
 
-- [with-docker](./examples/with-docker)
-- [with-github-codespace](./examples/with-github-codespace)
-- [with-stackblitz](./examples/with-stackblitz)
+In nutshell, all Shopify theme folder remain the same, except for one folder, the `assets` folder is replaced with a new folder in the root of the project called `src` all static files (Javascript, styles, fonts, etc..) need to be inside this folder instead of the assets folder.
 
-### 3D and Animation
+By default **Adastra 🌟** watches changes in this folder, so you dont need to build files during development, the only time you build files is when you are ready to ship to production. Thats why `assets` folder is added in `.gitignore` by default.
 
-- [with-gsap](./examples/with-gsap)
-- [with-three](./examples/with-three)
-- [with-framer](./examples/with-framer)
-- [with-r3f](./examples/with-r3f)
-- [with-glsl](./examples/with-glsl)
+Also **Adastra 🌟** automaticely upon launching the dev server creates a snippet, to add all required Liquid code for Vite to work properly. No need to remove or the change this snippet located `snippets/adastra.liquid`
 
-## Backend & Data
+## Documentation
 
-### Storefront API
+Currently documentation is under construction 🚧 this is project is still under development, however expect [upcoming documentation](https://docs.blanklob.com/) soon in the days to come.
 
-- [with-fetch-storefront](./examples/with-storefront-api)
-- [with-react-storefront-kit](./examples/with-storefront-api)
+## Roadmap
 
-### Admin API
+👉 You can find the roadmap [here](https://github.com/users/blanklob/projects/5).
 
-- [with-express](./examples/with-express)
-- [with-netlify](./examples/with-netlify)
-- [with-vercel](./examples/with-vercel)
+## Support
+
+Having trouble? Get help in the official [Discord](https://help.blanklob.com).
+
+## Contributing
+
+**New contributors welcome!** Check out our [Contributors Guide](CONTRIBUTING.md) for help getting started.
+
+Join us on [Discord](https://help.blanklob.com) to meet other Shopify developers. We'll help you with your Shopify project in no time!
+
+## Useful Links
+
+Learn more about theme development principals and native web capabilities:
+
+- [Shopify best practices](https://shopify.dev/themes/best-practices)
+- [Shopify developer tools](https://shopify.dev/themes/tools)
+- [Native web components](https://developer.mozilla.org/fr/docs/Web/Web_Components)
+- [Progressive enhancement](https://css-tricks.com/embrace-the-platform)
+
+<!-- Markdown links & img dfn's -->
+
+[ci-url]: https://github.com/blanklob/adastra/actions/workflows/ci.yml
+[ci-badge]: https://github.com/blanklob/adastra/actions/workflows/ci.yml/badge.svg
