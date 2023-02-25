@@ -23,6 +23,7 @@
       "cache": false
     },
     "lint": {},
+    "typecheck": {},
     "check": {
       "dependsOn": ["build"],
       "outputMode": "full"
