@@ -49,6 +49,18 @@ importers:
       adastra-plugin: link:../../packages/adastra-plugin
       vite: 4.1.4
 
+  examples/with-typescript:
+    specifiers:
+      adastra-cli: latest
+      adastra-plugin: latest
+      typescript: ^4.9.3
+      vite: ^4.1.4
+    devDependencies:
+      adastra-cli: link:../../packages/adastra-cli
+      adastra-plugin: link:../../packages/adastra-plugin
+      typescript: 4.9.5
+      vite: 4.1.4
+
   packages/adastra-branding:
     specifiers:
       adastra-tsconfig: workspace:*

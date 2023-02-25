@@ -1,4 +1,4 @@
-# Adastra Example with React ✨
+# Adastra Example with Typescript ✨
 
 ```shell
 npm create adastra@latest -- --template minimal
