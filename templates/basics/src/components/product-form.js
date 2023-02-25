@@ -1,4 +1,4 @@
-class ProductForm extends window.HTMLElement {
+export default class ProductForm extends window.HTMLElement {
   constructor () {
     super()
 
@@ -34,5 +34,3 @@ class ProductForm extends window.HTMLElement {
     }
   }
 }
-
-window.customElements.define('product-form', ProductForm)
