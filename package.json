@@ -6,8 +6,7 @@
   "license": "MIT",
   "workspaces": [
     "packages/*",
-    "templates/*",
-    "examples/*"
+    "templates/*"
   ],
   "scripts": {
     "dev": "turbo run dev --filter=*adastra* --parallel",
