@@ -1,11 +1,11 @@
 {
   "test/__fixtures__/frontend/entrypoints/base.css": {
-    "file": "base.css",
+    "file": "base-c473947e.css",
     "isEntry": true,
     "src": "test/__fixtures__/frontend/entrypoints/base.css"
   },
   "test/__fixtures__/frontend/entrypoints/index.ts": {
-    "file": "index.js",
+    "file": "index-bf7c659a.js",
     "isEntry": true,
     "src": "test/__fixtures__/frontend/entrypoints/index.ts"
   }

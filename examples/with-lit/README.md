@@ -1,4 +1,4 @@
-# Adastra Example with Preact ✨
+# Adastra Example with Lit ✨
 
 ```shell
 npm create adastra@latest -- --template minimal

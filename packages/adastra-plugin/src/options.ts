@@ -13,15 +13,12 @@ export const resolveOptions = (
     sourceDir,
     options.entrypointsDir ?? 'entrypoints'
   )
-
-  const hash = options.hash ?? false
-  const minify = options.minify ?? true
+  const snippetName = options.snippetName ?? 'adastra'
 
   return {
     root,
     sourceDir,
     entrypointsDir,
-    hash,
-    minify
+    snippetName
   }
 }

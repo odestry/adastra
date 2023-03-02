@@ -24,7 +24,7 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
 
   const adastraSnippetPath = path.resolve(
     options.root,
-    `snippets/adastra.liquid`
+    `snippets/${options.snippetName}.liquid`
   )
 
   return {
@@ -34,7 +34,7 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
       // Store reference to resolved config
       config = resolvedConfig
     },
-    configureServer({ config }) {
+    configureServer({ config, middlewares }) {
       const protocol = config.server?.https === true ? 'https:' : 'http:'
       const host =
         typeof config.server?.host === 'string'
@@ -53,11 +53,28 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
       const adastraTagSnippetContent =
         disableThemeCheckTag +
         adastraTagDisclaimer +
-        adastraTagEntryPath(config.resolve.alias, options.entrypointsDir) +
+        adastraTagEntryPath(
+          config.resolve.alias,
+          options.entrypointsDir,
+          options.snippetName
+        ) +
         adastraTagSnippetDev(assetHost, options.entrypointsDir)
 
       // Write adastra tag snippet for development server
       fs.writeFileSync(adastraSnippetPath, adastraTagSnippetContent)
+
+      return () =>
+        middlewares.use((req, res, next) => {
+          if (req.url === '/index.html') {
+            res.statusCode = 404
+
+            res.end(
+              fs.readFileSync(path.join(__dirname, 'dev-index.html')).toString()
+            )
+          }
+
+          next()
+        })
     },
     closeBundle() {
       const manifestFilePath = path.resolve(
@@ -139,7 +156,11 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
       const adastraTagSnippetContent =
         disableThemeCheckTag +
         adastraTagDisclaimer +
-        adastraTagEntryPath(config.resolve.alias, options.entrypointsDir) +
+        adastraTagEntryPath(
+          config.resolve.alias,
+          options.entrypointsDir,
+          options.snippetName
+        ) +
         assetTags.join('\n') +
         '\n{% endif %}\n'
 
