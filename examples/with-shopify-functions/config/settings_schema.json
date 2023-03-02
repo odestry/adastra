@@ -1,0 +1,195 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Adastra",
+    "theme_version": "0.0.0",
+    "theme_author": "You Astronaut",
+    "theme_documentation_url": "https://docs.blanklob.com",
+    "theme_support_url": "https://help.blanklob.com"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Assets"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image",
+        "info": "Recommended width: 512 pixels minimum."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Logo width",
+        "default": 120
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "PNG, or JPG. Recommended: 512x512 pixels minimum."
+      },
+      {
+        "type": "header",
+        "content": "Social links"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https://instagram.com/shopify"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok_link",
+        "label": "Tiktok",
+        "info": "https://tiktok.com/@shopify"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "https://facebook.com/shopify"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest_link",
+        "label": "Pinterest",
+        "info": "https://pinterest.com/shopify"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter_link",
+        "label": "Twitter",
+        "info": "https://twitter.com/shopify"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube_link",
+        "label": "Youtube",
+        "info": "https://www.youtube.com/@shopify"
+      },
+      {
+        "type": "url",
+        "id": "social_linkedin_link",
+        "label": "Linkedin",
+        "info": "https://linkedin.com/company/shopify"
+      },
+      {
+        "type": "url",
+        "id": "social_vimeo_link",
+        "label": "Vimeo",
+        "info": "https://vimeo.com/shopify"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Use colors to communicate meaning and create meaningful experiences while also expressing hierarchy, state, and brand identity."
+      },
+      {
+        "type": "color",
+        "id": "colors_accent",
+        "label": "Accent",
+        "default": "#0E2700"
+      },
+      {
+        "type": "color",
+        "id": "colors_surface",
+        "label": "Surface",
+        "default": "#F0F2F4"
+      },
+      {
+        "type": "header",
+        "content": "Primary colors",
+        "info": "Use it to derive roles for key components such as prominent buttons."
+      },
+      {
+        "type": "color",
+        "id": "colors_primary",
+        "label": "Accent",
+        "default": "#1C1E21"
+      },
+      {
+        "type": "color",
+        "id": "colors_contrast",
+        "label": "Contrast",
+        "default": "#C5FC81"
+      },
+      {
+        "type": "header",
+        "content": "Secondary colors",
+        "info": "Use it to derive roles for less prominent components in the UI."
+      },
+      {
+        "type": "color",
+        "id": "colors_secondary",
+        "label": "Accent",
+        "default": "#543C6E"
+      },
+      {
+        "type": "color_background",
+        "id": "colors_gradient",
+        "label": "Gradient",
+        "default": "linear-gradient(45deg, rgba(206, 241, 65, 1), rgba(133, 232, 254, 1) 30%, rgba(226, 199, 255, 1) 50%, rgba(255, 255, 255, 1) 60%)"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Use typography to present your design and content as clearly and efficiently as possible."
+      },
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_heading",
+        "default": "inter_n7",
+        "label": "Font",
+        "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/en/manual/online-store/os/store-speed/improving-speed#fonts)"
+      },
+      {
+        "type": "header",
+        "content": "Body"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body",
+        "default": "inter_n4",
+        "label": "Font",
+        "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/en/manual/online-store/os/store-speed/improving-speed#fonts)"
+      }
+    ]
+  },
+  {
+    "name": "Currency format",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Currency codes"
+      },
+      {
+        "type": "checkbox",
+        "id": "currency_code_enabled",
+        "label": "Show currency codes",
+        "info": "Cart and checkout prices always show currency codes. Example: $1.00 USD.",
+        "default": true
+      }
+    ]
+  }
+]
