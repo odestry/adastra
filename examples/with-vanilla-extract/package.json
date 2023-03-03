@@ -1,0 +1,21 @@
+{
+  "name": "with-typescript",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "adastra dev",
+    "build": "adastra build",
+    "preview": "adastra preview",
+    "check": "adastra check"
+  },
+  "devDependencies": {
+    "@vanilla-extract/vite-plugin": "^3.8.0",
+    "adastra-cli": "latest",
+    "adastra-plugin": "latest",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.4"
+  },
+  "dependencies": {
+    "@vanilla-extract/css": "^1.9.5"
+  }
+}

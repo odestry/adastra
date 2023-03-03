@@ -1,0 +1,17 @@
+{
+  "name": "with-sass",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "adastra dev",
+    "build": "adastra build",
+    "preview": "adastra preview",
+    "check": "adastra check"
+  },
+  "devDependencies": {
+    "adastra-cli": "latest",
+    "adastra-plugin": "latest",
+    "vite": "^4.1.4",
+    "sass": "^1.58.3"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "with-lit",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "adastra dev",
+    "build": "adastra build",
+    "preview": "adastra preview",
+    "check": "adastra check"
+  },
+  "dependencies": {
+    "lit": "^2.6.1"
+  },
+  "devDependencies": {
+    "adastra-cli": "latest",
+    "adastra-plugin": "latest",
+    "vite": "^4.1.4"
+  }
+}

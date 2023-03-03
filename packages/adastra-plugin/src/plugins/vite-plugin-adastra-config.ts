@@ -38,19 +38,10 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
           assetsDir: '',
           // Configure bundle entry points
           rollupOptions: {
-            input,
-            output: {
-              chunkFileNames: `[name]${options.hash ? '.[hash]' : ''}.js`,
-              entryFileNames: chunkInfo =>
-                `${chunkInfo.name.replace('entry.', '')}${
-                  options.hash ? '.[hash]' : ''
-                }.js`,
-              assetFileNames: `[name]${options.hash ? '.[hash]' : ''}.[ext]`
-            }
+            input
           },
           // Output manifest file for backend integration
-          manifest: `adastra.manifest.json`,
-          minify: options.minify
+          manifest: `adastra.manifest.json`
         },
         resolve: {
           // Provide import alias to source code dir for convenience
@@ -71,7 +62,7 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
             protocol: socketProtocol
           },
           watch: {
-            ignored: ['assets/*', 'snippets/adastra.liquid']
+            ignored: ['assets/*', `snippets/${options.snippetName}.liquid`]
           }
         }
       }

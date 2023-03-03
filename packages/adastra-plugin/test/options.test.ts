@@ -10,8 +10,7 @@ describe('resolve Adastra Options', () => {
     expect(options.root).toBe('./')
     expect(options.sourceDir).toBe('src')
     expect(options.entrypointsDir).toBe('src/entrypoints')
-    expect(options.hash).toBe(false)
-    expect(options.minify).toBe(true)
+    expect(options.snippetName).toBe('adastra')
   })
 
   it('accepts a partial options configuration with root & src dir', () => {
@@ -23,34 +22,31 @@ describe('resolve Adastra Options', () => {
     expect(options.root).toBe('shopify')
     expect(options.sourceDir).toBe('frontend')
     expect(options.entrypointsDir).toBe('frontend/entrypoints')
-    expect(options.hash).toBe(false)
-    expect(options.minify).toBe(true)
+    expect(options.snippetName).toBe('adastra')
   })
 
   it('accepts a partial configuration with entrypoints', () => {
     const options = resolveOptions({
       sourceDir: 'frontend',
-      entrypointsDir: 'entries'
+      entrypointsDir: 'entries',
+      snippetName: 'vite-tag'
     })
 
     expect(options.root).toBe('./')
     expect(options.sourceDir).toBe('frontend')
     expect(options.entrypointsDir).toBe('frontend/entries')
-    expect(options.hash).toBe(false)
-    expect(options.minify).toBe(true)
+    expect(options.snippetName).toBe('vite-tag')
   })
 
-  it('accepts a partial configuration with hashing active and disabling minifcation', () => {
+  it('accepts a partial configuration with custom snippet name', () => {
     const options = resolveOptions({
-      hash: true,
-      minify: false
+      snippetName: 'vite-tag'
     })
 
     expect(options.root).toBe('./')
     expect(options.sourceDir).toBe('src')
     expect(options.entrypointsDir).toBe('src/entrypoints')
-    expect(options.hash).toBe(true)
-    expect(options.minify).toBe(false)
+    expect(options.snippetName).toBe('vite-tag')
   })
 
   it('handles partial configuration with source dir as undefined', () => {
@@ -63,8 +59,7 @@ describe('resolve Adastra Options', () => {
     expect(options.root).toBe('theme')
     expect(options.sourceDir).toBe('src')
     expect(options.entrypointsDir).toBe('src/entry')
-    expect(options.hash).toBe(false)
-    expect(options.minify).toBe(true)
+    expect(options.snippetName).toBe('adastra')
   })
 
   it('accepts a partial configuration with entrypoints dir as wildcard', () => {
@@ -75,5 +70,6 @@ describe('resolve Adastra Options', () => {
     expect(options.root).toBe('./')
     expect(options.sourceDir).toBe('src')
     expect(options.entrypointsDir).toBe('src/entrypoints/**')
+    expect(options.snippetName).toBe('adastra')
   })
 })

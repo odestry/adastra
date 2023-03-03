@@ -19,12 +19,12 @@
   "scripts": {
     "start": "./bin/run.js",
     "dev": "npm run build -- --watch",
-    "build": "tsup src/**/**/**/*.ts --dts --format esm --minify --clean",
+    "build": "tsup src/**/**/**/*.ts --dts --format esm --clean",
     "watch": "tsup src/**/**/**/*.ts --format esm --dts --watch",
     "prepack": "oclif manifest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:types": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage"

@@ -1,0 +1,20 @@
+{
+  "name": "with-vue",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "adastra dev",
+    "build": "adastra build",
+    "preview": "adastra preview",
+    "check": "adastra check"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "adastra-cli": "latest",
+    "adastra-plugin": "latest",
+    "vite": "^4.1.4",
+    "@vitejs/plugin-vue": "^4.0.0"
+  }
+}

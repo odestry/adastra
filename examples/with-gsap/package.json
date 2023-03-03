@@ -1,0 +1,19 @@
+{
+  "name": "with-gsap",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "adastra dev",
+    "build": "adastra build",
+    "preview": "adastra preview",
+    "check": "adastra check"
+  },
+  "dependencies": {
+    "gsap": "^3.11.4"
+  },
+  "devDependencies": {
+    "adastra-cli": "latest",
+    "adastra-plugin": "latest",
+    "vite": "^4.1.4"
+  }
+}

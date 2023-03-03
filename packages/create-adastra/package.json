@@ -19,7 +19,7 @@
     "watch": "tsup src/*.ts --dts --format esm --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:types": "tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "adastra-cli-kit": "workspace:*",

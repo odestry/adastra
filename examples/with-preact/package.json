@@ -1,0 +1,21 @@
+{
+  "name": "with-preact",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "adastra dev",
+    "build": "adastra build",
+    "preview": "adastra preview",
+    "check": "adastra check"
+  },
+  "dependencies": {
+    "preact": "^10.12.1",
+    "preact-custom-element": "^4.2.1"
+  },
+  "devDependencies": {
+    "adastra-cli": "latest",
+    "adastra-plugin": "latest",
+    "vite": "^4.1.4",
+    "@preact/preset-vite": "^2.5.0"
+  }
+}

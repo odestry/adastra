@@ -8,7 +8,7 @@ import { loadWithRocketGradient, prefixed } from 'adastra-cli-kit'
 
 export default class Check extends BaseCommand {
   static description =
-    'Validate the theme using theme check same as shopify theme check.'
+    'Validate the theme using theme check same as shopify theme check command.'
 
   static flags = {
     ...globalFlags,
@@ -82,7 +82,9 @@ Excludes checks matching any category when specified more than once`,
     const command = ['theme', 'check', ...this.passThroughFlags(flags)]
 
     try {
-      const themeCheck = await loadWithRocketGradient('Running theme check...')
+      const themeCheck = await loadWithRocketGradient(
+        'Running theme check on the current theme.'
+      )
       const { stdout } = await execa('shopify', command)
       themeCheck.text = prefixed(stdout)
       themeCheck.succeed()

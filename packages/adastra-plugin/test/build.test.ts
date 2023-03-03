@@ -26,20 +26,25 @@ describe('adastra-plugin:build', () => {
   })
 
   it('builds out adastra.liquid snippet file with hashing', async () => {
+    const customSnippetName = 'vite-tag'
     await build({
       logLevel: 'silent',
       plugins: [
         adastra({
           root,
           sourceDir: path.join(root, 'src'),
-          hash: true,
-          minify: false
+          snippetName: customSnippetName
         })
       ]
     })
 
     const tagsLiquid = await fs.readFile(
-      path.join(__dirname, '__fixtures__', 'snippets', 'adastra.liquid'),
+      path.join(
+        __dirname,
+        '__fixtures__',
+        'snippets',
+        `${customSnippetName}.liquid`
+      ),
       { encoding: 'utf8' }
     )
     expect(tagsLiquid).toMatchSnapshot()

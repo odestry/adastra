@@ -4,3 +4,5 @@ pnpm-lock.yaml
 .changeset/*.md
 templates
 examples
+node_modules
+__fixtures__

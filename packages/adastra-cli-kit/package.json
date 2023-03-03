@@ -16,7 +16,7 @@
     "watch": "tsup src/index.ts --format esm --dts --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:types": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage"

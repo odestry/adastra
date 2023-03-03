@@ -69,8 +69,7 @@ describe('adastra-plugin:config', () => {
   it('rewrite default configuration', () => {
     const options = resolveOptions({
       root: 'shopify',
-      entrypointsDir: 'entrypoints',
-      minify: true
+      entrypointsDir: 'entrypoints'
     })
 
     const userConfig = adastraConfigPlugin(options)
@@ -85,7 +84,7 @@ describe('adastra-plugin:config', () => {
       { command: 'serve', mode: 'development' }
     )
     expect(config.publicDir).toEqual('public')
-    expect(config.build.minify).toBe(false)
+    expect(config.build.minify).toEqual(false)
     expect(config.build.rollupOptions.input).toEqual([
       'src/entrypoints/index.js'
     ])
@@ -94,8 +93,7 @@ describe('adastra-plugin:config', () => {
   it('handles multiple file entries', () => {
     const options = resolveOptions({
       root: 'shopify',
-      entrypointsDir: 'js',
-      minify: true
+      entrypointsDir: 'js'
     })
 
     const userConfig = adastraConfigPlugin(options)
@@ -110,7 +108,7 @@ describe('adastra-plugin:config', () => {
       { command: 'serve', mode: 'development' }
     )
     expect(config.publicDir).toEqual('public')
-    expect(config.build.minify).toBe(false)
+    expect(config.build.minify).toEqual(false)
     expect(config.build.rollupOptions.input).toEqual([
       'src/js/base.js',
       'src/js/customers.js'

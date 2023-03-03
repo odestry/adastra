@@ -1,2 +1,3 @@
-// Same as './src/components/product-form.js'
-import '@/components/product-form'
+import ProductForm from '../product-form'
+
+window.customElements.define('product-form', ProductForm)

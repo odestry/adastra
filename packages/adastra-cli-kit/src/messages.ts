@@ -110,7 +110,7 @@ export const say = async (
 export const label = (
   text: string,
   c = color.bgHex(COLORS.yellowGreen),
-  t = color.white
+  t = color.whiteBright
 ): string => c(` ${t(text)} `)
 
 export const colored = (
@@ -121,4 +121,4 @@ export const colored = (
 export const prefixed = (text: string, c = COLORS.yellowGreen): string =>
   `${color.white(moment().format('hh:mm:ss'))} ${color
     .hex(c)
-    .bold(`[${BRAND.name}]`)} ${text}`
+    .bold(`[${BRAND.name.toLowerCase()}]`)} ${text}`

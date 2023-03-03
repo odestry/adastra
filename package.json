@@ -6,23 +6,24 @@
   "license": "MIT",
   "workspaces": [
     "packages/*",
-    "templates/*",
-    "examples/*"
+    "templates/*"
   ],
   "scripts": {
     "dev": "turbo run dev --filter=*adastra* --parallel",
     "dev:templates": "turbo run dev --filter=template-* --parallel",
     "build": "turbo run build --filter=*adastra* --filter=template-*",
     "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
     "check": "turbo run check",
     "test": "turbo run test --filter=*adastra*",
     "test:watch": "turbo run test:watch --filter=*adastra*",
     "change:add": "changeset add",
     "change:version": "changeset version",
-    "change:release": "turbo run lint build test && changeset publish",
+    "release": "turbo run build && changeset publish",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.0",
     "@types/node": "^18.14.1",
     "@typescript-eslint/eslint-plugin": "^5.53.0",

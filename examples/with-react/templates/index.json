@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "hello-world",
+      "settings": {
+        "heading": "Welcome to Adastra ✨ with React."
+      }
+    }
+  },
+  "order": ["main"]
+}
