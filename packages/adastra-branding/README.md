@@ -1,1 +1,18 @@
-# `adastra-branding`
+# adastra-branding
+
+Adastra ✨ branding is package used to maintain Adastra styling and color palette across all the packages especialy the CLI toolkits. Its an internal packages not intended for public distribution.
+
+```bash
+npm install adastra-branding
+```
+
+Using Yarn/PNPM
+
+```bash
+yarn add adastra-branding
+# pnpm add adastra-branding
+```
+
+## Want to learn more?
+
+Feel free to check [our documentation](https://docs.blanklob.com) or jump into our [Discord server](https://help.blanklob.com).

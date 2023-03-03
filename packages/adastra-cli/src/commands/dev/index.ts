@@ -113,12 +113,13 @@ export default class Dev extends BaseCommand {
       if (config) {
         const server = await createServer()
         await server.listen()
-        launch.text = 'Vite server launched, wait for Shopify server to launch!'
+        launch.text =
+          'Vite development server launched, wait for Shopify development server to launch...'
         launch.succeed()
       } else {
-        launch.text = 'Wait for Shopify server to launch!'
+        launch.text = 'Wait for Shopify development server to launch...'
         launch.succeed()
-        log('warn', 'No vite config was found in the root folder.')
+        log('warn', 'No Vite config was found in the theme root folder.')
       }
 
       await execa('shopify', command, {
