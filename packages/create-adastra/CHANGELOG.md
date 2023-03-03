@@ -1,5 +1,11 @@
 # `create-adastra`
 
+## 0.1.4
+
+### Patch Changes
+
+- Fixed issue CLI not working with examples
+
 ## 0.1.3
 
 ### Patch Changes
