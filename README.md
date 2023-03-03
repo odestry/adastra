@@ -104,8 +104,3 @@ Having trouble? Get help in the official [Discord](https://help.blanklob.com) an
 - [Shopify Vite Plugin](https://shopify-vite.barrelny.com) for inspiring the Vite plugin.
 - [Astro](https://astro.build) for inspiring the Create Adastra CLI.
 - [Hydrogen](https://hydrogen.shopify.dev) for inspiring development principles and architecture.
-
-<!-- Markdown links & img dfn's -->
-
-[ci-url]: https://github.com/blanklob/adastra/actions/workflows/ci.yml
-[ci-badge]: https://github.com/blanklob/adastra/actions/workflows/ci.yml/badge.svg
