@@ -131,9 +131,10 @@ With your Vite entry points configured, you only need to reference them with the
 ```liquid
 {% liquid
   # Relative to entrypointsDir
-  render 'adastra with 'base.scss'
-  render 'adastra with 'theme.js'
+  render 'adastra' with 'base.scss'
+  render 'adastra' with 'theme.js'
 
+  # Basic liquid code splitting
   if request.page_type contains 'customers/'
     render 'adastra' with 'customers.css'
   endif

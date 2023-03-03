@@ -73,6 +73,8 @@ Inside your Adastra ✨ theme project, you'll see the following folders and file
 │   │   └── index.js
 │   └── hello-world.js
 ├── templates
+├── postcss.config.js
+├── tailwind.config.js
 ├── vite.config.js
 └── package.json
 ```

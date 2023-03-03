@@ -64,8 +64,8 @@ Adastra ✨ comes with so many examples to showcase, how it can be used with all
 
 | Theme/Example                                                   | Command                                                                                  |
 | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [Minimal Template](./templates/minimal)                         | `npm create adastra -- --template minimal`                                               |
-| [Basics Template (Tailwind)](./templates/basics)                | `npm create adastra -- --template basics`                                                |
+| [Minimal Template](./templates/minimal)                         | `npm create adastra@latest -- --template minimal`                                        |
+| [Basics Template (Tailwind)](./templates/basics)                | `npm create adastra@latest -- --template basics`                                         |
 | [Example with React](./examples/with-react)                     | `npm create adastra@latest -- --template blanklob/adastra/examples/with-react`           |
 | [Example with Vue](./examples/with-vue)                         | `npm create adastra@latest -- --template blanklob/adastra/examples/with-vue`             |
 | [Example with Preact](./examples/with-preact)                   | `npm create adastra@latest -- --template blanklob/adastra/examples/with-preact`          |
@@ -104,8 +104,3 @@ Having trouble? Get help in the official [Discord](https://help.blanklob.com) an
 - [Shopify Vite Plugin](https://shopify-vite.barrelny.com) for inspiring the Vite plugin.
 - [Astro](https://astro.build) for inspiring the Create Adastra CLI.
 - [Hydrogen](https://hydrogen.shopify.dev) for inspiring development principles and architecture.
-
-<!-- Markdown links & img dfn's -->
-
-[ci-url]: https://github.com/blanklob/adastra/actions/workflows/ci.yml
-[ci-badge]: https://github.com/blanklob/adastra/actions/workflows/ci.yml/badge.svg
