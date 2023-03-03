@@ -19,9 +19,6 @@
     "test:watch": {
       "cache": false
     },
-    "clean": {
-      "cache": false
-    },
     "lint": {},
     "typecheck": {},
     "check": {
