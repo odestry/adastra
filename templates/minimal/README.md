@@ -77,7 +77,7 @@ Inside your Adastra ✨ theme project, you'll see the following folders and file
 └── package.json
 ```
 
-Adastra ✨ detects entrypoint files automatically in the `entrypoint/` directory. In this case `base.css` for styles and `index.js` for modules.
+Adastra ✨ detects entrypoint files automatically in the `entrypoints/` directory. In this case `base.css` for styles and `index.js` for modules.
 
 So everything you import to these two files will be shipped to the theme `assets` folder when building for production.
 

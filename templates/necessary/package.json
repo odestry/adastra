@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "shopify theme dev",
+    "dev": "vite",
     "build": "vite build",
+    "dev:shopify": "shopify theme dev",
     "preview": "shopify theme open -d",
     "check": "shopify theme check"
   },
