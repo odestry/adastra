@@ -75,6 +75,10 @@ All commands must run from the root of the theme project.
 | `adastra check`   | Run theme check to lint the theme                                     |
 | `adastra --help`  | Get help using the Adastra CLI                                        |
 
+## Special Thanks
+
+This Adastra cli was inspired by [Shopify Theme CLI](https://github.com/Shopify/cli) made by the Shopify team.
+
 ## Want to learn more?
 
 Feel free to check [our documentation](https://docs.blanklob.com) or jump into our [Discord server](https://help.blanklob.com).
