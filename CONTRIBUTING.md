@@ -4,7 +4,7 @@
 
 **Requirements:**
 
-- Node.js version 16.14.0 or higher
+- Node.js version 14 or higher
 - Shopify Theme CLI version 3.0.0 or higher
 
 Run the following commands to get started working on Adastra.

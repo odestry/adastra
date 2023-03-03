@@ -7,7 +7,7 @@ Adastra CLI ✨ is a CLI toolkit built on top of Shopify CLI 3.X, this means tha
 Please make sure you have these two already set up in your local environment for Adastra CLI to work properly.
 
 - NodeJS >= 14 ([Install NodeJS LTS](https://nodejs.org/))
-- Shopify CLI >= 3.0
+- Shopify Theme CLI >= 3.0
 
 ### Install Shopify CLI and Adastra CLI
 
