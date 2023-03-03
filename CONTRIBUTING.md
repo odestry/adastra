@@ -1,10 +1,11 @@
-# Working on Adastra
+# Working on Adastra ✨
 
 ## Getting started
 
 **Requirements:**
 
 - Node.js version 16.14.0 or higher
+- Shopify Theme CLI version 3.0.0 or higher
 
 Run the following commands to get started working on Adastra.
 
@@ -17,27 +18,29 @@ Run the following commands to get started working on Adastra.
 
 ## Context
 
-Adastra is a monorepo built with [Turborepo](https://turbo.build/) and consists of the following workspaces:
+Adastra ✨ is a monorepo built with [Turborepo](https://turbo.build/) and consists of the following workspaces:
 
-- `templates`: Full working implementations of a Adastra storefront, such as the [`demo-store`](https://adastra.shop) template
-- `packages/adastra`: The hooks, components, and utilities provided by Adastra
-- `packages/remix-oxygen`: A [Remix](https://remix.run) runtime adapter for [Oxygen](https://blanklob.dev/custom-storefronts/oxygen)
-- `packages/cli`: A plugin for the [blanklob CLI](https://github.com/blanklob/cli) to provide specific commands for working on Adastra storefronts
+- `examples`: Full working implementations of a Shopify themes to showcase how to use Adastra with other frontend UI libraries and frameworks.
+- `templates`: Full working implementations of a Shopify themes built with Adastra, such as the [`basics`](https://labs.blanklob.com/products/basics-template) template used in scafolded projects.
+- `packages/adastra-plugin`: The hooks, components, and utilities provided by Adastra
+- `packages/adastra-cli-kit`: The hooks, components, and utilities provided by Adastra
+- `packages/adastra-cli`: The hooks, components, and utilities provided by Adastra
+- `packages/create-adastra`: The hooks, components, and utilities provided by Adastra
 
-Running `pnpm dev` at the root of the monorepo is the most common way to develop in Adastra. With this task running, each package will be rebuilt when files change and you can preview the results in the `templates/demo-store` template at (http://localhost:9292)[http://localhost:9292].
+Running `pnpm dev` at the root of the monorepo is the most common way to develop and contribute to Adastra ✨. With this task running, each package will be rebuilt when files change.
 
-The `Readme.md` files in the directories of individual packages and templates contain more specific information for developing in that workspace.
+The `README.md` files in the directories of individual packages and templates contain more specific information for developing in that workspace.
 
 ## Formatting and Linting
 
-The Adastra monorepo provides commands for linting and formatting, and uses [Yorkie](https://github.com/yyx990803/yorkie) to run checks on staged commits automatically.
+The Adastra monorepo provides commands for linting and formatting, and uses [Eslint](https://eslint.org/) to run checks.
 
 | Command          | Description                               |
 | ---------------- | ----------------------------------------- |
 | `pnpm typecheck` | Checks source-code for invalid TypeScript |
 | `pnpm lint`      | Lints the code with ESLint                |
 | `pnpm check`     | Lints theme code with Theme check         |
-| `pnpm format`    | Formats the code with prettier            |
+| `pnpm format`    | Formats the code with Prettier            |
 
 ## Changesets
 
@@ -83,14 +86,6 @@ Tests that fail **only** in CI can be difficult and time-consuming to debug. If 
 
 ## Principles to develop by
 
-### Understand the concept and primitives
-
-Consider what commerce concepts you’ll be working with for the component or abstraction. Adastra is coupled to the [blanklob Storefront API](https://blanklob.dev/api/storefront); examining how a commerce primitive is represented there -what data is essential in the API and which other resources use them- is important.
-
-### Determine sensible defaults
-
-Consider what a sensible default would be for the component or abstraction. Look at high GMV commerce websites and check if there is a common pattern for how this information is displayed -be sure to examine both blanklob and non-blanklob storefronts. Browse through the [Liquid documentation](https://blanklob.dev/api/liquid), look for[filters](https://blanklob.dev/api/liquid/filters) related to your component or abstraction, and consider what defaults those provide and the customizations they support.
-
 ### Prioritize developer experience
 
-Consider how to provide the best developer experience when using this component or abstraction. Adastra must be fun and easy to use, with good ergonomics, types and tooling. Developers should be **delighted** when they use Adastra. To quote Tobi Lütke: “Delight works by taking your experience minus your expectation, and if the end result is a positive number, you are delighted by that margin.”
+Consider how to provide the best developer experience when using this component or abstraction. Adastra ✨ must be fun and easy to use, with good ergonomics, types and tooling. Developers should be **delighted** when they use Adastra. To quote Tobi Lütke: “Delight works by taking your experience minus your expectation, and if the end result is a positive number, you are delighted by that margin.”
