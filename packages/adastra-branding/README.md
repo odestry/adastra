@@ -1,6 +1,10 @@
 # adastra-branding
 
-Adastra ✨ branding is package used to maintain Adastra styling and color palette across all the packages especialy the CLI toolkits. Its an internal packages not intended for public distribution.
+Adastra ✨ branding is package used to maintain Adastra styling and color palette across all the packages especialy the CLI toolkits. Its an internal private package not intended for external distribution.
+
+## Installation
+
+Run the following command to install Adastra branding package:
 
 ```bash
 npm install adastra-branding

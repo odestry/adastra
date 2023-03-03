@@ -1,6 +1,6 @@
-# `create-adastra`
+# create-adastra
 
-## Scaffolding for Adastra theme projects
+Adastra ✨ create CLI is for scaffolding Adastra theme projects in no time.
 
 **With NPM:**
 
@@ -31,9 +31,12 @@ npm create adastra@latest my-shopify-theme -- --template minimal
 
 # yarn
 yarn create adastra my-shopify-theme --template minimal
+
+# pnpm
+pnpm create adastra my-shopify-theme --template minimal
 ```
 
-[Check out the full list][examples] of example starter templates, available on GitHub.
+[Check out the full list][examples] of example starter themes and usecases.
 
 You can also use any GitHub repo as a template:
 
@@ -41,28 +44,22 @@ You can also use any GitHub repo as a template:
 npm create adastra@latest my-adastra-theme -- --template blanklob/adastra-minimal-template
 ```
 
-### CLI Flags
+## Adastra create CLI Flags
 
 May be provided in place of prompts
 
-| Name         | Description                                                                                                         |
-| :----------- | :------------------------------------------------------------------------------------------------------------------ | --- |
-| `--template` | Specify the template name ([list][templates])                                                                       |
-| `--commit`   | Specify a specific Git commit or branch to use from this repo (by default, `main` branch of this repo will be used) |
-| `--fancy`    | For Windows users, `--fancy` will enable full unicode support                                                       |     |
-| `--yes`/`-y` | Skip prompts and use default values                                                                                 |
+| Name                         | Description                             |
+| :--------------------------- | :-------------------------------------- |
+| `--template <name>`          | Specify your Adastra ✨ theme template. |
+| `--install` / `--no-install` | Install dependencies (or not).          |
+| `--git` / `--no-git`         | Initialize git repo (or not).           |
+| `--yes` (`-y`)               | Skip all prompt by accepting defaults.  |
+| `--no` (`-n`)                | Skip all prompt by declining defaults.  |
+| `--dry-run`                  | Walk through steps without executing.   |
+| `--skip-tars`                | Skip Tars mascot animation.             |
 
-### Debugging
+[examples]: https://github.com/blanklob/adastra/tree/main/examples
 
-To debug `create-adastra`, you can use the `--verbose` flag which will log the output of degit and some more information about the command, this can be useful when you encounter an error and want to report it.
+## Want to learn more?
 
-```bash
-# npm 6.x
-npm create adastra@latest my-shopify-theme --verbose
-
-# npm 7+, extra double-dash is needed:
-npm create adastra@latest my-shopify-theme -- --verbose
-
-# yarn
-yarn create adastra my-shopify-theme --verbose
-```
+Feel free to check [our documentation](https://docs.blanklob.com) or jump into our [Discord server](https://help.blanklob.com).
