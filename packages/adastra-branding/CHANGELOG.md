@@ -1,4 +1,4 @@
-# `adastra`
+# adastra-branding
 
 ## 0.1.2
 
