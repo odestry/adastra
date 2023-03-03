@@ -1,4 +1,4 @@
-# Adastra Templates Library
+# Adastra Templates/Themes Library
 
 ### Official Templates
 
@@ -33,10 +33,10 @@ npm create adastra@latest -- --template blanklob/adastra/examples/[EXAMPLE_NAME]
 
 You can easily scaffold the templates in Cloud development environment like [Github codepaces](https://github.com/codespaces) by clicking one of the badges below:
 
-> Minimal Starter template (Click [here](https://github.com/blanklob/adastra-minimal-template) to check template repository)
+> Minimal Template (Click [here](https://github.com/blanklob/adastra-minimal-template) to check template repository)
 
 [![Open in Minimal GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=603560480)
 
-> Basics Starter template (Click [here](https://github.com/blanklob/adastra-basics-template) to check template repository)
+> Basics Template (Click [here](https://github.com/blanklob/adastra-basics-template) to check template repository)
 
 [![Open in Basics GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=594116672)

@@ -60,6 +60,10 @@ May be provided in place of prompts
 
 [examples]: https://github.com/blanklob/adastra/tree/main/examples
 
+## Special Thanks
+
+This create adastra cli was inspired by [Astro](https://github.com/withastro/astro) Scaffolding made by the AstroJS team.
+
 ## Want to learn more?
 
 Feel free to check [our documentation](https://docs.blanklob.com) or jump into our [Discord server](https://help.blanklob.com).
