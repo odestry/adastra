@@ -1,1 +1,0 @@
-class t extends window.HTMLElement{constructor(){super(),this.button=this.querySelector("button"),this.output=this.querySelector("output"),this.button&&this.button.addEventListener("click",()=>{this.output.innerHTML=String(++this.output.value)})}}window.customElements.define("hello-world",t);
