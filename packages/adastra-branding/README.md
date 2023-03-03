@@ -1,6 +1,6 @@
 # adastra-branding
 
-Adastra ✨ branding is package used to maintain Adastra styling and color palette across all the packages especialy the CLI toolkits. Its an internal private package not intended for external distribution.
+Adastra ✨ branding is package used to maintain Adastra styling and color palette across all the packages especially the CLI toolkits. Its an internal private package not intended for external distribution.
 
 ## Installation
 

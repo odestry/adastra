@@ -22,10 +22,11 @@ Adastra ✨ is a monorepo built with [Turborepo](https://turbo.build/) and consi
 
 - `examples`: Full working implementations of a Shopify themes to showcase how to use Adastra with other frontend UI libraries and frameworks.
 - `templates`: Full working implementations of a Shopify themes built with Adastra, such as the [`basics`](https://labs.blanklob.com/products/basics-template) template used in scafolded projects.
-- `packages/adastra-plugin`: The hooks, components, and utilities provided by Adastra
-- `packages/adastra-cli-kit`: The hooks, components, and utilities provided by Adastra
-- `packages/adastra-cli`: The hooks, components, and utilities provided by Adastra
-- `packages/create-adastra`: The hooks, components, and utilities provided by Adastra
+- `packages/adastra-plugin`: [Vite](https://vitejs.dev) plugin that aims to integrate as seamlessly as possible with Shopify themes to optimize your theme development experience.
+- `packages/adastra-cli-kit`: CLI Kit is a bunch of utils and modules that are shared across CLI apps like `create-adastra` and `adastra-cli` to have one source of truth for both these two packages.
+- `packages/adastra-cli`: A CLI toolkit built on top of Shopify CLI 3.X.
+- `packages/create-adastra`: create CLI is for scaffolding Adastra theme projects in no time.
+- `packages/adastra-branding`: A package used to maintain Adastra styling and color palette across all the packages especially the CLI toolkits.
 
 Running `pnpm dev` at the root of the monorepo is the most common way to develop and contribute to Adastra ✨. With this task running, each package will be rebuilt when files change.
 
