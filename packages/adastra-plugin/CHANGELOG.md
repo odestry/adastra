@@ -1,5 +1,16 @@
 # `adastra-plugin`
 
+## 0.3.0
+
+### Minor Changes
+
+- 5beffb5: Fixed some issues with CLI & Plugin and added docs on every package.
+
+### Patch Changes
+
+- Updated dependencies [5beffb5]
+  - adastra-branding@0.1.2
+
 ## 0.2.1
 
 ### Patch Changes
