@@ -1,0 +1,15 @@
+{
+  "name": "template-necessary",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "shopify theme dev",
+    "build": "vite build",
+    "preview": "shopify theme open -d",
+    "check": "shopify theme check"
+  },
+  "devDependencies": {
+    "adastra-plugin": "latest",
+    "vite": "^4.1.4"
+  }
+}

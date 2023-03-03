@@ -1,21 +1,21 @@
-# Adastra Basics Template ✨
+# Adastra Necessary Template ✨
 
 ```bash
-npm create adastra@latest -- --template basics
+npm create adastra@latest -- --template necessary
 ```
 
 Using Yarn/PNPM
 
 ```bash
-yarn create adastra@latest --template basics
-# pnpm create adastra@latest --template basics
+yarn create adastra@latest --template necessary
+# pnpm create adastra@latest --template necessary
 ```
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=594116672)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=603560480)
 
 > 🧑‍🚀 **Hey astronaut?** Have fun building Shopify themes with Adastra!
 
-![basics](https://raw.githubusercontent.com/blanklob/adastra/main/.github/assets/basics-template-banner.png)
+![necessary](https://raw.githubusercontent.com/blanklob/adastra/main/.github/assets/minimal-template-banner.png)
 
 ## Launch development server
 

@@ -8,11 +8,11 @@ The easiest way to check out one of these templates on your local machine is by 
 npm create adastra@latest -- --template [EXAMPLE_NAME]
 ```
 
-or using Yarn/PNPM
+Using Yarn/PNPM
 
 ```shell
-yarn create adastra@latest -- --template [EXAMPLE_NAME]
-# pnpm create adastra@latest -- --template [EXAMPLE_NAME]
+yarn create adastra@latest --template [EXAMPLE_NAME]
+# pnpm create adastra@latest --template [EXAMPLE_NAME]
 ```
 
 ### Community Examples
@@ -26,7 +26,7 @@ npm create adastra@latest -- --template [GITHUB_USER]/[REPO_NAME]
 Paths to examples nested inside of a repo are also supported:
 
 ```shell
-npm create adastra@latest -- --template [GITHUB_USER]/[REPO_NAME]/path/to/example
+npm create adastra@latest -- --template blanklob/adastra/examples/[EXAMPLE_NAME]
 ```
 
 ### Cloud development environment: Github Codespaces
