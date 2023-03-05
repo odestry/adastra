@@ -34,7 +34,7 @@ jobs:
         run: pnpm add -g @shopify/cli @shopify/theme
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm i --no-frozen-lockfile
 
       - name: Check
         run: pnpm check

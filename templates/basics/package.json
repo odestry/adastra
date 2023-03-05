@@ -10,11 +10,11 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@shopify/cli": "^3.44.1",
-    "@shopify/theme": "^3.44.1",
     "adastra-cli": "latest",
     "adastra-plugin": "latest",
     "adastra-prettier-config": "latest",
+    "@shopify/cli": "latest",
+    "@shopify/theme": "latest",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
