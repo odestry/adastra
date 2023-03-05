@@ -21,8 +21,6 @@
     },
     "lint": {},
     "typecheck": {},
-    "check": {
-      "outputMode": "full"
-    }
+    "check": {}
   }
 }
