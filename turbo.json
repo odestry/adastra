@@ -22,7 +22,6 @@
     "lint": {},
     "typecheck": {},
     "check": {
-      "dependsOn": ["build"],
       "outputMode": "full"
     }
   }

@@ -173,6 +173,7 @@ export async function main(): Promise<void> {
         cwd,
         dir: '.'
       })
+      // eslint-disable-next-line
     } catch (error: any) {
       fs.rmdirSync(cwd)
       if (error.message.includes('404')) {
