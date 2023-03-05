@@ -1,5 +1,11 @@
 # `create-adastra`
 
+## 0.1.6
+
+### Patch Changes
+
+- [#29](https://github.com/blanklob/adastra/pull/29) [`7663101`](https://github.com/blanklob/adastra/commit/7663101e02356fddb35967b07fe81a11bb274f52) Thanks [@blanklob](https://github.com/blanklob)! - Added new template called necessary that comes with Shopify and Vite CLI instead of Adastra CLI
+
 ## 0.1.5
 
 ### Patch Changes
