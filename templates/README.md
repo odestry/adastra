@@ -1,6 +1,14 @@
 # Adastra Templates/Themes Library
 
-### Official Templates
+Adastra ✨ comes with these templates by default
+
+- Basics: has everything you need if you are familiar with Tailwind and prettier, and also comes with ready-to-use theme snippets, like `image.liquid` and `media.liquid` and more..
+
+- Minimal: Is an empty theme without any styling or framework configuration, built to be extended with your own frontend tools, instead of using Tailwind.
+
+- Necessary: Like it's name suggests, it's the minimalistic of all above and comes without the Adastra CLI if you prefer to use Vite or have a custom CLI workflow.
+
+## Official Templates
 
 The easiest way to check out one of these templates on your local machine is by running this command in an empty directory:
 

@@ -3,7 +3,7 @@
     "main": {
       "type": "hello-world",
       "settings": {
-        "heading": "Welcome to Adastra ✨ with Gsap."
+        "heading": "Welcome to Adastra ✨ with GSAP."
       }
     }
   },

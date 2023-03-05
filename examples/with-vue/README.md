@@ -1,4 +1,4 @@
-# Adastra Example With Lit ✨
+# Adastra Example With Vue ✨
 
 ```shell
 npm create adastra@latest -- --template blanklob/adastra/examples/with-vue

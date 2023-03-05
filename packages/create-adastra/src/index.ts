@@ -74,7 +74,7 @@ const isValidProjectDirectory = (dirPath: string): boolean => {
   return conflicts.length === 0
 }
 
-const FILES_TO_REMOVE = ['.theme-check.yml', 'CHANGELOG.md'] // some files are only needed for online editors when using adastra.new. Remove for create-adastra installs.
+const FILES_TO_REMOVE = ['CHANGELOG.md'] // some files are only needed for online editors when using adastra.new. Remove for create-adastra installs.
 
 export async function main(): Promise<void> {
   const pkgManager = detectPackageManager()?.name || 'npm'
@@ -161,23 +161,18 @@ export async function main(): Promise<void> {
     'Copying theme files and folders...'
   )
 
-  // eslint-disable-next-line
-  const hash = args.commit ? `#${args.commit}` : ''
-
   const isThirdParty = options.template.includes('/') as boolean
   const templateTarget = isThirdParty
-    ? options.template
-    : `gh:blanklob/adastra/examples/${options.template}#latest`
-
+    ? `gh:${options.template}`
+    : `gh:blanklob/adastra/templates/${options.template}`
   if (!args.dryRun) {
     try {
-      await downloadTemplate(`${templateTarget}${hash}`, {
+      await downloadTemplate(`${templateTarget}`, {
         force: true,
         provider: 'github',
         cwd,
         dir: '.'
       })
-      // eslint-disable-next-line
     } catch (error: any) {
       fs.rmdirSync(cwd)
       if (error.message.includes('404')) {

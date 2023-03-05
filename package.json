@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "turbo run dev --filter=*adastra* --parallel",
     "dev:templates": "turbo run dev --filter=template-* --parallel",
-    "build": "turbo run build --filter=*adastra* --filter=template-*",
+    "build": "turbo run build --filter=*adastra*",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "check": "turbo run check",

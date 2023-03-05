@@ -1,5 +1,11 @@
 # `create-adastra`
 
+## 0.1.5
+
+### Patch Changes
+
+- 5e49684: Fixed issue with template command not cloning the template from Github
+
 ## 0.1.4
 
 ### Patch Changes
