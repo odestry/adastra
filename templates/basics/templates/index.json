@@ -3,42 +3,49 @@
     "main": {
       "type": "hello-world",
       "blocks": {
-        "card-docs": {
-          "type": "card",
+        "3186bfda-2b68-40dd-bdc4-fa6868f87a8b": {
+          "type": "card-block",
           "settings": {
             "heading": "Documentation",
             "description": "Find in-depth infos about Adastra features and how to use it.",
             "link": "https://github.com/blanklob/adastra#documentation"
           }
         },
-        "card-chat": {
-          "type": "card",
+        "a22569eb-f893-42d9-8751-b40c8df557f3": {
+          "type": "card-block",
           "settings": {
             "heading": "Chat",
             "description": "Come say hey to our amazing Discord community 💚",
             "link": "https://help.blanklob.com?utm_source=create-adastra&amp;utm_medium=basic-example&amp;utm_campaign=create-adastra"
           }
         },
-        "card-sections": {
-          "type": "card",
+        "cfe4f931-6e00-4854-8052-8600ec0e4208": {
+          "type": "card-block",
           "settings": {
             "heading": "Sections",
-            "description": "Explore a galaxy of paid and community-built sections."
+            "description": "Explore a galaxy of paid and community-built theme sections.",
+            "link": ""
           }
         },
-        "card-plus": {
-          "type": "card",
+        "642a61a2-0152-4cd4-8009-8ae93bbed1af": {
+          "type": "card-block",
           "settings": {
             "heading": "Aurora",
-            "description": "Instantly build a production-ready Shopify storefronts."
+            "description": "Instantly build a production-ready Shopify storefronts.",
+            "link": ""
           }
         }
       },
-      "block_order": ["card-docs", "card-chat", "card-sections", "card-plus"],
+      "block_order": [
+        "3186bfda-2b68-40dd-bdc4-fa6868f87a8b",
+        "a22569eb-f893-42d9-8751-b40c8df557f3",
+        "cfe4f931-6e00-4854-8052-8600ec0e4208",
+        "642a61a2-0152-4cd4-8009-8ae93bbed1af"
+      ],
       "settings": {
         "heading": "Welcome to Adastra ✨",
         "instruction_1": "Currently there is no products in your store. To get started <strong>create your first product</strong> and set its price and quantity.",
-        "instruction_2": "<strong>Code Challenge:</strong> Tweak this button so when we add to cart, it shows a spinner. Check the <span>src/components</span> directory!"
+        "instruction_2": "<strong>Code Challenge: </strong>Tweak this button so when we add to cart, it shows a spinner. Check the <span>src/components</span> directory!"
       }
     }
   },
