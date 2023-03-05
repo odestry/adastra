@@ -1,5 +1,5 @@
 export default class ProductForm extends window.HTMLElement {
-  constructor () {
+  constructor() {
     super()
 
     this.form = this.querySelector('form')
@@ -8,7 +8,7 @@ export default class ProductForm extends window.HTMLElement {
     this.form.addEventListener('submit', this.submitHandler.bind(this))
   }
 
-  async submitHandler (event) {
+  async submitHandler(event) {
     event.preventDefault()
     // Hint ✦ 2 change this ;)
     this.button.classList.add('animate-pulse')

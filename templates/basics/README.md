@@ -114,14 +114,14 @@ All commands are run from the root of the theme project, from a terminal:
 
 ### Other commands
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run build`        | Build and minifies your production static files to `./assets/` folder |
-| `npm run preview`      | Preview of your remote development theme, before deploying |
-| `npm run check`        | Run theme check to lint the theme |
-| `npm run adastra ...`    | Run CLI commands like `adastra dev`, `adastra check` |
-| `npm run adastra --help` | Get help using the Adastra CLI |
+| Command                  | Action                                                                |
+| :----------------------- | :-------------------------------------------------------------------- |
+| `npm install`            | Installs dependencies                                                 |
+| `npm run build`          | Build and minifies your production static files to `./assets/` folder |
+| `npm run preview`        | Preview of your remote development theme, before deploying            |
+| `npm run check`          | Run theme check to lint the theme                                     |
+| `npm run adastra ...`    | Run CLI commands like `adastra dev`, `adastra check`                  |
+| `npm run adastra --help` | Get help using the Adastra CLI                                        |
 
 ## Want to learn more?
 
