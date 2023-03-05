@@ -110,7 +110,7 @@ export const say = async (
 export const label = (
   text: string,
   c = color.bgHex(COLORS.yellowGreen),
-  t = color.whiteBright
+  t = color.black
 ): string => c(` ${t(text)} `)
 
 export const colored = (
