@@ -1,0 +1,29 @@
+{% comment %}
+  Renders a link card with heading and a description.
+
+  Adastra also teaches you stuff ✦
+  - A good practice is to always add comments at the beginning of your snippets ;)
+
+  Accepts:
+    - Heading: {string} Card heading (required)
+    - description: {string} Card description (optional)
+    - link: {url} Card link (optional)
+
+  Usage:
+    {% render 'card' heading: block.settings.heading %}
+{% endcomment %}
+
+{% if heading or heading != empty %}
+  <div class="card relative rounded-xl p-1 shadow-sm">
+    <a class="group flex flex-col gap-y-3 rounded-xl bg-white/90 p-5 hover:backdrop-blur-sm"
+      href="{{ link | default: routes.root_url }}" target="_blank" rel="noopener noreferrer">
+      <h2 class="text-xl tracking-tight text-accent">{{ heading }} &rarr;</h2>
+      {% if description %}
+        <p class="text-accent/60">{{ description }}</p>
+      {% endif %}
+    </a>
+    {% unless link %}
+      <span class="absolute -top-1 -right-2 rotate-6 rounded-full bg-contrast px-2 font-mono text-xs font-medium leading-relaxed text-primary/90">coming soon</span>
+    {% endunless %}
+  </div>
+{% endif %}

@@ -1,0 +1,41 @@
+{% comment %}
+  Renders a specific image.
+
+  Adastra also teaches you stuff ✦
+  - Think of snippets like functions each time you are going
+  to reuse a code block, why not just make it a snippet ;)
+
+  Accepts:
+    - image: {object} Img object (required)
+    - lazyload: {boolean} Lazyload the image (optional)
+    - alt: {string} Custom image ALT (optional)
+
+  Usage:
+    {% render 'image', image: product.featured_image %}
+{% endcomment %}
+
+{% liquid
+  assign image_alt = alt | default: image.alt | escape
+  assign preload = false
+
+  if lazyload or lazyload == null
+    assign lazyload = 'lazy'
+  elsif lazyload == false
+    assign preload = true
+    assign lazyload = 'eager'
+  endif
+%}
+
+<picture>
+  {% if image != blank %}
+    {{ image
+      | image_url: width: 500
+      | image_tag: alt: image_alt,
+      class: 'w-full h-full object-cover object-center rounded',
+      widths: '165, 360, 500, 720, 960, 1066, 1280, 1500, 1800',
+      loading: lazyload, preload: preload
+    }}
+  {% else %}
+    {{ 'image' | placeholder_svg_tag: 'w-full h-full rounded border' }}
+  {% endif %}
+</picture>
