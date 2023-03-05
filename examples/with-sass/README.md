@@ -15,7 +15,7 @@ yarn create adastra@latest --template blanklob/adastra/examples/with-sass
 
 > 🧑‍🚀 **Hey astronaut?** Have fun building Shopify themes with Adastra!
 
-![necessary](https://raw.githubusercontent.com/blanklob/adastra/main/.github/assets/minimal-template-banner.png)
+![with-sass](https://raw.githubusercontent.com/blanklob/adastra/main/.github/assets/minimal-template-banner.png)
 
 ## Launch development server
 
