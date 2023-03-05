@@ -197,8 +197,8 @@ importers:
 
   templates/basics:
     specifiers:
-      '@shopify/cli': ^3.44.1
-      '@shopify/theme': ^3.44.1
+      '@shopify/cli': latest
+      '@shopify/theme': latest
       adastra-cli: latest
       adastra-plugin: latest
       adastra-prettier-config: latest
@@ -221,19 +221,27 @@ importers:
 
   templates/minimal:
     specifiers:
+      '@shopify/cli': latest
+      '@shopify/theme': latest
       adastra-cli: latest
       adastra-plugin: latest
       vite: ^4.1.4
     devDependencies:
+      '@shopify/cli': 3.44.1
+      '@shopify/theme': 3.44.1
       adastra-cli: link:../../packages/adastra-cli
       adastra-plugin: link:../../packages/adastra-plugin
       vite: 4.1.4
 
   templates/necessary:
     specifiers:
+      '@shopify/cli': latest
+      '@shopify/theme': latest
       adastra-plugin: latest
       vite: ^4.1.4
     devDependencies:
+      '@shopify/cli': 3.44.1
+      '@shopify/theme': 3.44.1
       adastra-plugin: link:../../packages/adastra-plugin
       vite: 4.1.4
 
