@@ -1,6 +1,6 @@
 {
   "name": "template-basics",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "adastra dev",
