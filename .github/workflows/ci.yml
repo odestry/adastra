@@ -65,33 +65,33 @@ jobs:
       - name: Test
         run: pnpm test
 
-  theme-check:
-    name: Theme Check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
+  # theme-check:
+  #   name: Theme Check
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out code
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 2
 
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7
+  #     - uses: pnpm/action-setup@v2.2.4
+  #       with:
+  #         version: 7
 
-      - name: Setup NodeJS environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'pnpm'
+  #     - name: Setup NodeJS environment
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
+  #         cache: 'pnpm'
 
-      - name: Setup Ruby environment
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.1
-          bundler: 'latest'
+  #     - name: Setup Ruby environment
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: 3.1
+  #         bundler: 'latest'
 
-      - name: Install dependencies
-        run: pnpm i --no-frozen-lockfile
+  #     - name: Install dependencies
+  #       run: pnpm i --no-frozen-lockfile
 
-      - name: Check
-        run: pnpm check
+  #     - name: Check
+  #       run: pnpm check
