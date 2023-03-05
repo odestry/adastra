@@ -7,7 +7,7 @@
     "build": "adastra build",
     "preview": "adastra preview",
     "check": "adastra check",
-    "format": "prettier --write snippets/card.liquid"
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "adastra-cli": "latest",
