@@ -64,8 +64,9 @@ Adastra ✨ comes with so many examples to showcase, how it can be used with all
 
 | Theme/Example                                                   | Command                                                                                  |
 | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [Basics Template (Tailwind & Prettier)](./templates/basics)     | `npm create adastra@latest -- --template basics`                                         |
 | [Minimal Template](./templates/minimal)                         | `npm create adastra@latest -- --template minimal`                                        |
-| [Basics Template (Tailwind)](./templates/basics)                | `npm create adastra@latest -- --template basics`                                         |
+| [Minimal Template](./templates/necessary)                       | `npm create adastra@latest -- --template necessary`                                      |
 | [Example with React](./examples/with-react)                     | `npm create adastra@latest -- --template blanklob/adastra/examples/with-react`           |
 | [Example with Vue](./examples/with-vue)                         | `npm create adastra@latest -- --template blanklob/adastra/examples/with-vue`             |
 | [Example with Preact](./examples/with-preact)                   | `npm create adastra@latest -- --template blanklob/adastra/examples/with-preact`          |
@@ -73,6 +74,7 @@ Adastra ✨ comes with so many examples to showcase, how it can be used with all
 | [Example with Typescript](./examples/with-typescript)           | `npm create adastra@latest -- --template blanklob/adastra/examples/with-typescript`      |
 | [Example with Lit](./examples/with-lit)                         | `npm create adastra@latest -- --template blanklob/adastra/examples/with-lit`             |
 | [Example with Alpine](./examples/with-alpine)                   | `npm create adastra@latest -- --template blanklob/adastra/examples/with-alpine`          |
+| [Example with Tailwind](./examples/with-tailwind)               | `npm create adastra@latest -- --template blanklob/adastra/examples/with-tailwind`        |
 | [Example with GSAP](./examples/with-gsap)                       | `npm create adastra@latest -- --template blanklob/adastra/examples/with-gsap`            |
 | [Example with Sass](./examples/with-sass)                       | `npm create adastra@latest -- --template blanklob/adastra/examples/with-sass`            |
 | [Example with Less](./examples/with-less)                       | `npm create adastra@latest -- --template blanklob/adastra/examples/with-less`            |
