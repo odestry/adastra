@@ -1,0 +1,30 @@
+{% comment %}
+  Renders a specific video or external video (iframe).
+
+  Adastra also teaches you stuff ✦
+  - In Shopify you have two types of videos, you have static video,
+  and iframe videos (external_video) from other providers like Youtube
+  and vimeo ;)
+
+  Accepts:
+    - video: {object} Video or external_video object.
+    - loop: {boolean} Enable video looping (optional)
+
+  Usage:
+  {% render 'video' with product.media.first %}
+{% endcomment %}
+
+{% if video and video != blank %}
+  <div class="flex w-full" data-video-id="{{ video.id }}">
+    {% case video.media_type %}
+      {% when 'video' %}
+        {{ video | video_tag: image_size: '2048x', autoplay: true, loop: loop, controls: false, muted: true, preload: 'none' }}
+      {% when 'external_video' %}
+        {% if media.host == 'youtube' %}
+          {{ video | external_video_url: autoplay: true, loop: loop, playlist: media.external_id | external_video_tag: loading: 'lazy' }}
+        {% else %}
+          {{ video | external_video_url: autoplay: true, loop: loop | external_video_tag: loading: 'lazy' }}
+        {% endif %}
+    {% endcase %}
+  </div>
+{% endif %}

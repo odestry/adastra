@@ -1,0 +1,27 @@
+{% comment %}
+  Renders a product or collection media (image, video, 3d model)
+
+  Adastra also teaches you stuff ✦
+  - Media is only product related and only makes sense in the
+  product page ;)
+
+  Accepts:
+    - media: {object} Product Media object
+    - loop: {boolean} Enable video looping (optional)
+
+  Usage:
+    {% render 'media' media: product.featured_media %}
+{% endcomment %}
+
+<div class="flex aspect-square" data-media-id="{{ media.id }}">
+  {% case media.media_type %}
+    {% when 'image' %}
+      {% render 'image', image: media.preview_image %}
+
+    {% when 'video', 'external_video' %}
+      {% render 'video', video: media %}
+
+    {% when 'model' %}
+      {{ media | media_tag: image_size: '2048x', toggleable: true }}
+  {% endcase %}
+</div>

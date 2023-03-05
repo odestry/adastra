@@ -6,14 +6,20 @@
     "dev": "adastra dev",
     "build": "adastra build",
     "preview": "adastra preview",
-    "check": "adastra check"
+    "check": "adastra check",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "adastra-cli": "latest",
     "adastra-plugin": "latest",
+    "adastra-prettier-config": "latest",
+    "@shopify/cli": "latest",
+    "@shopify/theme": "latest",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
     "tailwindcss": "^3.2.7",
     "vite": "^4.1.4"
-  }
+  },
+  "prettier": "adastra-prettier-config"
 }

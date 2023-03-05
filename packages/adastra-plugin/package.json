@@ -12,8 +12,7 @@
   ],
   "scripts": {
     "dev": "npm run build -- --watch",
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean --publicDir",
-    "watch": "tsup src/index.ts --format cjs,esm --dts --watch --publicDir",
+    "build": "tsup src/index.ts --format cjs,esm --dts --publicDir",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",

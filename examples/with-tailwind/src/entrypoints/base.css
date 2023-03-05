@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply h-full antialiased font-body text-base text-accent bg-surface;
+  }
+
+  model-viewer {
+    @apply h-fit aspect-square;
+  }
+
+  h1,
+  h2 {
+    @apply font-heading font-semibold;
+  }
+
+  p > span {
+    @apply font-mono text-lg font-semibold bg-secondary/20 text-secondary py-1 px-2 rounded;
+  }
+}
+
+@layer components {
+  .button,
+  button {
+    @apply inline-flex items-center justify-center text-center align-middle py-3 px-6 appearance-none select-none no-underline rounded-lg font-bold tracking-tight shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .button-primary {
+    @apply button bg-contrast text-primary;
+  }
+
+  .card {
+    background-image: var(--gradient);
+    background-size: 500%;
+    background-position: 100%;
+    transition: background-position 3s;
+    @apply ease-wiggle;
+  }
+
+  .card:is(:hover, :focus-within) {
+    background-position: 0;
+  }
+}

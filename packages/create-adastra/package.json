@@ -15,8 +15,7 @@
   "scripts": {
     "start": "./dist/create-adastra.js",
     "dev": "npm run build -- --watch",
-    "build": "tsup src/*.ts --dts --format esm",
-    "watch": "tsup src/*.ts --dts --format esm --watch",
+    "build": "tsup src/index.ts src/create-adastra.ts --dts --format esm",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit"

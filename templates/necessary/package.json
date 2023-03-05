@@ -11,6 +11,8 @@
   },
   "devDependencies": {
     "adastra-plugin": "latest",
+    "@shopify/cli": "latest",
+    "@shopify/theme": "latest",
     "vite": "^4.1.4"
   }
 }

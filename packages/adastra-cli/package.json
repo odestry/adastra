@@ -19,8 +19,7 @@
   "scripts": {
     "start": "./bin/run.js",
     "dev": "npm run build -- --watch",
-    "build": "tsup src/**/**/**/*.ts --dts --format esm --clean",
-    "watch": "tsup src/**/**/**/*.ts --format esm --dts --watch",
+    "build": "tsup src/**/**/**/*.ts --dts --format esm",
     "prepack": "oclif manifest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
