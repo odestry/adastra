@@ -2,4 +2,4 @@
 'adastra-plugin': minor
 ---
 
-Added extra entries directory and refactored plugin code
+Added extra entries directory to options and refactored plugin code
