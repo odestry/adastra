@@ -15,8 +15,7 @@ describe('adastra-plugin:liquid', () => {
 
     const { configureServer } = adastraLiquidPlugin(options)
 
-    // @ts-expect-error @todo fix typescript error
-    configureServer({
+    const serverConfig = {
       config: {
         resolve: {
           alias: [
@@ -31,12 +30,18 @@ describe('adastra-plugin:liquid', () => {
           ]
         }
       }
-    })
+    }
 
-    const tagsLiquid = await fs.readFile(
-      path.join(__dirname, '__fixtures__', 'snippets', 'adastra.liquid'),
-      { encoding: 'utf8' }
+    // @ts-expect-error @todo fix typescript error
+    configureServer(serverConfig)
+
+    const snippetPath = path.join(
+      __dirname,
+      '__fixtures__',
+      'snippets',
+      'adastra.liquid'
     )
+    const tagsLiquid = await fs.readFile(snippetPath, { encoding: 'utf8' })
     expect(tagsLiquid).toMatchSnapshot()
   })
 })

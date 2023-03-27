@@ -14,18 +14,22 @@ import {
   adastraEntryTag
 } from '../utilities'
 import { CSS_EXTENSIONS_REGEX } from '../constants'
-import type { ResolvedAdastraPluginOptions } from '../types'
+import type { DevServerUrl, ResolvedAdastraPluginOptions } from '../types'
+import { resolveDevServerUrl } from '../utilities/dev-server'
+import { AddressInfo } from 'net'
 
 const debug = createDebugger(`adastra-plugin:liquid`)
 
 // Plugin for generating adastra tag liquid theme snippet with entry points for JS and CSS assets
 export default (options: ResolvedAdastraPluginOptions): Plugin => {
   let config: ResolvedConfig
+  let devServerUrl: DevServerUrl
 
   const adastraSnippetPath = path.resolve(
     options.root,
     `snippets/${options.snippetName}.liquid`
   )
+  const adastraSnippetName = options.snippetName.replace(/\.[^.]+$/, '')
 
   return {
     name: `adastra-plugin-liquid`,
@@ -34,34 +38,33 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
       // Store reference to resolved config
       config = resolvedConfig
     },
-    configureServer({ config, middlewares }) {
-      const protocol = config.server?.https === true ? 'https:' : 'http:'
-      const host =
-        typeof config.server?.host === 'string'
-          ? config.server.host
-          : 'localhost'
-      const port =
-        typeof config.server?.port !== 'undefined' ? config.server.port : 5173
+    configureServer({ config, middlewares, httpServer }) {
+      httpServer?.once('listening', () => {
+        const address = httpServer?.address()
 
-      const assetHost =
-        typeof config.server?.origin === 'string'
-          ? config.server.origin
-          : `${protocol}//${host}:${port}`
+        const isAddressInfo = (
+          x: string | AddressInfo | null | undefined
+        ): x is AddressInfo => typeof x === 'object'
 
-      debug({ assetHost })
+        if (isAddressInfo(address)) {
+          devServerUrl = resolveDevServerUrl(address, config)
 
-      const adastraTagSnippetContent =
-        disableThemeCheckTag +
-        adastraTagDisclaimer +
-        adastraTagEntryPath(
-          config.resolve.alias,
-          options.entrypointsDir,
-          options.snippetName
-        ) +
-        adastraTagSnippetDev(assetHost, options.entrypointsDir)
+          debug({ address, devServerUrl })
 
-      // Write adastra tag snippet for development server
-      fs.writeFileSync(adastraSnippetPath, adastraTagSnippetContent)
+          const adastraTagSnippetContent =
+            disableThemeCheckTag +
+            adastraTagDisclaimer +
+            adastraTagEntryPath(
+              config.resolve.alias,
+              options.entrypointsDir,
+              adastraSnippetName
+            ) +
+            adastraTagSnippetDev(devServerUrl, options.entrypointsDir)
+
+          // Write adastra tag snippet for development server
+          fs.writeFileSync(adastraSnippetPath, adastraTagSnippetContent)
+        }
+      })
 
       return () =>
         middlewares.use((req, res, next) => {
@@ -72,11 +75,14 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
               fs.readFileSync(path.join(__dirname, 'dev-index.html')).toString()
             )
           }
-
           next()
         })
     },
     closeBundle() {
+      if (config.command === 'serve') {
+        return
+      }
+
       const manifestFilePath = path.resolve(
         options.root,
         `assets/adastra.manifest.json`
@@ -159,7 +165,7 @@ export default (options: ResolvedAdastraPluginOptions): Plugin => {
         adastraTagEntryPath(
           config.resolve.alias,
           options.entrypointsDir,
-          options.snippetName
+          adastraSnippetName
         ) +
         assetTags.join('\n') +
         '\n{% endif %}\n'

@@ -1,24 +1,23 @@
 import path from 'path'
 import type {
-  PluginAdastraOptions,
+  AdastraPluginOptions,
   ResolvedAdastraPluginOptions
 } from './types'
 
-export const resolveOptions = (
-  options: PluginAdastraOptions
-): ResolvedAdastraPluginOptions => {
-  const root = options.root ?? './'
-  const sourceDir = options.sourceDir ?? 'src'
-  const entrypointsDir = path.join(
-    sourceDir,
-    options.entrypointsDir ?? 'entrypoints'
-  )
-  const snippetName = options.snippetName ?? 'adastra'
+export const resolveOptions = ({
+  root = './',
+  sourceDir = 'src',
+  entrypointsDir = 'entrypoints',
+  additionalEntrypoints = [],
+  snippetName = 'adastra'
+}: AdastraPluginOptions): ResolvedAdastraPluginOptions => {
+  const resolvedEntrypointsDir = path.join(sourceDir, entrypointsDir)
 
   return {
     root,
     sourceDir,
-    entrypointsDir,
+    entrypointsDir: resolvedEntrypointsDir,
+    additionalEntrypoints,
     snippetName
   }
 }
