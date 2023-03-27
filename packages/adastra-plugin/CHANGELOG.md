@@ -1,5 +1,11 @@
 # `adastra-plugin`
 
+## 0.4.0
+
+### Minor Changes
+
+- [#32](https://github.com/blanklob/adastra/pull/32) [`4172203`](https://github.com/blanklob/adastra/commit/41722039295d2166f95f00a604266604010a92e6) Thanks [@blanklob](https://github.com/blanklob)! - Added extra entries directory to options and refactored plugin code
+
 ## 0.3.0
 
 ### Minor Changes
