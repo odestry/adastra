@@ -67,7 +67,6 @@ Adastra ✨ comes with so many examples to showcase, how it can be used with all
 | [Basics Template (Tailwind & Prettier)](./templates/basics)     | `npm create adastra@latest -- --template basics`                                         |
 | [Minimal Template](./templates/minimal)                         | `npm create adastra@latest -- --template minimal`                                        |
 | [Necessary Template](./templates/necessary)                     | `npm create adastra@latest -- --template necessary`                                      |
-| [Example with Dawn](./examples/with-dawn)                       | `npm create adastra@latest -- --template blanklob/adastra/examples/with-dawn`            |
 | [Example with React](./examples/with-react)                     | `npm create adastra@latest -- --template blanklob/adastra/examples/with-react`           |
 | [Example with Vue](./examples/with-vue)                         | `npm create adastra@latest -- --template blanklob/adastra/examples/with-vue`             |
 | [Example with Preact](./examples/with-preact)                   | `npm create adastra@latest -- --template blanklob/adastra/examples/with-preact`          |
