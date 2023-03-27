@@ -66,7 +66,8 @@ Adastra ✨ comes with so many examples to showcase, how it can be used with all
 | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | [Basics Template (Tailwind & Prettier)](./templates/basics)     | `npm create adastra@latest -- --template basics`                                         |
 | [Minimal Template](./templates/minimal)                         | `npm create adastra@latest -- --template minimal`                                        |
-| [Necessary Template](./templates/necessary)                       | `npm create adastra@latest -- --template necessary`                                      |
+| [Necessary Template](./templates/necessary)                     | `npm create adastra@latest -- --template necessary`                                      |
+| [Example with Dawn](./examples/with-dawn)                       | `npm create adastra@latest -- --template blanklob/adastra/examples/with-dawn`            |
 | [Example with React](./examples/with-react)                     | `npm create adastra@latest -- --template blanklob/adastra/examples/with-react`           |
 | [Example with Vue](./examples/with-vue)                         | `npm create adastra@latest -- --template blanklob/adastra/examples/with-vue`             |
 | [Example with Preact](./examples/with-preact)                   | `npm create adastra@latest -- --template blanklob/adastra/examples/with-preact`          |
@@ -79,6 +80,8 @@ Adastra ✨ comes with so many examples to showcase, how it can be used with all
 | [Example with Sass](./examples/with-sass)                       | `npm create adastra@latest -- --template blanklob/adastra/examples/with-sass`            |
 | [Example with Less](./examples/with-less)                       | `npm create adastra@latest -- --template blanklob/adastra/examples/with-less`            |
 | [Example with Vanilla Extract](./examples/with-vanilla-extract) | `npm create adastra@latest -- --template blanklob/adastra/examples/with-vanilla-extract` |
+| [Example with React Three Fiber](./examples/with-r3f)           | `npm create adastra@latest -- --template blanklob/adastra/examples/with-r3f`             |
+| [Example with React Hydrogen](./examples/with-hydrogen)         | `npm create adastra@latest -- --template blanklob/adastra/examples/with-hydrogen`        |
 
 More examples coming soon.
 

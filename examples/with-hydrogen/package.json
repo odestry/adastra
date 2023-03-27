@@ -1,0 +1,22 @@
+{
+  "name": "with-hydrogen",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "adastra dev",
+    "build": "adastra build",
+    "preview": "adastra preview",
+    "check": "adastra check"
+  },
+  "dependencies": {
+    "@shopify/hydrogen-react": "^2023.1.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^3.1.0",
+    "adastra-cli": "latest",
+    "adastra-plugin": "latest",
+    "vite": "^4.1.4"
+  }
+}
