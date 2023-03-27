@@ -1,6 +1,6 @@
 // Adastra config fallback when not found in filesystem.
-import type { PluginAdastraOptions } from '../types'
+import type { AdastraPluginOptions } from '../types'
 
-const AdastraConfig: PluginAdastraOptions = {}
+const AdastraConfig: AdastraPluginOptions = {}
 
 export default AdastraConfig

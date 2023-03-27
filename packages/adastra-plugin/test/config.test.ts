@@ -116,6 +116,29 @@ describe('adastra-plugin:config', () => {
   })
 })
 
+describe('resolveOptions', () => {
+  it('handles a default configuration', () => {
+    const options = resolveOptions({})
+
+    expect(options.root).toBe('./')
+    expect(options.sourceDir).toBe('src')
+    expect(options.entrypointsDir).toBe('src/entrypoints')
+    expect(options.additionalEntrypoints).toEqual([])
+    expect(options.snippetName).toEqual('adastra')
+  })
+
+  it('accepts a partial configuration', () => {
+    const options = resolveOptions({
+      root: 'shopify',
+      sourceDir: 'src'
+    })
+
+    expect(options.root).toBe('shopify')
+    expect(options.sourceDir).toBe('src')
+    expect(options.entrypointsDir).toBe('src/entrypoints')
+  })
+})
+
 vi.mock('fast-glob', () => {
   return {
     default: {
