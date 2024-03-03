@@ -21,7 +21,7 @@ yarn create adastra@latest --template blanklob/adastra/examples/with-vanilla-ext
 
 ### Using Adastra CLI ✨
 
-To launch the development server for the first time, you will need to replace the development command inside the `package.tson` with the following:
+To launch the development server for the first time, you will need to replace the development command inside the `package.json` with the following:
 
 ```json
 "scripts": {
@@ -75,7 +75,7 @@ Inside your Adastra ✨ theme project, you'll see the following folders and file
 │   └── hello-world.ts
 ├── templates
 ├── vite.config.ts
-└── package.tson
+└── package.json
 ```
 
 Adastra ✨ detects entrypoint files automatically in the `entrypoints/` directory. In this case `base.css` for styles and `index.ts` for modules.
