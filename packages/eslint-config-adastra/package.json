@@ -2,7 +2,7 @@
   "name": "eslint-config-adastra",
   "version": "0.1.2",
   "private": true,
-  "author": "Blanklob",
+  "author": "Odestry",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {

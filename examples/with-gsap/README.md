@@ -1,21 +1,21 @@
 # Adastra Example With GSAP ✨
 
 ```shell
-npm create adastra@latest -- --template blanklob/adastra/examples/with-gsap
+npm create adastra@latest -- --template odestry/adastra/examples/with-gsap
 ```
 
 Using Yarn/PNPM
 
 ```bash
-yarn create adastra@latest --template blanklob/adastra/examples/with-gsap
-# pnpm create adastra@latest --template blanklob/adastra/examples/with-gsap
+yarn create adastra@latest --template odestry/adastra/examples/with-gsap
+# pnpm create adastra@latest --template odestry/adastra/examples/with-gsap
 ```
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=603560480)
 
 > 🧑‍🚀 **Hey astronaut?** Have fun building Shopify themes with Adastra!
 
-![with-gsap](https://raw.githubusercontent.com/blanklob/adastra/main/.github/assets/minimal-template-banner.png)
+![with-gsap](https://raw.githubusercontent.com/odestry/adastra/main/.github/assets/minimal-template-banner.png)
 
 ## Launch development server
 
@@ -123,4 +123,4 @@ All commands are run from the root of the theme project, from a terminal:
 
 ## Want to learn more?
 
-Feel free to check [our documentation](https://docs.blanklob.com) or jump into our [Discord server](https://help.blanklob.com).
+Feel free to check [our documentation](https://docs.odestry.com) or jump into our [Discord server](https://help.odestry.com).

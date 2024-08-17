@@ -81,4 +81,4 @@ This Adastra cli was inspired by [Shopify Theme CLI](https://github.com/Shopify/
 
 ## Want to learn more?
 
-Feel free to check [our documentation](https://docs.blanklob.com) or jump into our [Discord server](https://help.blanklob.com).
+Feel free to check [our documentation](https://docs.odestry.com) or jump into our [Discord server](https://help.odestry.com).

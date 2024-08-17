@@ -1,7 +1,7 @@
 {
   "name": "create-adastra",
   "version": "0.1.6",
-  "author": "Blanklob",
+  "author": "Odestry",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
@@ -46,7 +46,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/blanklob/adastra.git",
+    "url": "https://github.com/odestry/adastra.git",
     "directory": "packages/create-adastra"
   },
   "keywords": [

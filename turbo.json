@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
@@ -13,8 +13,7 @@
     "test": {
       "outputs": ["coverage/**"],
       "dependsOn": ["build"],
-      "inputs": ["src/**/*.ts", "test/**/*.ts"],
-      "outputMode": "full"
+      "inputs": ["src/**/*.ts", "test/**/*.ts"]
     },
     "test:watch": {
       "cache": false

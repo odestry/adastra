@@ -123,7 +123,7 @@ export async function nextSteps({
   await sleep(100)
   console.log(
     `\n${prefix}Stuck? Join us at ${color.hex(COLORS.yellowGreen)(
-      'https://help.blanklob.com'
+      'https://help.odestry.com'
     )}`
   )
   await sleep(200)

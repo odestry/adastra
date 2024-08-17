@@ -96,7 +96,7 @@ Your final theme project structure should look like something like this:
 └── package.json
 ```
 
-If you use Typescript make sure you setup and `tsconfig.json` file in the root of the project, check out an example [here](https://github.com/blanklob/adastra/blob/main/packages/tsconfig/theme.json).
+If you use Typescript make sure you setup and `tsconfig.json` file in the root of the project, check out an example [here](https://github.com/odestry/adastra/blob/main/packages/tsconfig/theme.json).
 
 ## How it works?
 
@@ -176,4 +176,4 @@ This plugin was inspired by [Shopify Vite Plugin](https://shopify-vite.barrelny.
 
 ## Want to learn more?
 
-Feel free to check [our documentation](https://docs.blanklob.com) or jump into our [Discord server](https://help.blanklob.com).
+Feel free to check [our documentation](https://docs.odestry.com) or jump into our [Discord server](https://help.odestry.com).

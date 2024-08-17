@@ -1,5 +1,5 @@
 export const BRAND = {
   name: 'Adastra',
-  author: 'Blanklob',
+  author: 'Odestry',
   mascot: 'Tars'
 }
