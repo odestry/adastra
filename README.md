@@ -15,9 +15,6 @@ A powerful, flexible suite of vite plugins for building unique and custom Shopif
 [About](#about) |
 [License](#license)
 
-`Project description`
-
-
 ## Install
 
 The recommended way to scaffold an Adastra theme project is by running the command below:
