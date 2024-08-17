@@ -21,20 +21,20 @@
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.0",
-    "@types/node": "^18.14.1",
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
-    "@typescript-eslint/parser": "^5.53.0",
-    "@vitest/coverage-c8": "^0.28.5",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.7",
+    "@types/node": "^22.4.0",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
+    "@vitest/coverage-c8": "^0.33.0",
     "adastra-prettier-config": "workspace:*",
-    "eslint": "^7.32.0",
+    "eslint": "^9.9.0",
     "eslint-config-adastra": "workspace:*",
-    "prettier": "latest",
-    "tsup": "^6.6.3",
-    "turbo": "latest",
-    "typescript": "^4.9.5",
-    "vitest": "^0.28.5"
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
+    "turbo": "^2.0.14",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   },
   "packageManager": "pnpm@7.26.1",
   "engines": {
