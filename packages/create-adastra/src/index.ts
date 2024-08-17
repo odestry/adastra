@@ -164,7 +164,7 @@ export async function main(): Promise<void> {
   const isThirdParty = options.template.includes('/') as boolean
   const templateTarget = isThirdParty
     ? `gh:${options.template}`
-    : `gh:blanklob/adastra/templates/${options.template}`
+    : `gh:odestry/adastra/templates/${options.template}`
   if (!args.dryRun) {
     try {
       await downloadTemplate(`${templateTarget}`, {

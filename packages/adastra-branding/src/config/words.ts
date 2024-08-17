@@ -108,7 +108,7 @@ export const nouns = [
   'wind',
   'zenith',
   'zero',
-  'blanklob'
+  'odestry'
 ]
 
 export const adjectives = [

@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    if: github.repository == 'blanklob/adastra'
+    if: github.repository == 'odestry/adastra'
     runs-on: ubuntu-latest
     steps:
       - name: Check out code

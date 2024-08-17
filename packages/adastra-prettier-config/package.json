@@ -1,7 +1,7 @@
 {
   "name": "adastra-prettier-config",
   "version": "0.1.4",
-  "author": "Blanklob",
+  "author": "Odestry",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {

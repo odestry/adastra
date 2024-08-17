@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- [#32](https://github.com/blanklob/adastra/pull/32) [`4172203`](https://github.com/blanklob/adastra/commit/41722039295d2166f95f00a604266604010a92e6) Thanks [@blanklob](https://github.com/blanklob)! - Added extra entries directory to options and refactored plugin code
+- [#32](https://github.com/odestry/adastra/pull/32) [`4172203`](https://github.com/odestry/adastra/commit/41722039295d2166f95f00a604266604010a92e6) Thanks [@odestry](https://github.com/odestry)! - Added extra entries directory to options and refactored plugin code
 
 ## 0.3.0
 

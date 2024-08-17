@@ -41,7 +41,7 @@ pnpm create adastra my-shopify-theme --template minimal
 You can also use any GitHub repo as a template:
 
 ```bash
-npm create adastra@latest my-adastra-theme -- --template blanklob/adastra-minimal-template
+npm create adastra@latest my-adastra-theme -- --template odestry/adastra-minimal-template
 ```
 
 ## Adastra create CLI Flags
@@ -58,7 +58,7 @@ May be provided in place of prompts
 | `--dry-run`                  | Walk through steps without executing.   |
 | `--skip-tars`                | Skip Tars mascot animation.             |
 
-[examples]: https://github.com/blanklob/adastra/tree/main/examples
+[examples]: https://github.com/odestry/adastra/tree/main/examples
 
 ## Special Thanks
 
@@ -66,4 +66,4 @@ This create adastra cli was inspired by [Astro](https://github.com/withastro/ast
 
 ## Want to learn more?
 
-Feel free to check [our documentation](https://docs.blanklob.com) or jump into our [Discord server](https://help.blanklob.com).
+Feel free to check [our documentation](https://docs.odestry.com) or jump into our [Discord server](https://help.odestry.com).

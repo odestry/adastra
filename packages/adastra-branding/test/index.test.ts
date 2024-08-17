@@ -3,6 +3,6 @@ import { BRAND } from '../src'
 
 describe('skipped suite', () => {
   it('test', () => {
-    assert.equal(BRAND.author, 'Blanklob')
+    assert.equal(BRAND.author, 'Odestry')
   })
 })
