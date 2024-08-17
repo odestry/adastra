@@ -1,19 +1,22 @@
-![adastra](.github/assets/banner.png)
+# Adastra
 
-<p align="center">
-  <br/>
-  Adastra is a powerful and flexible framework for building custom and unique &mdash;
-  <br/>
-  Shopify Themes with next-gen frontend tooling.
-  <br/>
-</p>
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat&colorA=338fbb&colorB=1c1c1c&logoColor=ffffff)](https://github.com/odestry/.github/blob/main/CONTRIBUTING.md)
+[![CI](https://img.shields.io/github/actions/workflow/status/odestry/adastra/ci.yml?style=flat&label=CI&colorA=338fbb&colorB=1c1c1c&logoColor=ffffff)](https://github.com/odestry/adastra/blob/main/.github/workflows/ci.yml)
+[![Discord Shield](https://img.shields.io/discord/983602196493004820?style=flat&colorA=338fbb&colorB=1c1c1c&label=discord&logo=discord&logoColor=ffffff)](https://odestry.com/community)
 
-<p align="center">
- <a href="https://npmjs.com/package/adastra-plugin"><img src="https://img.shields.io/npm/v/adastra-plugin.svg" alt="npm package"></a>
-<a href="https://github.com/blanklob/adastra/actions"><img src="https://github.com/blanklob/adastra/workflows/CI/badge.svg" alt="Build Status"></a>
-<a href="https://www.npmjs.com/package/adastra-plugin"><img src="https://img.shields.io/npm/l/adastra-plugin" alt="License"></a>
-<a href="https://help.blanklob.com?ref=github"><img src="https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord" alt="discord chat"></a>
-</p>
+A powerful, flexible suite of vite plugins for building unique and custom Shopify themes with next-gen frontend tools.
+
+[Install](#install) |
+[Key Features](#key-features) |
+[Packages](#packages) |
+[Templates](#templates) |
+[Documentation](#documentation) |
+[Contributing](#contributing) |
+[About](#about) |
+[License](#license)
+
+`Project description`
+
 
 ## Install
 
@@ -58,7 +61,7 @@ Please **make sure** you have these two already set up in your local environment
 | [adastra-branding](./packages/adastra-branding)               | [CHANGELOG](./packages/adastra-branding/CHANGELOG.md)        | <a href="https://npmjs.com/package/adastra-branding"><img src="https://img.shields.io/npm/v/adastra-branding.svg" alt="npm package"></a>               |
 | [adastra-prettier-config](./packages/adastra-prettier-config) | [CHANGELOG](./packages/adastra-prettier-config/CHANGELOG.md) | <a href="https://npmjs.com/package/adastra-prettier-config"><img src="https://img.shields.io/npm/v/adastra-prettier-config.svg" alt="npm package"></a> |
 
-## Examples & Templates
+## Templates
 
 Adastra comes with so many examples to showcase, how it can be used with all of these frontend tools and ui frameworks, to build next generation online storefronts.
 
@@ -82,29 +85,28 @@ Adastra comes with so many examples to showcase, how it can be used with all of 
 | [Example with React Three Fiber](./examples/with-r3f)           | `npm create adastra@latest -- --template blanklob/adastra/examples/with-r3f`             |
 | [Example with React Hydrogen](./examples/with-hydrogen)         | `npm create adastra@latest -- --template blanklob/adastra/examples/with-hydrogen`        |
 
-More examples coming soon.
-
 ## Documentation
 
-Currently web documentation is under construction 🚧 you can check docs on every package.
+You can check docs on every package.
 
 - Adastra Plugin Docs ([here](./packages/adastra-plugin/README.md))
 - Adastra CLI Docs ([here](./packages/adastra-cli/README.md))
 - Adastra Create Theme CLI ([here](./packages/create-adastra/README.md))
 
-## Roadmap
+## Contributing
 
-This project is maintained, and I'm currently building it in public. You can follow the progress on Twitter [@blanklob](https://twitter.com/blanklob). You can find the roadmap [here](https://github.com/users/blanklob/projects/5) as well.
+We'd love your help! Please read our [contributing guide](https://github.com/odestry/.github/blob/main/CONTRIBUTING.md) to learn about our development process, how to propose bug fixes and improvements.
 
-## Support & Contributing
+## About
 
-**New contributors Welcome!** Check out our [Contributors Guide](CONTRIBUTING.md) for help getting started.
+Odestry isn't just a community; it's a group of dedicated folks all aiming to build better commerce together. Our mission is to create a supportive and open space where anyone, regardless of experience, can connect, learn, and grow. Here, you'll get inspired, have real talks, and find plenty of resources and open source tools to help you build. Whether you're looking to network, find opportunities, or just have meaningful conversations, join us and be part of a community that values authenticity, collaboration, and innovation. [Learn more](https://odestry.com).
 
-Having trouble? Get help in the official [Discord](https://help.blanklob.com) and meet other Shopify developers who build using Adastra
+## License
 
-## Special Thanks
+Copyright (c) 2024-present Odestry. See [LICENSE](/LICENSE.md) for further details.
+
+## Credit
 
 - [Shopify CLI](https://github.com/Shopify/cli) for inspiring Adastra CLI.
 - [Shopify Vite Plugin](https://shopify-vite.barrelny.com) for inspiring the Vite plugin.
 - [Astro](https://astro.build) for inspiring the Create Adastra CLI.
-- [Hydrogen](https://hydrogen.shopify.dev) for inspiring development principles and architecture.
