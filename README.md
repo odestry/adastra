@@ -2,7 +2,7 @@
 
 <p align="center">
   <br/>
-  Adastra ✨ is a powerful and flexible framework for building custom and unique &mdash;
+  Adastra is a powerful and flexible framework for building custom and unique &mdash;
   <br/>
   Shopify Themes with next-gen frontend tooling.
   <br/>
@@ -17,7 +17,7 @@
 
 ## Install
 
-The recommended way to scaffold an Adastra ✨ theme project is by running the command below:
+The recommended way to scaffold an Adastra theme project is by running the command below:
 
 ```shell
 npm create adastra@latest
@@ -30,9 +30,9 @@ yarn create adastra@latest
 # pnpm create adastra@latest
 ```
 
-Adastra came from the Latin word Ad-astra which stands for **To the Stars** ✨
+Adastra came from the Latin word Ad-astra which stands for **To the Stars**
 
-## Key Features ✨
+## Key Features
 
 - **Flexible** Can seamlessly be integrated with existing workflows and Shopify themes.
 - **Outstanding DX** Lightning Fast HMR for static files and has custom CLI built on top of the Shopify CLI.
@@ -60,7 +60,7 @@ Please **make sure** you have these two already set up in your local environment
 
 ## Examples & Templates
 
-Adastra ✨ comes with so many examples to showcase, how it can be used with all of these frontend tools and ui frameworks, to build next generation online storefronts.
+Adastra comes with so many examples to showcase, how it can be used with all of these frontend tools and ui frameworks, to build next generation online storefronts.
 
 | Theme/Example                                                   | Command                                                                                  |
 | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
@@ -100,11 +100,11 @@ This project is maintained, and I'm currently building it in public. You can fol
 
 **New contributors Welcome!** Check out our [Contributors Guide](CONTRIBUTING.md) for help getting started.
 
-Having trouble? Get help in the official [Discord](https://help.blanklob.com) and meet other Shopify developers who build using Adastra ✨
+Having trouble? Get help in the official [Discord](https://help.blanklob.com) and meet other Shopify developers who build using Adastra
 
 ## Special Thanks
 
-- [Shopify CLI](https://github.com/Shopify/cli) for inspiring Adastra ✨ CLI.
+- [Shopify CLI](https://github.com/Shopify/cli) for inspiring Adastra CLI.
 - [Shopify Vite Plugin](https://shopify-vite.barrelny.com) for inspiring the Vite plugin.
 - [Astro](https://astro.build) for inspiring the Create Adastra CLI.
 - [Hydrogen](https://hydrogen.shopify.dev) for inspiring development principles and architecture.
