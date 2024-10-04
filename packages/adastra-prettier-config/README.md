@@ -34,7 +34,7 @@ Previously, rules had been defined directly in a `.prettierrc` or `package.json`
 
 Any previous `.prettierrc` or `prettier.config.js` should be removed in favour of the shared config.
 
-Sometimes when using `pnpm` the config deosn't work because the package manager deosn't read the configuration, to fix the issue, rather than adding your plugin in `package.json`, create a `prettier.config.js` file with this configuration:
+Sometimes when using `pnpm` the config doesn't work because the package manager doesn't read the configuration, to fix the issue, rather than adding your plugin in `package.json`, create a `prettier.config.js` file with this configuration:
 
 ```js
 module.exports = {
