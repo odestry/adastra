@@ -4,7 +4,7 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/odestry/adastra/ci.yml?style=flat&label=CI&colorA=338fbb&colorB=1c1c1c&logoColor=ffffff)](https://github.com/odestry/adastra/blob/main/.github/workflows/ci.yml)
 [![Discord Shield](https://img.shields.io/discord/983602196493004820?style=flat&colorA=338fbb&colorB=1c1c1c&label=discord&logo=discord&logoColor=ffffff)](https://odestry.com/community)
 
-A powerful, flexible suite of vite plugins for building unique and custom Shopify themes with next-gen frontend tools.
+A powerful, flexible suite of vite plugins for building unique and custom Shopify themes with next-gen frontend tools. (project is no longer maintained we recommend using volt) https://shopify-vite.barrelny.com)
 
 [Install](#install) |
 [Key Features](#key-features) |
